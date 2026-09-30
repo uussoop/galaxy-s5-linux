@@ -1,0 +1,2098 @@
+[    0.000000] Booting Linux on physical CPU 0x100
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Initializing cgroup subsys cpuacct
+[    0.000000] Linux version 3.10.9-LineageOS (pmos@d11ad7077ad9) (gcc version 15.2.0 (Alpine 15.2.0) ) #3-postmarketOS SMP PREEMPT Sun Sep 27 14:31:01 UTC 2026
+[redacted sensitive line]
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine: universal5422, model: Samsung K 3G EUR revision 10 board based on EXYNOS5422
+[redacted sensitive line]
+[    0.000000] ION: Contiguous 0x400000 bytes @ 0x0 defined for 0:common
+[    0.000000] ION: Contiguous 0x100000 bytes @ 0x0 defined for 2:mfc_sh
+[    0.000000] ION: Contiguous 0x800000 bytes @ 0x0 defined for 10:g2d_wfd
+[    0.000000] ION: Contiguous 0xa800000 bytes @ 0x0 defined for 11:video
+[    0.000000] ION: Contiguous 0x100000 bytes @ 0x0 defined for 9:sectbl
+[    0.000000] ION: Contiguous 0x100000 bytes @ 0x0 defined for 8:mfc_fw
+[    0.000000] ION: Contiguous 0x100000 bytes @ 0x0 defined for 12:mfc_nfw
+[    0.000000] ION: Contiguous 0x20000 bytes @ 0x0 defined for 13:secdma
+[    0.000000] cma: CMA: reserved 4 MiB at be600000
+[    0.000000] cma: CMA: reserved 1 MiB at be500000
+[    0.000000] cma: CMA: reserved 8 MiB at bdd00000
+[    0.000000] cma: CMA: reserved 168 MiB at b3500000
+[    0.000000] cma: CMA: reserved 1 MiB at b3400000
+[    0.000000] cma: CMA: reserved 1 MiB at b3300000
+[    0.000000] cma: CMA: reserved 1 MiB at b3200000
+[    0.000000] cma: CMA: reserved 0 MiB at b31e0000
+[    0.000000] Memory policy: ECC disabled, Data cache writealloc
+[    0.000000] CPU EXYNOS5422 (id 0xe5422001)
+[    0.000000] (sec_debug_set_upload_magic) 66262564
+[    0.000000] (sec_debug_set_upload_cause) cafebabe
+[    0.000000] On node 0 totalpages: 518656
+[    0.000000] free_area_init_node: node 0, pgdat c11cc540, node_mem_map c25a7000
+[    0.000000]   Normal zone: 1504 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 192512 pages, LIFO batch:31
+[    0.000000]   HighMem zone: 2548 pages used for memmap
+[    0.000000]   HighMem zone: 326144 pages, LIFO batch:31
+[    0.000000] sec_debug_magic_init: success reserving magic code area
+[    0.000000] PERCPU: Embedded 7 pages/cpu @c35ba000 s14016 r0 d14656 u32768
+[redacted sensitive line]
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 [0] 4 [0] 5 [0] 6 [0] 7 
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 517152
+[redacted sensitive line]
+[    0.000000] [c0] sec_log_setup: *sec_log_mag:4d474f4c *sec_log_ptr:36ae14 sec_log_buf:f7200000 sec_log_size:2097152
+[    0.000000] [c0] sec_log_save_old: saved old log at 524288@c35f9000
+[    0.000000] [c0] sec_getlog_supply_kloginfo: 0xc6000000
+[    0.000000] [c0] sec_avc_log_setup: *sec_avc_log_ptr:43b1 sec_avc_log_buf:c6404000 sec_log_size:0x40000
+[    0.000000] [c0] lcdtype_setup: lcdtype: 602813
+[    0.000000] [c0] set_switch_sel: switch_sel: 0x05b
+[    0.000000] [c0] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] [c0] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] [c0] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] [c0] Memory: 2026MB = 2026MB total
+[redacted sensitive line]
+[    0.000000] [c0] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+[    0.000000]     vmalloc : 0xef800000 - 0xff000000   ( 248 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xef000000   ( 752 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc0d37000   (13500 kB)
+[    0.000000]       .init : 0xc0e00000 - 0xc0f036c0   (1038 kB)
+[    0.000000]       .data : 0xc0f04000 - 0xc11d2688   (2874 kB)
+[    0.000000]        .bss : 0xc122dd8c - 0xc1379710   (1327 kB)
+[redacted sensitive line]
+[    0.000000] [c0] Preemptible hierarchical RCU implementation.
+[    0.000000] [c0] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] [c0] apll 800000000
+[    0.000000] [c0] bpll 825000000
+[    0.000000] [c0] cpll 666000000
+[    0.000000] [c0] dpll 600000000
+[    0.000000] [c0] epll 66000000
+[    0.000000] [c0] rpll 66000000
+[    0.000000] [c0] ipll 432000000
+[    0.000000] [c0] spll 800000000
+[    0.000000] [c0] dout_spll_ctrl_div2 400000000
+[    0.000000] [c0] vpll 400000000
+[    0.000000] [c0] mpll 532000000
+[    0.000000] [c0] Clock enables : TOP, MIF
+[    0.000000] [c0] mmc0: dout_mmc0 666000000
+[    0.000000] [c0] mmc1: dout_mmc1 800000000
+[    0.000000] [c0] mmc2: dout_mmc2 666000000
+[redacted sensitive line]
+[    0.000000] [c0] [g2d_init_clock:325] aclk_333_g2d:333000000
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.000000] [c0] mfc: aclk_333 400000000
+[    0.000000] [c0] Exynos5422: clock setup completed
+[    0.000000] [c0] Exynos: pwm: clock setup completed
+[    0.000000] [c0] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 178956ms
+[    0.000000] [c0] Switching to timer-based delay loop
+[    0.000000] [c0] EXYNOS5422 PMU Initialize
+[    0.000000] [c0] Console: colour dummy device 80x30
+[    0.000000] [c0] Enable Console Clock to add refference counter
+[    0.000000] [c0] Can't get console-pclk2!(it's not err)
+[    0.000000] [c0] Can't get console-sclk2!(it's not err)
+[redacted sensitive line]
+[    0.000738] [c0] pid_max: default: 32768 minimum: 301
+[    0.001030] [c0] Security Framework initialized
+[    0.001062] [c0] SELinux:  Initializing.
+[    0.001145] [c0] SELinux:  Starting in enforcing mode
+[    0.001241] [c0] Mount-cache hash table entries: 512
+[    0.040320] [c0] Initializing cgroup subsys debug
+[    0.040356] [c0] Initializing cgroup subsys freezer
+[    0.040427] [c0] CPU: Testing write buffer coherency: ok
+[    0.040986] [c0] /cpus/cpu@0 missing clock-frequency property
+[    0.041011] [c0] /cpus/cpu@1 missing clock-frequency property
+[    0.041032] [c0] /cpus/cpu@2 missing clock-frequency property
+[    0.041053] [c0] /cpus/cpu@3 missing clock-frequency property
+[    0.041073] [c0] /cpus/cpu@4 missing clock-frequency property
+[    0.041092] [c0] /cpus/cpu@5 missing clock-frequency property
+[    0.041112] [c0] /cpus/cpu@6 missing clock-frequency property
+[    0.041131] [c0] /cpus/cpu@7 missing clock-frequency property
+[    0.041220] [c0] CPU0: thread -1, cpu 0, socket 1, mpidr 80000100
+[    0.041490] [c0] Running under secure firmware.
+[    0.041543] [c0] Setting up static identity map for 0xc08d67f8 - 0xc08d6850
+[    0.082692] [c0] cpu1: SWRESET
+[    0.082958] [c1] CPU1: Booted secondary processor
+[    0.082993] [c1] CPU1: thread -1, cpu 1, socket 1, mpidr 80000101
+[    0.092674] [c0] cpu2: SWRESET
+[    0.092940] [c2] CPU2: Booted secondary processor
+[    0.092974] [c2] CPU2: thread -1, cpu 2, socket 1, mpidr 80000102
+[    0.102666] [c0] cpu3: SWRESET
+[    0.102931] [c3] CPU3: Booted secondary processor
+[    0.102964] [c3] CPU3: thread -1, cpu 3, socket 1, mpidr 80000103
+[    0.111908] [c4] CPU4: Booted secondary processor
+[    0.112680] [c4] CPU4: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.121944] [c5] CPU5: Booted secondary processor
+[    0.122699] [c5] CPU5: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.131927] [c6] CPU6: Booted secondary processor
+[    0.132682] [c6] CPU6: thread -1, cpu 2, socket 0, mpidr 80000002
+[    0.141912] [c7] CPU7: Booted secondary processor
+[    0.142685] [c7] CPU7: thread -1, cpu 3, socket 0, mpidr 80000003
+[    0.142860] [c0] Brought up 8 CPUs
+[    0.142927] [c0] SMP: Total of 8 processors activated (12727.09 BogoMIPS).
+[    0.142945] [c0] CPU: All CPU(s) started in SVC mode.
+[    0.144776] [c0] devtmpfs: initialized
+[    0.167973] [c6] sched: registering cpufreq notifiers for scale-invariant loads
+[    0.169378] [c6] pinctrl core: initialized pinctrl subsystem
+[    0.170002] [c6] regulator-dummy: no parameters
+[    0.170411] [c6] NET: Registered protocol family 16
+[    0.171475] [c6] DMA: preallocated 2048 KiB pool for atomic coherent allocations
+[    0.175808] [c6] gpiochip_add: registered GPIOs 0 to 7 on device: gpy7
+[    0.175924] [c6] gpiochip_add: registered GPIOs 8 to 15 on device: gpx0
+[    0.176032] [c6] gpiochip_add: registered GPIOs 16 to 23 on device: gpx1
+[    0.176136] [c6] gpiochip_add: registered GPIOs 24 to 31 on device: gpx2
+[    0.176248] [c6] gpiochip_add: registered GPIOs 32 to 39 on device: gpx3
+[    0.177644] [c6] gpiochip_add: registered GPIOs 40 to 47 on device: gpc0
+[    0.177779] [c6] gpiochip_add: registered GPIOs 48 to 55 on device: gpc1
+[    0.177892] [c6] gpiochip_add: registered GPIOs 56 to 62 on device: gpc2
+[    0.178006] [c6] gpiochip_add: registered GPIOs 63 to 66 on device: gpc3
+[    0.178114] [c6] gpiochip_add: registered GPIOs 67 to 68 on device: gpc4
+[    0.178218] [c6] gpiochip_add: registered GPIOs 69 to 76 on device: gpd1
+[    0.178339] [c6] gpiochip_add: registered GPIOs 77 to 82 on device: gpy0
+[    0.178447] [c6] gpiochip_add: registered GPIOs 83 to 86 on device: gpy1
+[    0.178553] [c6] gpiochip_add: registered GPIOs 87 to 92 on device: gpy2
+[    0.178666] [c6] gpiochip_add: registered GPIOs 93 to 100 on device: gpy3
+[    0.178774] [c6] gpiochip_add: registered GPIOs 101 to 108 on device: gpy4
+[    0.178878] [c6] gpiochip_add: registered GPIOs 109 to 116 on device: gpy5
+[    0.178992] [c6] gpiochip_add: registered GPIOs 117 to 124 on device: gpy6
+[    0.182916] [c6] gpiochip_add: registered GPIOs 125 to 132 on device: gpe0
+[    0.183029] [c6] gpiochip_add: registered GPIOs 133 to 134 on device: gpe1
+[    0.183146] [c6] gpiochip_add: registered GPIOs 135 to 140 on device: gpf0
+[    0.183253] [c6] gpiochip_add: registered GPIOs 141 to 148 on device: gpf1
+[    0.183362] [c6] gpiochip_add: registered GPIOs 149 to 156 on device: gpg0
+[    0.183477] [c6] gpiochip_add: registered GPIOs 157 to 164 on device: gpg1
+[    0.183584] [c6] gpiochip_add: registered GPIOs 165 to 166 on device: gpg2
+[    0.183693] [c6] gpiochip_add: registered GPIOs 167 to 170 on device: gpj4
+[    0.185936] [c6] gpiochip_add: registered GPIOs 171 to 178 on device: gpa0
+[    0.186049] [c6] gpiochip_add: registered GPIOs 179 to 184 on device: gpa1
+[    0.186159] [c6] gpiochip_add: registered GPIOs 185 to 192 on device: gpa2
+[    0.186268] [c6] gpiochip_add: registered GPIOs 193 to 197 on device: gpb0
+[    0.186386] [c6] gpiochip_add: registered GPIOs 198 to 202 on device: gpb1
+[    0.186493] [c6] gpiochip_add: registered GPIOs 203 to 206 on device: gpb2
+[    0.186600] [c6] gpiochip_add: registered GPIOs 207 to 214 on device: gpb3
+[    0.186718] [c6] gpiochip_add: registered GPIOs 215 to 216 on device: gpb4
+[    0.186827] [c6] gpiochip_add: registered GPIOs 217 to 224 on device: gph0
+[    0.189243] [c6] gpiochip_add: registered GPIOs 225 to 231 on device: gpz
+[    0.214170] [c6] S3C Power Management, Copyright 2004 Simtec Electronics
+[    0.218665] [c6] PM DOMAIN: pd-cam has a new child pd-isp.
+[    0.219525] [c6] PM DOMAIN: pd-gscl has a new child pd-cam.
+[    0.219573] [c6] EXYNOS5: PM Domain Initialize
+[    0.219876] [c6]    pd-gscl   - on 
+[    0.220004] [c6]    pd-isp    - on 
+[    0.220130] [c6]    pd-mfc    - on 
+[    0.220256] [c6]    pd-g3d    - on 
+[    0.220384] [c6]    pd-disp1  - on 
+[    0.220514] [c6]    pd-maudio - on 
+[    0.220531] [c6]    pd-g2d    - on,  always
+[    0.220660] [c6]    pd-mscl   - on 
+[    0.220678] [c6]    pd-fsys   - on,  always
+[    0.220696] [c6]    pd-psgen  - on,  always
+[    0.220713] [c6]    pd-peric  - on,  always
+[    0.220729] [c6]    pd-wcore  - on,  always
+[    0.220859] [c6]    pd-cam    - on 
+[    0.220903] [c6] EXYNOS: Initializing architecture
+[    0.222135] [c6] exynos-sysmmu 13c40000.sysmmu: No gating clock found.
+[    0.222293] [c6] exynos-sysmmu 13c40000.sysmmu: --> 13c00000.fimc_is_sensor
+[    0.222312] [c6] exynos-sysmmu 13c40000.sysmmu: [OK]
+[    0.222471] [c6] exynos-sysmmu 13c50000.sysmmu: No gating clock found.
+[    0.222626] [c6] exynos-sysmmu 13c50000.sysmmu: --> 13c10000.fimc_is_sensor
+[    0.222644] [c6] exynos-sysmmu 13c50000.sysmmu: [OK]
+[    0.222831] [c6] exynos-sysmmu 13d50000.sysmmu: No gating clock found.
+[    0.222986] [c6] exynos-sysmmu 13d50000.sysmmu: --> 13180000.fimc_is
+[    0.223004] [c6] exynos-sysmmu 13d50000.sysmmu: [OK]
+[    0.223157] [c6] exynos-sysmmu 13cc0000.sysmmu: No gating clock found.
+[    0.223310] [c6] exynos-sysmmu 13cc0000.sysmmu: --> 13180000.fimc_is
+[    0.223328] [c6] exynos-sysmmu 13cc0000.sysmmu: [OK]
+[    0.223485] [c6] exynos-sysmmu 13cb0000.sysmmu: No gating clock found.
+[    0.223637] [c6] exynos-sysmmu 13cb0000.sysmmu: --> 13180000.fimc_is
+[    0.223656] [c6] exynos-sysmmu 13cb0000.sysmmu: [OK]
+[    0.223990] [c6] exynos-sysmmu 10a60000.sysmmu: --> 10850000.fimg2d
+[    0.224011] [c6] exynos-sysmmu 10a60000.sysmmu: [OK]
+[    0.224345] [c6] exynos-sysmmu 10a70000.sysmmu: --> 10850000.fimg2d
+[    0.224365] [c6] exynos-sysmmu 10a70000.sysmmu: [OK]
+[    0.224703] [c6] exynos-sysmmu 14650000.sysmmu: --> 14450000.mixer
+[    0.224723] [c6] exynos-sysmmu 14650000.sysmmu: [OK]
+[    0.224881] [c6] exynos-sysmmu 13e80000.sysmmu: No gating clock found.
+[    0.225016] [c6] exynos-sysmmu 13e80000.sysmmu: --> 13e00000.gsc
+[    0.225035] [c6] exynos-sysmmu 13e80000.sysmmu: [OK]
+[    0.225185] [c6] exynos-sysmmu 13e90000.sysmmu: No gating clock found.
+[    0.225321] [c6] exynos-sysmmu 13e90000.sysmmu: --> 13e10000.gsc
+[    0.225339] [c6] exynos-sysmmu 13e90000.sysmmu: [OK]
+[    0.225674] [c6] exynos-sysmmu 132a0000.sysmmu: --> 13180000.fimc_is
+[    0.225694] [c6] exynos-sysmmu 132a0000.sysmmu: [OK]
+[    0.226030] [c6] exynos-sysmmu 132b0000.sysmmu: --> 13180000.fimc_is
+[    0.226050] [c6] exynos-sysmmu 132b0000.sysmmu: [OK]
+[    0.226390] [c6] exynos-sysmmu 13260000.sysmmu: --> 13180000.fimc_is
+[    0.226411] [c6] exynos-sysmmu 13260000.sysmmu: [OK]
+[    0.226744] [c6] exynos-sysmmu 13270000.sysmmu: --> 13180000.fimc_is
+[    0.226764] [c6] exynos-sysmmu 13270000.sysmmu: [OK]
+[    0.227096] [c6] exynos-sysmmu 13280000.sysmmu: --> 13180000.fimc_is
+[    0.227116] [c6] exynos-sysmmu 13280000.sysmmu: [OK]
+[    0.227448] [c6] exynos-sysmmu 13290000.sysmmu: --> 13180000.fimc_is
+[    0.227468] [c6] exynos-sysmmu 13290000.sysmmu: [OK]
+[    0.227844] [c6] exynos-sysmmu 132f0000.sysmmu: --> 13180000.fimc_is
+[    0.227864] [c6] exynos-sysmmu 132f0000.sysmmu: [OK]
+[    0.228198] [c6] exynos-sysmmu 12880000.sysmmu: --> 12800000.scaler
+[    0.228218] [c6] exynos-sysmmu 12880000.sysmmu: [OK]
+[    0.228547] [c6] exynos-sysmmu 12890000.sysmmu: --> 12810000.scaler
+[    0.228566] [c6] exynos-sysmmu 12890000.sysmmu: [OK]
+[    0.228903] [c6] exynos-sysmmu 128a0000.sysmmu: --> 12820000.scaler
+[    0.228923] [c6] exynos-sysmmu 128a0000.sysmmu: [OK]
+[    0.229259] [c6] exynos-sysmmu 128c0000.sysmmu: --> 12800000.scaler
+[    0.229280] [c6] exynos-sysmmu 128c0000.sysmmu: [OK]
+[    0.229611] [c6] exynos-sysmmu 128d0000.sysmmu: --> 12810000.scaler
+[    0.229631] [c6] exynos-sysmmu 128d0000.sysmmu: [OK]
+[    0.229961] [c6] exynos-sysmmu 128e0000.sysmmu: --> 12820000.scaler
+[    0.229981] [c6] exynos-sysmmu 128e0000.sysmmu: [OK]
+[    0.230311] [c6] exynos-sysmmu 11f10000.sysmmu: --> 11f50000.jpeg
+[    0.230331] [c6] exynos-sysmmu 11f10000.sysmmu: [OK]
+[    0.230659] [c6] exynos-sysmmu 11f20000.sysmmu: --> 11f60000.jpeg
+[    0.230678] [c6] exynos-sysmmu 11f20000.sysmmu: [OK]
+[    0.230997] [c6] exynos-sysmmu 11200000.sysmmu: --> 11000000.mfc
+[    0.231016] [c6] exynos-sysmmu 11200000.sysmmu: [OK]
+[    0.231335] [c6] exynos-sysmmu 11210000.sysmmu: --> 11000000.mfc
+[    0.231355] [c6] exynos-sysmmu 11210000.sysmmu: [OK]
+[    0.231654] [c6] exynos-sysmmu 14640000.sysmmu: --> 14400000.fimd_fb
+[    0.231675] [c6] exynos-sysmmu 14640000.sysmmu: [OK]
+[    0.231962] [c6] exynos-sysmmu 14680000.sysmmu: --> 14400000.fimd_fb
+[    0.231982] [c6] exynos-sysmmu 14680000.sysmmu: [OK]
+[    0.232374] [c6] Exynos5422 ASV : Use Fusing Speed Group 4
+[    0.232391] [c6] Exynos5422 ASV : invalid IDS value
+[    0.232406] [c6] EXYNOS5422 ASV :  IDS : 0 HPM : 0
+[    0.232428] [c6] VDD_ARM ASV group is 4
+[    0.232448] [c6] VDD_ARM LV0 freq : 2100000 volt : 1325000 abb : 255
+[    0.232464] [c6] VDD_ARM LV0 freq : 2100000 abb : 255
+[    0.232479] [c6] VDD_ARM LV1 freq : 2000000 volt : 1275000 abb : 255
+[    0.232493] [c6] VDD_ARM LV1 freq : 2000000 abb : 255
+[    0.232508] [c6] VDD_ARM LV2 freq : 1900000 volt : 1200000 abb : 255
+[    0.232523] [c6] VDD_ARM LV2 freq : 1900000 abb : 255
+[    0.232538] [c6] VDD_ARM LV3 freq : 1800000 volt : 1150000 abb : 255
+[    0.232552] [c6] VDD_ARM LV3 freq : 1800000 abb : 255
+[    0.232567] [c6] VDD_ARM LV4 freq : 1700000 volt : 1112500 abb : 255
+[    0.232581] [c6] VDD_ARM LV4 freq : 1700000 abb : 255
+[    0.232597] [c6] VDD_ARM LV5 freq : 1600000 volt : 1075000 abb : 255
+[    0.232611] [c6] VDD_ARM LV5 freq : 1600000 abb : 255
+[    0.232625] [c6] VDD_ARM LV6 freq : 1500000 volt : 1037500 abb : 255
+[    0.232640] [c6] VDD_ARM LV6 freq : 1500000 abb : 255
+[    0.232655] [c6] VDD_ARM LV7 freq : 1400000 volt : 1012500 abb : 255
+[    0.232669] [c6] VDD_ARM LV7 freq : 1400000 abb : 255
+[    0.232684] [c6] VDD_ARM LV8 freq : 1300000 volt : 1000000 abb : 255
+[    0.232697] [c6] VDD_ARM LV8 freq : 1300000 abb : 255
+[    0.232712] [c6] VDD_ARM LV9 freq : 1200000 volt : 975000 abb : 255
+[    0.232754] [c6] VDD_ARM LV9 freq : 1200000 abb : 255
+[    0.232771] [c6] VDD_ARM LV10 freq : 1100000 volt : 950000 abb : 255
+[    0.232786] [c6] VDD_ARM LV10 freq : 1100000 abb : 255
+[    0.232802] [c6] VDD_ARM LV11 freq : 1000000 volt : 925000 abb : 255
+[    0.232817] [c6] VDD_ARM LV11 freq : 1000000 abb : 255
+[    0.232832] [c6] VDD_ARM LV12 freq : 900000 volt : 900000 abb : 255
+[    0.232848] [c6] VDD_ARM LV12 freq : 900000 abb : 255
+[    0.232864] [c6] VDD_ARM LV13 freq : 800000 volt : 900000 abb : 255
+[    0.232879] [c6] VDD_ARM LV13 freq : 800000 abb : 255
+[    0.232894] [c6] VDD_ARM LV14 freq : 700000 volt : 900000 abb : 255
+[    0.232909] [c6] VDD_ARM LV14 freq : 700000 abb : 255
+[    0.232925] [c6] VDD_ARM LV15 freq : 600000 volt : 900000 abb : 255
+[    0.232939] [c6] VDD_ARM LV15 freq : 600000 abb : 255
+[    0.232955] [c6] VDD_ARM LV16 freq : 500000 volt : 900000 abb : 255
+[    0.232970] [c6] VDD_ARM LV16 freq : 500000 abb : 255
+[    0.232985] [c6] VDD_ARM LV17 freq : 400000 volt : 900000 abb : 255
+[    0.233000] [c6] VDD_ARM LV17 freq : 400000 abb : 255
+[    0.233016] [c6] VDD_ARM LV18 freq : 300000 volt : 900000 abb : 255
+[    0.233031] [c6] VDD_ARM LV18 freq : 300000 abb : 255
+[    0.233046] [c6] VDD_ARM LV19 freq : 200000 volt : 900000 abb : 255
+[    0.233061] [c6] VDD_ARM LV19 freq : 200000 abb : 255
+[    0.233076] [c6] VDD_KFC ASV group is 4
+[    0.233094] [c6] VDD_KFC LV0 freq : 1500000 volt : 1287500
+[    0.233109] [c6] VDD_KFC LV0 freq : 1500000 abb : 4
+[    0.233124] [c6] VDD_KFC LV1 freq : 1400000 volt : 1225000
+[    0.233139] [c6] VDD_KFC LV1 freq : 1400000 abb : 4
+[    0.233154] [c6] VDD_KFC LV2 freq : 1300000 volt : 1175000
+[    0.233169] [c6] VDD_KFC LV2 freq : 1300000 abb : 4
+[    0.233185] [c6] VDD_KFC LV3 freq : 1200000 volt : 1125000
+[    0.233199] [c6] VDD_KFC LV3 freq : 1200000 abb : 4
+[    0.233214] [c6] VDD_KFC LV4 freq : 1100000 volt : 1087500
+[    0.233229] [c6] VDD_KFC LV4 freq : 1100000 abb : 4
+[    0.233244] [c6] VDD_KFC LV5 freq : 1000000 volt : 1050000
+[    0.233258] [c6] VDD_KFC LV5 freq : 1000000 abb : 4
+[    0.233273] [c6] VDD_KFC LV6 freq : 900000 volt : 1012500
+[    0.233288] [c6] VDD_KFC LV6 freq : 900000 abb : 4
+[    0.233302] [c6] VDD_KFC LV7 freq : 800000 volt : 975000
+[    0.233317] [c6] VDD_KFC LV7 freq : 800000 abb : 255
+[    0.233331] [c6] VDD_KFC LV8 freq : 700000 volt : 937500
+[    0.233345] [c6] VDD_KFC LV8 freq : 700000 abb : 255
+[    0.233360] [c6] VDD_KFC LV9 freq : 600000 volt : 900000
+[    0.233374] [c6] VDD_KFC LV9 freq : 600000 abb : 255
+[    0.233389] [c6] VDD_KFC LV10 freq : 500000 volt : 900000
+[    0.233403] [c6] VDD_KFC LV10 freq : 500000 abb : 255
+[    0.233418] [c6] VDD_KFC LV11 freq : 400000 volt : 900000
+[    0.233432] [c6] VDD_KFC LV11 freq : 400000 abb : 255
+[    0.233446] [c6] VDD_KFC LV12 freq : 300000 volt : 900000
+[    0.233461] [c6] VDD_KFC LV12 freq : 300000 abb : 255
+[    0.233475] [c6] VDD_KFC LV13 freq : 200000 volt : 900000
+[    0.233489] [c6] VDD_KFC LV13 freq : 200000 abb : 255
+[    0.233504] [c6] VDD_INT ASV group is 4
+[    0.233521] [c6] VDD_INT LV0 freq : 600000 volt : 937500
+[    0.233536] [c6] VDD_INT LV0 freq : 600000 abb : 255
+[    0.233551] [c6] VDD_INT LV1 freq : 500000 volt : 925000
+[    0.233565] [c6] VDD_INT LV1 freq : 500000 abb : 255
+[    0.233579] [c6] VDD_INT LV2 freq : 480000 volt : 925000
+[    0.233594] [c6] VDD_INT LV2 freq : 480000 abb : 255
+[    0.233608] [c6] VDD_INT LV3 freq : 460000 volt : 925000
+[    0.233622] [c6] VDD_INT LV3 freq : 460000 abb : 255
+[    0.233636] [c6] VDD_INT LV4 freq : 440000 volt : 925000
+[    0.233650] [c6] VDD_INT LV4 freq : 440000 abb : 255
+[    0.233665] [c6] VDD_INT LV5 freq : 420000 volt : 925000
+[    0.233679] [c6] VDD_INT LV5 freq : 420000 abb : 255
+[    0.233693] [c6] VDD_INT LV6 freq : 400000 volt : 887500
+[    0.233707] [c6] VDD_INT LV6 freq : 400000 abb : 255
+[    0.233721] [c6] VDD_INT LV7 freq : 333000 volt : 862500
+[    0.233736] [c6] VDD_INT LV7 freq : 333000 abb : 255
+[    0.233750] [c6] VDD_INT LV8 freq : 222000 volt : 850000
+[    0.233764] [c6] VDD_INT LV8 freq : 222000 abb : 255
+[    0.233779] [c6] VDD_INT LV9 freq : 111000 volt : 850000
+[    0.233793] [c6] VDD_INT LV9 freq : 111000 abb : 14
+[    0.233807] [c6] VDD_INT LV10 freq : 83000 volt : 850000
+[    0.233822] [c6] VDD_INT LV10 freq : 83000 abb : 14
+[    0.233836] [c6] VDD_MIF ASV group is 4
+[    0.233853] [c6] VDD_MIF LV0 freq : 825000 volt : 925000
+[    0.233867] [c6] VDD_MIF LV0 freq : 825000 abb : 14
+[    0.233882] [c6] VDD_MIF LV1 freq : 728000 volt : 875000
+[    0.233896] [c6] VDD_MIF LV1 freq : 728000 abb : 14
+[    0.233911] [c6] VDD_MIF LV2 freq : 633000 volt : 837500
+[    0.233925] [c6] VDD_MIF LV2 freq : 633000 abb : 14
+[    0.233938] [c6] VDD_MIF LV3 freq : 543000 volt : 812500
+[    0.233952] [c6] VDD_MIF LV3 freq : 543000 abb : 14
+[    0.233966] [c6] VDD_MIF LV4 freq : 413000 volt : 762500
+[    0.233980] [c6] VDD_MIF LV4 freq : 413000 abb : 14
+[    0.233995] [c6] VDD_MIF LV5 freq : 275000 volt : 737500
+[    0.234009] [c6] VDD_MIF LV5 freq : 275000 abb : 14
+[    0.234023] [c6] VDD_MIF LV6 freq : 206000 volt : 737500
+[    0.234037] [c6] VDD_MIF LV6 freq : 206000 abb : 14
+[    0.234051] [c6] VDD_MIF LV7 freq : 165000 volt : 737500
+[    0.234065] [c6] VDD_MIF LV7 freq : 165000 abb : 14
+[    0.234079] [c6] VDD_MIF LV8 freq : 138000 volt : 737500
+[    0.234093] [c6] VDD_MIF LV8 freq : 138000 abb : 14
+[    0.234107] [c6] VDD_MIF LV9 freq : 69000 volt : 725000
+[    0.234121] [c6] VDD_MIF LV9 freq : 69000 abb : 0
+[    0.234134] [c6] VDD_G3D ASV group is 4
+[    0.234150] [c6] VDD_G3D LV0 freq : 543000 volt : 950000
+[    0.234165] [c6] VDD_G3D LV0 freq : 543000 abb : 255
+[    0.234179] [c6] VDD_G3D LV1 freq : 480000 volt : 900000
+[    0.234193] [c6] VDD_G3D LV1 freq : 480000 abb : 255
+[    0.234207] [c6] VDD_G3D LV2 freq : 420000 volt : 862500
+[    0.234221] [c6] VDD_G3D LV2 freq : 420000 abb : 255
+[    0.234235] [c6] VDD_G3D LV3 freq : 350000 volt : 837500
+[    0.234249] [c6] VDD_G3D LV3 freq : 350000 abb : 255
+[    0.234263] [c6] VDD_G3D LV4 freq : 260000 volt : 812500
+[    0.234276] [c6] VDD_G3D LV4 freq : 260000 abb : 255
+[    0.234290] [c6] VDD_G3D LV5 freq : 177000 volt : 750000
+[    0.234304] [c6] VDD_G3D LV5 freq : 177000 abb : 255
+[    0.234318] [c6] VDD_G3D LV6 freq : 100000 volt : 750000
+[    0.234332] [c6] VDD_G3D LV6 freq : 100000 abb : 255
+[    0.234345] [c6] VDD_ISP ASV group is 4
+[    0.234361] [c6] VDD_ISP LV0 freq : 666000 volt : 962500
+[    0.234375] [c6] VDD_ISP LV1 freq : 555000 volt : 962500
+[    0.234389] [c6] VDD_ISP LV2 freq : 444000 volt : 962500
+[    0.234403] [c6] VDD_ISP LV3 freq : 333000 volt : 912500
+[    0.234417] [c6] VDD_ISP LV4 freq : 222000 volt : 912500
+[    0.234431] [c6] VDD_ISP LV5 freq : 111000 volt : 912500
+[    0.234445] [c6] VDD_ISP LV6 freq : 100000 volt : 912500
+[    0.248991] [c7] bio: create slab <bio-0> at 0
+[    0.250498] [c5] of_get_named_gpio_flags exited with status 98
+[    0.250709] [c5] tsp_avdd_en: 3300 mV 
+[redacted sensitive line]
+[    0.253153] [c5] SCSI subsystem initialized
+[    0.253656] [c5] s3c64xx-spi 12d20000.spi: spi bus clock parent not specified, using clock at index 0 as parent
+[    0.253678] [c5] s3c64xx-spi 12d20000.spi: number of chip select lines not specified, assuming 1 chip select line
+[    0.253826] [c5] s3c64xx-spi 12d20000.spi: Not use idle state.
+[    0.254163] [c6] of_get_named_gpio_flags exited with status 186
+[    0.254484] [c6] s3c64xx-spi 12d30000.spi: spi bus clock parent not specified, using clock at index 0 as parent
+[    0.254507] [c6] s3c64xx-spi 12d30000.spi: number of chip select lines not specified, assuming 1 chip select line
+[    0.254636] [c6] s3c64xx-spi 12d30000.spi: Not use idle state.
+[    0.255042] [c7] of_get_named_gpio_flags exited with status 190
+[    0.255341] [c7] s3c64xx-spi 12d40000.spi: spi bus clock parent not specified, using clock at index 0 as parent
+[    0.255364] [c7] s3c64xx-spi 12d40000.spi: number of chip select lines not specified, assuming 1 chip select line
+[    0.255498] [c7] s3c64xx-spi 12d40000.spi: Not use idle state.
+[    0.255965] [c5] of_get_named_gpio_flags exited with status 200
+[    0.256519] [c5] PM DOMAIN: pd-isp, Device : 131a0000.spi Registered
+[    0.256561] [c5] s3c64xx-spi 131a0000.spi: spi bus clock parent not specified, using clock at index 0 as parent
+[    0.256688] [c5] s3c64xx-spi 131a0000.spi: Not use idle state.
+[    0.257005] [c5] of_get_named_gpio_flags exited with status 131
+[    0.257174] [c5] of_get_named_gpio_flags exited with status 142
+[    0.257439] [c5] samsung-pinctrl 14000000.pinctrl: pin gpf1-7 already requested by 14000000.pinctrl; cannot claim for 131b0000.spi
+[    0.257461] [c5] samsung-pinctrl 14000000.pinctrl: pin-148 (131b0000.spi) status -22
+[    0.257482] [c5] samsung-pinctrl 14000000.pinctrl: could not request pin 148 on device samsung-pinctrl
+[    0.257500] [c5] s3c64xx-spi 131b0000.spi: Error applying setting, reverse things back
+[    0.261324] [c0] pd-isp: Power-off latency exceeded, new value 5000000 ns
+[    0.261391] [c5] PM DOMAIN: pd-isp, Device : 131b0000.spi Registered
+[    0.261435] [c5] s3c64xx-spi 131b0000.spi: spi bus clock parent not specified, using clock at index 0 as parent
+[    0.261455] [c5] s3c64xx-spi 131b0000.spi: number of chip select lines not specified, assuming 1 chip select line
+[    0.266317] [c0] pd-cam: Power-off latency exceeded, new value 5000000 ns
+[    0.272808] [c5] pd-cam: Power-on latency exceeded, new value 5000000 ns
+[    0.277811] [c5] pd-isp: Power-on latency exceeded, new value 5000000 ns
+[    0.277959] [c5] s3c64xx-spi 131b0000.spi: Not use idle state.
+[    0.278831] [c5] usbcore: registered new interface driver usbfs
+[    0.278908] [c5] usbcore: registered new interface driver hub
+[    0.279093] [c4] usbcore: registered new device driver usb
+[    0.283148] [c4] vdd_mif: 700 <--> 1300 mV at 1000 mV 
+[    0.284069] [c4] vdd_eagle: 800 <--> 1500 mV at 1000 mV 
+[    0.284985] [c4] vdd_int: 800 <--> 1400 mV at 1025 mV 
+[    0.285886] [c4] vdd_g3d: 700 <--> 1400 mV at 1000 mV 
+[    0.286789] [c4] vdd_kfc: 800 <--> 1500 mV at 1025 mV 
+[    0.287704] [c4] vdd_cam_isp_1.0v: 750 <--> 1500 mV at 1000 mV 
+[    0.288639] [c4] vdd_ldo6: 1000 mV 
+[    0.289561] [c4] vdd_ldo7: 1800 mV 
+[    0.290250] [c4] vqmmc: 1800 <--> 3300 mV at 2800 mV 
+[    0.291145] [c4] vcc_3.0v_motor: 3000 mV 
+[    0.291920] [c4] VT_CAM_2.8V: 2800 mV 
+[    0.293175] [c4] IR_3.3V_AP: 3300 mV 
+[    0.294108] [c4] vdd_ldo18: 1800 mV 
+[    0.294888] [c4] vmmc: 1800 <--> 2850 mV at 2800 mV 
+[    0.295581] [c4] VT_CAM_1.8V: 1800 mV 
+[    0.296279] [c4] CAM_IO_1.8V_AP: 1800 mV 
+[    0.296978] [c4] CAM_SEN_CORE_1.2V_AP: 1200 mV 
+[    0.297666] [c4] vdd_mifs: 800 <--> 1100 mV at 1000 mV 
+[    0.298476] [c4] VCC_3.3V_MHL: 3300 mV 
+[    0.299401] [c4] vdd_ldo25: 1800 mV 
+[    0.300187] [c4] CAM_AF_2.8V_AP: 2800 mV 
+[    0.300877] [c4] vdd_g3ds: 800 <--> 1100 mV at 1000 mV 
+[    0.301821] [c4] vdd_ldo28: 3000 mV 
+[    0.302508] [c4] vtouch_1.8v: 1800 mV 
+[    0.303237] [c4] VDDA_1.8V_COMP: 1800 mV 
+[    0.303933] [c4] tsp_io: 1800 mV 
+[    0.304621] [c4] VCC_1.8V_MHL: 1800 mV 
+[    0.305405] [c4] HRM_3.3V_AP: 3300 mV 
+[    0.306106] [c4] VSIL_1.2A: 1200 mV 
+[    0.306894] [c4] vtouch_3.3v: 3300 mV 
+[    0.307589] [c4] HRM_1.8V_AP: 1800 mV 
+[redacted sensitive line]
+[    0.308697] [c4] of_get_named_gpio_flags exited with status 20
+[    0.308717] [c4] of_max77804_dt: irq-gpio: 20 irqf-trigger:2)
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.324120] [c4] [/home/pmos/build/src/android_kernel_samsung_k3gxx-2f78dde45cd08d9f1f7f047c81ffb237f7ab9b56/drivers/regulator/max77804.c:590] pdata->num_regulators:2
+[    0.324139] [c4] [/home/pmos/build/src/android_kernel_samsung_k3gxx-2f78dde45cd08d9f1f7f047c81ffb237f7ab9b56/drivers/regulator/max77804.c:597] for in pdata->num_regulators:2
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.325015] [c4] max77804_regulator_update_reg: reg(0xc6): [0x45]+[0x40]:[mask 0x40]->[0x45]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.325263] [c4] safeout1_range: 3300 <--> 4900 mV at 4900 mV 
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.325591] [c4] [/home/pmos/build/src/android_kernel_samsung_k3gxx-2f78dde45cd08d9f1f7f047c81ffb237f7ab9b56/drivers/regulator/max77804.c:597] for in pdata->num_regulators:2
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.326077] [c4] safeout2_range: 3300 <--> 4900 mV at 4900 mV 
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.328286] [c4] of_get_named_gpio_flags exited with status 73
+[    0.328311] [c4] of_get_named_gpio_flags exited with status 74
+[    0.328637] [c4] i2c-gpio i2c.9: using pins 73 (SDA) and 74 (SCL)
+[    0.328717] [c4] of_get_named_gpio_flags exited with status 99
+[    0.328741] [c4] of_get_named_gpio_flags exited with status 100
+[    0.329020] [c4] i2c-gpio i2c.10: using pins 99 (SDA) and 100 (SCL)
+[    0.329127] [c4] of_get_named_gpio_flags exited with status 198
+[    0.329164] [c4] of_get_named_gpio_flags exited with status 221
+[    0.329448] [c4] i2c-gpio i2c.11: using pins 198 (SDA) and 221 (SCL)
+[    0.329542] [c4] of_get_named_gpio_flags exited with status 154
+[    0.329571] [c4] of_get_named_gpio_flags exited with status 153
+[    0.329842] [c4] i2c-gpio i2c.12: using pins 154 (SDA) and 153 (SCL)
+[    0.329980] [c4] of_get_named_gpio_flags exited with status 196
+[    0.330016] [c4] of_get_named_gpio_flags exited with status 197
+[    0.330299] [c4] i2c-gpio i2c.28: using pins 196 (SDA) and 197 (SCL)
+[    0.331153] [c4] s3c-i2c 12c60000.i2c: i2c-8: S3C I2C adapter
+[    0.331653] [c4] s3c-i2c 12c70000.i2c: i2c-9: S3C I2C adapter
+[    0.332354] [c4] s3c-i2c 12c90000.i2c: i2c-10: S3C I2C adapter
+[    0.333161] [c4] s3c-i2c 13130000.i2c: i2c-11: S3C I2C adapter
+[    0.333384] [c4] media: Linux media interface: v0.10
+[    0.333463] [c4] Linux video capture interface: v2.00
+[    0.333898] [c4] IOVMM: Created debugfs entry at debugfs/iovmm
+[    0.333931] [c4] IOMMU: Created debugfs entry at debugfs/iommu
+[    0.334239] [c5] fingerprint_class_init
+[    0.334295] [c5] [SENSORS CORE] sensors_class_init
+[    0.334477] [c5] [SENSORS CORE] sensors_class_init succcess
+[    0.334579] [c5] Advanced Linux Sound Architecture Driver Initialized.
+[    0.335170] [c5] PM DOMAIN: pd-maudio, Device : 3810000.lpass Registered
+[    0.335201] [c5] Samsung Low Power Audio Subsystem driver, (c)2013 Samsung Electronics
+[    0.336792] [c5] Bluetooth: Core ver 2.16
+[    0.336872] [c5] NET: Registered protocol family 31
+[    0.336891] [c5] Bluetooth: HCI device and connection manager initialized
+[    0.336919] [c5] Bluetooth: HCI socket layer initialized
+[    0.336943] [c5] Bluetooth: L2CAP socket layer initialized
+[    0.337000] [c5] Bluetooth: SCO socket layer initialized
+[    0.337437] [c5] regulatory is not upadted via queue_regulatory_request.
+[    0.337858] [c5] nfc: nfc_init: NFC Core ver 0.1
+[    0.337970] [c5] NET: Registered protocol family 39
+[    0.339021] [c5] Switching to clocksource mct-frc
+[    0.387040] [c6] NET: Registered protocol family 2
+[    0.387775] [c6] TCP established hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.387953] [c6] TCP bind hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.388116] [c6] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.388182] [c6] TCP: reno registered
+[    0.388204] [c6] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    0.388251] [c6] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    0.388590] [c6] NET: Registered protocol family 1
+[    0.388904] [c6] Trying to unpack rootfs image as initramfs...
+[    0.693054] [c4] Freeing initrd memory: 5784K (c2000000 - c25a6000)
+[    0.693509] [c4] FIPS: self-tests for aes-asm (aes) passed
+[    0.694947] [c5] audit: initializing netlink socket (enabled)
+[    0.695810] [c5] bounce pool size: 64 pages
+[    0.703235] [c6] Registering sdcardfs 0.1
+[    0.705229] [c6] ROMFS MTD (C) 2007 Red Hat, Inc.
+[    0.705379] [c6] fuse init (API version 7.22)
+[    0.705891] [c6] exFAT: Core Version 1.2.19
+[    0.705910] [c6] exFAT: FS Version 1.2.19
+[    0.706074] [c6] msgmni has been set to 1421
+[    0.706154] [c6] SELinux:  Registering netfilter hooks
+[    0.706923] [c4] FIPS: self-tests for non-FIPS cipher_null-generic (cipher_null) passed
+[    0.707088] [c4] FIPS: self-tests for non-FIPS ecb-cipher_null (ecb(cipher_null)) passed
+[    0.707247] [c4] FIPS: self-tests for non-FIPS compress_null-generic (compress_null) passed
+[    0.707407] [c4] FIPS: self-tests for non-FIPS digest_null-generic (digest_null) passed
+[    0.707566] [c4] FIPS: self-tests for non-FIPS md5-generic (md5) passed
+[    0.707802] [c4] FIPS: self-tests for sha1-generic (sha1) passed
+[    0.708030] [c4] FIPS: self-tests for sha256-generic (sha256) passed
+[    0.708251] [c4] FIPS: self-tests for sha224-generic (sha224) passed
+[    0.708560] [c4] FIPS: self-tests for sha512-generic (sha512) passed
+[    0.708855] [c4] FIPS: self-tests for sha384-generic (sha384) passed
+[    0.709099] [c4] FIPS: self-tests for des-generic (des) passed
+[    0.709364] [c4] FIPS: self-tests for des3_ede-generic (des3_ede) passed
+[    0.709514] [c4] FIPS: self-tests for non-FIPS twofish-generic (twofish) passed
+[    0.709728] [c4] FIPS: self-tests for aes-generic (aes) passed
+[    0.709877] [c4] FIPS: self-tests for non-FIPS arc4-generic (arc4) passed
+[    0.710026] [c4] FIPS: self-tests for non-FIPS ecb(arc4)-generic (ecb(arc4)) passed
+[    0.710727] [c4] FIPS: self-tests for deflate-generic (deflate) passed
+[    0.710979] [c4] FIPS: self-tests for crc32c-generic (crc32c) passed
+[    0.711193] [c4] FIPS: self-tests for lzo-generic (lzo) passed
+[    0.711344] [c4] FIPS: No test for stdrng (krng)
+[    0.712024] [c4] FIPS: self-tests for ecb(aes-asm) (ecb(aes)) passed
+[    0.713492] [c4] FIPS: self-tests for drbg_pr_ctr_aes128 (stdrng) passed
+[    0.713653] [c4] FIPS: self-tests for drbg_pr_ctr_aes192 (stdrng) passed
+[    0.713810] [c4] FIPS: self-tests for drbg_pr_ctr_aes256 (stdrng) passed
+[    0.713967] [c4] FIPS: self-tests for drbg_pr_sha1 (stdrng) passed
+[    0.714162] [c4] FIPS: self-tests for drbg_pr_sha384 (stdrng) passed
+[    0.714339] [c4] FIPS: self-tests for drbg_pr_sha512 (stdrng) passed
+[    0.715363] [c4] FIPS: self-tests for drbg_pr_sha256 (stdrng) passed
+[    0.715534] [c4] FIPS: self-tests for drbg_pr_hmac_sha1 (stdrng) passed
+[    0.715697] [c4] FIPS: self-tests for drbg_pr_hmac_sha384 (stdrng) passed
+[    0.715860] [c4] FIPS: self-tests for drbg_pr_hmac_sha512 (stdrng) passed
+[    0.716607] [c4] FIPS: self-tests for hmac(sha256-generic) (hmac(sha256)) passed
+[    0.718319] [c6] FIPS: self-tests for drbg_pr_hmac_sha256 (stdrng) passed
+[    0.719529] [c5] FIPS: self-tests for drbg_nopr_ctr_aes128 (stdrng) passed
+[    0.720004] [c5] FIPS: self-tests for drbg_nopr_ctr_aes192 (stdrng) passed
+[    0.720521] [c5] FIPS: self-tests for drbg_nopr_ctr_aes256 (stdrng) passed
+[    0.720707] [c5] FIPS: self-tests for drbg_nopr_sha1 (stdrng) passed
+[    0.720889] [c5] FIPS: self-tests for drbg_nopr_sha384 (stdrng) passed
+[    0.721077] [c5] FIPS: self-tests for drbg_nopr_sha512 (stdrng) passed
+[    0.721891] [c5] FIPS: self-tests for drbg_nopr_sha256 (stdrng) passed
+[    0.722070] [c5] FIPS: self-tests for drbg_nopr_hmac_sha1 (stdrng) passed
+[    0.722247] [c5] FIPS: self-tests for drbg_nopr_hmac_sha384 (stdrng) passed
+[    0.722422] [c5] FIPS: self-tests for drbg_nopr_hmac_sha512 (stdrng) passed
+[    0.724178] [c5] FIPS: self-tests for drbg_nopr_hmac_sha256 (stdrng) passed
+[    0.724420] [c5] FIPS: self-tests for ghash-generic (ghash) passed
+[    0.724496] [c7] io scheduler noop registered
+[    0.724517] [c7] io scheduler deadline registered
+[    0.724705] [c7] io scheduler cfq registered (default)
+[    0.725346] [c7] [GPIO_DVS] gpio nr:232
+[    0.726265] [c7] [MHL] sii8240_init was called
+[    0.726468] of_get_named_gpio_flags exited with status 170
+[redacted sensitive line]
+[    0.726521] [c7] of_get_named_gpio_flags exited with status 216
+[redacted sensitive line]
+[    0.726563] [c7] of_get_named_gpio_flags exited with status 215
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.727612] [c7] input: sii8240_rcp as /devices/virtual/input/input0
+[    0.727772] [c7] ***MHL probe is successful
+[    0.729353] [c7] dma-pl330 10800000.mdma: Loaded driver for PL330 DMAC-2364208
+[    0.729376] [c7] dma-pl330 10800000.mdma: 	DBUFF-64x8bytes Num_Chans-8 Num_Peri-1 Num_Events-32
+[    0.733226] [c7] dma-pl330 121a0000.pdma: Loaded driver for PL330 DMAC-2364208
+[    0.733250] [c7] dma-pl330 121a0000.pdma: 	DBUFF-32x4bytes Num_Chans-8 Num_Peri-32 Num_Events-32
+[    0.737057] [c7] dma-pl330 121b0000.pdma: Loaded driver for PL330 DMAC-2364208
+[    0.737080] [c7] dma-pl330 121b0000.pdma: 	DBUFF-32x4bytes Num_Chans-8 Num_Peri-32 Num_Events-32
+[    0.739173] [c7] dma-pl330 3880000.adma: Loaded driver for PL330 DMAC-2364208
+[    0.739196] [c7] dma-pl330 3880000.adma: 	DBUFF-4x8bytes Num_Chans-6 Num_Peri-16 Num_Events-6
+[    0.827490] [c4] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.830811] [c4] samsung-pinctrl 14010000.pinctrl: pin gpa1-3 already requested by 12c90000.i2c; cannot claim for 12c20000.serial
+[    0.830834] [c4] samsung-pinctrl 14010000.pinctrl: pin-182 (12c20000.serial) status -22
+[    0.830853] [c4] samsung-pinctrl 14010000.pinctrl: could not request pin 182 on device samsung-pinctrl
+[    0.830871] [c4] samsung-uart 12c20000.serial: Error applying setting, reverse things back
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.834071] [c4] ExyRNG: hwrng registered
+[    0.834182] [c4] ExyRNG driver, (c) 2014 Samsung Electronics
+[    0.834597] [c4] PM DOMAIN: pd-g3d, Device : 11800000.mali Registered
+[    0.834665] [c4] mali 11800000.mali: Continuing without Mali clock control
+[    0.836139] [c4] G3D 543000Khz ASV is 950000uV
+[    0.836158] [c4] G3D 480000Khz ASV is 900000uV
+[    0.836173] [c4] G3D 420000Khz ASV is 862500uV
+[    0.836188] [c4] G3D 350000Khz ASV is 837500uV
+[    0.836202] [c4] G3D 266000Khz ASV is 975000uV
+[    0.836216] [c4] G3D 177000Khz ASV is 750000uV
+[    0.836230] [c4] G3D 100000Khz ASV is 750000uV
+[    0.837691] [c4] mali 11800000.mali: GPU identified as 0x0620 r0p1 status 0
+[    0.838422] exynos_secure_mode_init: supporting Secure Rendering : region - 0xb3300000, sizes - 0x100000
+[    0.839280] [c4] mali 11800000.mali: Probed as mali0
+[    0.839622] [c4] muic_notifier_init
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.840303] [c4] muic_init_gpio_cb (91)
+[    0.840318] [c4] muic_init_gpio_cb: usb_path(PDA), uart_path(AP), rustproof(F)
+[redacted sensitive line]
+[    0.840466] [c4] muic_handle_dock_notification: ignore(51)
+[    0.840481] [c4] muic_init_switch_dev_cb: done
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    0.844745] [c4] muic_notifier_detach_attached_dev: (51)
+[redacted sensitive line]
+[    0.844775] [c4] muic_handle_dock_notification: ignore(51)
+[    0.844789] [c4] muic_notifier_notify: notify done(0x0)
+[redacted sensitive line]
+[    0.854196] [c4] brd: module loaded
+[    0.859002] [c4] loop: module loaded
+[    0.860525] [c4]  Entering dualwave_init 421
+[    0.882133] [c4] of_get_named_gpio_flags exited with status 165
+[    0.882438] [c4] of_get_named_gpio_flags exited with status 150
+[    0.882596] [c4] LDO1: 1175 <--> 1200 mV at 1200 mV 
+[    0.882687] [c4] LDO1: supplied by vdd_ldo18
+[    0.924768] [c4] arizona spi2.0: WM5110 revision E
+[    0.949807] [c4] wake enabled for irq 512
+[    0.950463] [c4] MICVDD: 900 <--> 3300 mV at 2500 mV 
+[    0.950558] [c4] MICVDD: supplied by vdd_ldo18
+[    0.951168] [c4] gpiochip_find_base: found new base at 288
+[    0.951311] [c4] gpiochip_add: registered GPIOs 288 to 292 on device: arizona
+[    0.951828] [c4] pn547_dev_init, Loading pn547 driver
+[    0.952076] [c4] pn547_probe started...
+[    0.952104] [c4] of_get_named_gpio_flags exited with status 19
+[    0.952133] [c4] of_get_named_gpio_flags exited with status 159
+[    0.952157] [c4] of_get_named_gpio_flags exited with status 158
+[    0.952180] [c4] of_get_named_gpio_flags exited with status 8
+[    0.952196] [c4] pn547_parse_dt: irq : 19, ven : 159, firm : 158, clk_req : 8
+[    0.952440] [c4] pn547 10-0029: pn547_probe : requesting IRQ 555
+[    0.952623] [c4] pn547 10-0029: pn547_probe : requesting clk_req irq 563
+[redacted sensitive line]
+[    0.968109] [c4] pn547_probe finished...
+[    0.968487] [c4] tun: Universal TUN/TAP device driver, 1.6
+[    0.968506] [c4] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    0.968765] [c4] PPP generic driver version 2.4.2
+[    0.969032] [c4] PPP BSD Compression module registered
+[    0.969050] [c4] PPP Deflate Compression module registered
+[    0.969088] [c4] PPP MPPE Compression module registered
+[    0.969107] [c4] NET: Registered protocol family 24
+[    0.969184] [c4] dhd_wlan_init: start
+[    0.969598] [c4] of_get_named_gpio_flags exited with status 7
+[    0.969828] [c4] of_get_named_gpio_flags exited with status 24
+[    0.970159] [c4] dhd_init_wlan_mem: WIFI MEM Allocated
+[    0.970656] [c4] samsung-usb2phy 12130000.usb2phy: Can't get usb-phy sysreg cfg register
+[    0.970700] [c4] samsung-usb2phy 12130000.usb2phy: Failed to get hsicphy_en_mask
+[    0.972153] [c4] samsung-usb3phy 12100000.usbphy: Can't get usb-phy sysreg cfg register
+[    0.972341] [c4] samsung-usb3phy 12500000.usbphy: Can't get usb-phy sysreg cfg register
+[    0.973853] [c4] exynos-dwc3 usb.1: failed to configure pins
+[    0.974461] [c4] samsung-usb3phy 12100000.usbphy: end of samsung_usb3phy_init
+[redacted sensitive line]
+[    1.174750] [c4] dwc3 12000000.dwc3: dwc3_otg address space is not supported
+[    1.174786] [c4] dwc3 12000000.dwc3: vbus regulator is not available
+[    1.174826] [c4] samsung-usb3phy 12100000.usbphy: end of samsung_usb3phy_shutdown
+[    1.175299] [c4] dwc3 12000000.dwc3: Binding gadget dwc3-gadget
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.175911] [c4] exynos-dwc3 usb.2: failed to configure pins
+[    1.176451] [c4] samsung-usb3phy 12500000.usbphy: end of samsung_usb3phy_init
+[redacted sensitive line]
+[    1.376745] [c4] dwc3 12400000.dwc3: dwc3_otg address space is not supported
+[    1.376779] [c4] dwc3 12400000.dwc3: vbus regulator is not available
+[    1.376818] [c4] samsung-usb3phy 12500000.usbphy: end of samsung_usb3phy_shutdown
+[    1.377291] [c4] dwc3 12400000.dwc3: Binding gadget dwc3-gadget
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.377806] [c4] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.377826] [c4] ehci_hcd: block sizes: qh 64 qtd 96 itd 160 sitd 96
+[    1.377865] [c4] ehci-s5p: EHCI s5p driver
+[    1.378238] [c4] samsung-usb2phy 12130000.usb2phy: Can't configure specified phy mode
+[redacted sensitive line]
+[    1.378399] [c4] samsung-usb2phy 12130000.usb2phy: end of samsung_usb2phy_init
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.378511] [c4] s5p-ehci 12110000.usb: EHCI Host Controller
+[    1.378548] [c4] s5p-ehci 12110000.usb: new USB bus registered, assigned bus number 1
+[redacted sensitive line]
+[    1.378602] [c4] s5p-ehci 12110000.usb: reset hcc_params 2a016 thresh 1 uframes 256/512/1024 park LPM
+[    1.378676] [c4] s5p-ehci 12110000.usb: park 0
+[redacted sensitive line]
+[    1.378748] [c4] s5p-ehci 12110000.usb: irq 103, io mem 0x12110000
+[redacted sensitive line]
+[    1.384178] [c4] s5p-ehci 12110000.usb: USB 2.0 started, EHCI 1.00
+[    1.384330] [c4] usb usb1: default language 0x0409
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.384435] [c4] usb usb1: Product: EHCI Host Controller
+[    1.384451] [c4] usb usb1: Manufacturer: Linux 3.10.9-LineageOS ehci_hcd
+[    1.384467] [c4] usb usb1: SerialNumber: 12110000.usb
+[redacted sensitive line]
+[    1.385012] [c4] usb usb1: configuration #1 chosen from 1 choice
+[    1.385061] [c4] usb usb1: adding 1-0:1.0 (config #1, interface 0)
+[    1.385243] [c4] hub 1-0:1.0: usb_probe_interface
+[    1.385264] [c4] hub 1-0:1.0: usb_probe_interface - got id
+[    1.385289] [c4] hub 1-0:1.0: USB hub found
+[    1.385323] [c4] hub 1-0:1.0: 3 ports detected
+[    1.385341] [c4] hub 1-0:1.0: standalone hub
+[    1.385359] [c4] hub 1-0:1.0: individual port power switching
+[    1.385376] [c4] hub 1-0:1.0: individual port over-current protection
+[    1.385393] [c4] hub 1-0:1.0: power on to power good time: 20ms
+[    1.385411] [c4] usb usb1: (0)send start USB_REQ_GET_STATUS
+[    1.385437] [c4] usb usb1: (0)send start USB_REQ_GET_STATUS
+[    1.385463] [c4] hub 1-0:1.0: local power source is good
+[    1.385670] [c4] hub 1-0:1.0: enabling power on all ports
+[    1.386558] [c4] usbcore: registered new interface driver usblp
+[    1.386650] [c4] usbcore: registered new interface driver usb-storage
+[    1.386813] [c4] usbcore: registered new interface driver usbserial
+[    1.386894] [c4] usbcore: registered new interface driver pl2303
+[    1.386966] [c4] usbserial: USB Serial support registered for pl2303
+[    1.387534] [c6] usb_notify: ovc_init
+[    1.388007] [c6] mousedev: PS/2 mouse device common for all mice
+[    1.389266] [c6] of_get_named_gpio_flags exited with status 74
+[    1.389291] [c6] of_get_named_gpio_flags exited with status 73
+[    1.389311] [c6] of_get_named_gpio_flags exited with status 1
+[    1.389338] [c6] touchkey:failed to read fw_path -22
+[    1.389357] [c6] sec_touchkey_driver 3-0020: touchkey:fw path cypress/cypress_20075_k_m06.fw 28
+[    1.389594] [c6] input: sec_touchkey as /devices/i2c.9/i2c-3/3-0020/input/input1
+[    1.389629] [c6] sec_touchkey_driver 3-0020: touchkey_input_open: Touchkey is not probed
+[    1.390066] [c6] sec_touchkey_driver 3-0020: touchkey_power_on: on
+[    1.390602] sec_touchkey_driver 3-0020: touchkey_led_power_on: on
+[    1.444325] sec_touchkey_driver 3-0020: LCD type Print : 0x602813
+[    1.479930] [c6] sec_touchkey_driver 3-0020: cypress_touchkey_interrupt_set_dual: interrupt set: 0x0, failed.
+[    1.484186] [c4] usb usb1: (1)send start USB_REQ_GET_STATUS
+[    1.484222] [c4] usb usb1: (2)send start USB_REQ_GET_STATUS
+[    1.484251] [c4] usb usb1: (3)send start USB_REQ_GET_STATUS
+[    1.484321] [c5] hub 1-0:1.0: state 7 ports 3 chg 0000 evt 0000
+[    1.484400] [c0] hub 1-0:1.0: hub_suspend
+[    1.484444] [c0] usb usb1: bus auto-suspend, wakeup 1
+[    1.484466] [c0] s5p-ehci 12110000.usb: suspend root hub
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.514927] [c6] sec_touchkey_driver 3-0020: cypress_touchkey_interrupt_set_dual: interrupt set: 0x1
+[    1.515154] [c5] sec_touchkey_driver 3-0020: touchkey_interrupt: Touchkey is not probed
+[    1.515210] [c6] sec_touchkey_driver 3-0020: touchkey:fw path loaded cypress/cypress_20075_k_m06.fw
+[    1.515231] [c6] sec_touchkey_driver 3-0020: fw ver 0x1d, new fw ver 0x1d
+[    1.515249] [c6] sec_touchkey_driver 3-0020: module ver 0x6, new module ver 0x6
+[    1.515266] [c6] sec_touchkey_driver 3-0020: new checksum 0xa641
+[    1.515336] [c7] touchkey:ISSP_main
+[    1.515372] [c7] sec_touchkey_driver 3-0020: touchkey_led_power_on: off
+[    1.515939] sec_touchkey_driver 3-0020: touchkey_power_on: off
+[    1.516134] of_get_named_gpio_flags exited with status 22
+[    1.516231] [c6] synaptics_rmi4_i2c 8-0020: Failed to get x_offset property
+[    1.516266] [c6] synaptics_rmi4_i2c 8-0020: Failed to get panel_revision property
+[    1.516290] [c6] synaptics_rmi4_i2c 8-0020: Failed to get device_num property
+[    1.516320] [c6] synaptics_rmi4_i2c 8-0020: irq :22, irq_type: 0x2008, sensor_max[x,y]: [1079,1919], 								flip[x,y,x_y,x_offset]:[0,0,0 0], num_of[rx,tx]: [28,16], max_width: 28, 								project/model_name: K/G900H, device_num: 0
+[    1.516678] [c6] synaptics_rmi4_i2c 8-0020: synaptics_power_ctrl: on
+[    1.517531] [c7] sec_touchkey_driver 3-0020: touchkey_power_on: on
+[    1.670972] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_check_status: Device status[0x81] status.code[1]
+[    1.673139] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f12_set_feature: [0x00], Set All disabled
+[redacted sensitive line]
+[    1.673606] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f12_obj_report_enable: [0x07], Glove mode disabled
+[    1.675106] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f12_init: 12 max_x,y(1079,1919) num_Rx,Tx(28,16), num_finger(10),  node:448, threshold:30, gloved sensitivity:e3
+[    1.679184] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f51_set_init: General control[0x64],2[0x20] Hsync is GD
+[    1.679445] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f51_set_proximity_enables: [0x82], Hover is disabled
+[redacted sensitive line]
+[    1.684071] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_query_device: Product ID [s5100 A3 F. 3]
+[    1.684098] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_query_device: Result, date, revision, version, pr_num, b/l [0, 05/20, 0xA3, 0x57, PR1660190, V6[6.4]]
+[    1.684456] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_query_device: Interrupt enable[0] = 0x24
+[    1.685103] [c6] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_set_input_device: device_name : sec_touchscreen
+[    1.685369] [c6] input: sec_touchscreen as /devices/12c60000.i2c/i2c-8/8-0020/input/input2
+[redacted sensitive line]
+[    1.690475] [c4] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_init_factory_mode: fac_dir_name : tsp
+[redacted sensitive line]
+[    1.694776] [c4] synaptics_rmi4_i2c 8-0020: synaptics_skip_firmware_update: FW size. revision, version [105536, 0xA3/0xA3(BIN/IC), 0x57/0x57(BIN/IC)]
+[    1.694797] [c4] synaptics_rmi4_i2c 8-0020: synaptics_skip_firmware_update: Do not need to update
+[    1.694847] [c4] input_booster_send_event: booster is not loaded
+[    1.695049] [c4] synaptics_rmi4_i2c 8-0020: synaptics_power_ctrl: off
+[    1.698887] [c7] touchkey:chk, file 0xa641, ic 0xa641
+[    1.698911] [c7] touchkey:chk is same. pass fw update.
+[    1.698952] [c7] sec_touchkey_driver 3-0020: touchkey_power_on: off
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.705602] [c5] s2m-rtc s2m-rtc: rtc core: registered s2m-rtc as rtc0
+[    1.706078] [c5] i2c /dev entries driver
+[    1.708858] [c5] mdev_output.6: Media0[0xedda5800] was registered successfully
+[    1.709647] [c5] PM DOMAIN: spd-gscl0, Device : 13e00000.gsc Registered
+[    1.709677] [c5] exynos-gsc 13e00000.gsc: exynos-iommu gpd_dev_ops inserted!
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.710919] [c5] [INFO]gsc_probe:1647: gsc-0 registered successfully
+[    1.711197] [c5] PM DOMAIN: spd-gscl1, Device : 13e10000.gsc Registered
+[    1.711224] [c5] exynos-gsc 13e10000.gsc: exynos-iommu gpd_dev_ops inserted!
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.712431] [c5] [INFO]gsc_probe:1647: gsc-1 registered successfully
+[    1.713163] [c5] PM DOMAIN: pd-mfc, Device : 11000000.mfc Registered
+[    1.713190] [c5] s5p-mfc 11000000.mfc: exynos-iommu gpd_dev_ops inserted!
+[    1.713220] [c5] s5p-mfc 11000000.mfc: s5p_mfc_probe()
+[    1.713243] [c5] s5p-mfc 11000000.mfc: of alias get id : mfc-0 
+[    1.713707] [c5] s5p-mfc 11000000.mfc: decoder registered as /dev/video6
+[    1.713924] [c5] s5p-mfc 11000000.mfc: encoder registered as /dev/video7
+[    1.714252] [c5] s5p-mfc 11000000.mfc: secure decoder registered as /dev/video8
+[    1.714475] [c5] s5p-mfc 11000000.mfc: secure encoder registered as /dev/video9
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.715387] [c5] [d:0] s5p_mfc_probe:3078: QoS table[0] int : 83000 (mfc : 96000), mif : 165000
+[    1.715408] [c5] [d:0] s5p_mfc_probe:3078: QoS table[1] int : 111000 (mfc : 111000), mif : 206000
+[    1.715425] [c5] [d:0] s5p_mfc_probe:3078: QoS table[2] int : 222000 (mfc : 167000), mif : 275000
+[    1.715442] [c5] [d:0] s5p_mfc_probe:3078: QoS table[3] int : 333000 (mfc : 222000), mif : 413000
+[    1.715458] [c5] [d:0] s5p_mfc_probe:3078: QoS table[4] int : 420000 (mfc : 400000), mif : 413000
+[    1.715474] [c5] [d:0] s5p_mfc_probe:3084: >> Extra[4] int : 420000 (mfc : 400000), mif : 825000
+[    1.715488] [c5] s5p_mfc_probe--
+[redacted sensitive line]
+[    1.716553] [c5] [@][WRN] fimc_is_dev is not yet probed
+[    1.716615] [c5] platform exynos-fimc-is-companion: Driver exynos-fimc-is-companion requests probe deferral
+[    1.717444] [c5] PM DOMAIN: pd-isp, Device : 13180000.fimc_is Registered
+[    1.717472] [c5] exynos-fimc-is 13180000.fimc_is: exynos-iommu gpd_dev_ops inserted!
+[    1.717499] [c5] [@]fimc_is_probe:start
+[    1.717525] [c5] [@][ERR]fimc_is_parse_dt:454: use_sensor_dynamic_voltage_mode read is fail(-22)
+[    1.717542] [c5] [@][ERR]fimc_is_parse_dt:465: use_ois_hsi2c not use(0)
+[    1.717558] [c5] [@][ERR]fimc_is_parse_dt:470: use_module_check not use(0)
+[    1.717575] [c5] [@]skip_cal_loading not use(0)
+[    1.717610] full_bypass_mcuctl: no property in the node.
+[    1.717627] [c5] full_bypass_3a0: no property in the node.
+[    1.717642] [c5] full_bypass_3a1: no property in the node.
+[    1.717658] [c5] full_bypass_isp: no property in the node.
+[    1.717675] [c5] full_bypass_scc: no property in the node.
+[    1.717690] [c5] full_bypass_odc: no property in the node.
+[    1.717708] [c5] full_bypass_scp: no property in the node.
+[    1.717723] [c5] full_bypass_fd: no property in the node.
+[    1.717739] [c5] version_3a0: no property in the node.
+[    1.717754] [c5] version_3a1: no property in the node.
+[    1.717768] [c5] version_isp: no property in the node.
+[    1.717783] [c5] version_drc: no property in the node.
+[    1.717797] [c5] version_scc: no property in the node.
+[    1.717811] [c5] version_odc: no property in the node.
+[    1.717825] [c5] version_dis: no property in the node.
+[    1.717840] [c5] version_dnr: no property in the node.
+[    1.717854] [c5] version_scp: no property in the node.
+[    1.717868] [c5] version_fd: no property in the node.
+[    1.717886] [c5] int value: 0
+[    1.717899] [c5] String value: 0-gate_3aa1
+[    1.717912] [c5] int value: 1
+[    1.717925] [c5] String value: 1-gate_isp
+[    1.717938] [c5] int value: 2
+[    1.717951] [c5] String value: 2-gate_drc
+[    1.717964] [c5] int value: 3
+[    1.717977] [c5] String value: 3-gate_scalerc
+[    1.717990] [c5] int value: 5
+[    1.718003] [c5] String value: 5-gate_dis
+[    1.718016] [c5] int value: 6
+[    1.718029] [c5] String value: 6-gate_3dnr
+[    1.718042] [c5] int value: 7
+[    1.718055] [c5] String value: 7-gate_scalerp
+[    1.718067] [c5] int value: 8
+[    1.718081] [c5] String value: 8-gate_fd
+[    1.718093] [c5] int value: 9
+[    1.718106] [c5] String value: 9-gate_3aa0
+[    1.718126] [c5] (1) [0x0 , 0x0, 0x0, 0x0
+[    1.718144] [c5] (2) [0x0 , 0x0, 0x0, 0x0
+[    1.718160] [c5] (2) int1 value: 1
+[    1.718173] [c5] (2) int1 value: 2
+[    1.718186] [c5] (2) int1 value: 3
+[    1.718199] [c5] (2) int1 value: 6
+[    1.718212] [c5] (2) int1 value: 7
+[    1.718224] [c5] (2) int1 value: 8
+[    1.718239] [c5] (2) int2 value: 1
+[    1.718251] [c5] (2) int2 value: 2
+[    1.718264] [c5] (2) int2 value: 3
+[    1.718276] [c5] (2) int2 value: 6
+[    1.718288] [c5] (2) int2 value: 7
+[    1.718301] [c5] (2) int2 value: 8
+[    1.718318] [c5] (3) [0x1ce , 0x1ce, 0x0, 0x0
+[    1.718387] [c5] rear_preview_fhd_bns_off_int: no property in the node.
+[    1.718405] [c5] rear_preview_fhd_bns_off_cam: no property in the node.
+[    1.718423] [c5] rear_preview_fhd_bns_off_mif: no property in the node.
+[    1.718442] [c5] rear_preview_fhd_bns_off_i2c: no property in the node.
+[    1.718499] [c5] rear_camcording_fhd_bns_off_int: no property in the node.
+[    1.718518] [c5] rear_camcording_fhd_bns_off_cam: no property in the node.
+[    1.718537] [c5] rear_camcording_fhd_bns_off_mif: no property in the node.
+[    1.718555] [c5] rear_camcording_fhd_bns_off_i2c: no property in the node.
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.719625] [c5] fimc_is_dvfs_init
+[    1.719643] [c5] [@]fimc_is_resource_probe
+[    1.719663] [c5] [@]sensor_8b1_probe(0)
+[    1.719680] [c5] [@]sensor_2p2_probe(0)
+[    1.720010] [c5] [@][VID] exynos-fimc-is-3aa.0(110) is created
+[    1.720225] [c5] [@][VID] exynos-fimc-is-3aa.0c(111) is created
+[    1.720433] [c5] [@][VID] exynos-fimc-is-3aa.1(114) is created
+[    1.720642] [c5] [@][VID] exynos-fimc-is-3aa.1c(115) is created
+[    1.720660] [c5] [@][3AC1:V:1] fimc_is_3a1c_video_probe(0)
+[    1.720865] [c5] [@][VID] exynos-fimc-is-isp(130) is created
+[    1.721076] [c5] [@][VID] exynos-fimc-is-scalerc(134) is created
+[    1.721280] [c5] [@][VID] exynos-fimc-is-scalerp(137) is created
+[    1.727990] [c5] [@][COR] Device virtual for internal: f0401000
+[    1.728343] [c5] fimc_is_dvfs_init
+[    1.728363] [c5] [@]fimc_is_probe:end
+[    1.728989] [c5] fimc_is_fan53555_probe start
+[    1.729396] [c5] of_get_named_gpio_flags exited with status 130
+[    1.732416] [c5] [fimc_is_fan53555_probe::2723]fan53555 [Read :: a8 ,a8]
+[    1.732416] 
+[    1.732754] [c5]  fimc_is_fan53555_probe end
+[    1.733140] [c5] exynos5422_cfg_clk_sclk
+[    1.736209] [c5] exynos5422_cfg_clk_cam
+[    1.746898] [c5] s3c64xx-spi 131a0000.spi: state restore latency exceeded, new value 13754458 ns
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.747672] [c5] fimc_is_i2c0 11-003d: fimc_is_i2c0 driver probed!
+[    1.748426] [c5] PM DOMAIN: pd-cam, Device : 13c00000.fimc_is_sensor Registered
+[    1.748456] [c5] exynos-fimc-is-sensor 13c00000.fimc_is_sensor: exynos-iommu gpd_dev_ops inserted!
+[    1.748511] [c5] actuator_id is not exist.(-22)
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.749225] [c5] [@][0][FRT:D] fimc_is_csi_probe(0)
+[    1.749245] [c5] [@][BAK:D:0] fimc_is_flite_probe(0)
+[    1.749497] [c5] [@][VID] exynos-fimc-is-sensor0(100) is created
+[    1.749515] [c5] [@][0][SEN:D] fimc_is_sensor_probe(0)
+[    1.749948] [c5] PM DOMAIN: pd-cam, Device : 13c10000.fimc_is_sensor Registered
+[    1.749976] [c5] exynos-fimc-is-sensor 13c10000.fimc_is_sensor: exynos-iommu gpd_dev_ops inserted!
+[    1.750029] [c5] actuator_id is not exist.(-22)
+[    1.750047] [c5] flash_first_gpio: no property in the node.
+[    1.750062] [c5] flash_second_gpio: no property in the node.
+[    1.750083] [c5] [@]fimc_is_power_setpin: sensor found(id 11). 
+[    1.750112] [c5] of_get_named_gpio_flags exited with status 128
+[    1.750141] [c5] of_get_named_gpio_flags exited with status 71
+[    1.750171] [c5] of_get_named_gpio_flags exited with status 125
+[    1.750200] [c5] [0][0][5][ch1] gpio function cfg is seted
+[    1.750214] [0][1][1][off1] gpio function cfg is seted[1][0][5][ch1] gpio function cfg is seted
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.750670] [c5] [@][1][FRT:D] fimc_is_csi_probe(0)
+[    1.750689] [c5] [@][BAK:D:1] fimc_is_flite_probe(0)
+[    1.750914] [c5] [@][VID] exynos-fimc-is-sensor1(101) is created
+[    1.750932] [c5] [@][1][SEN:D] fimc_is_sensor_probe(0)
+[    1.751267] [c5] [@]sensor_8b1_probe(0)
+[    1.751445] [c5] Error: Driver 'fimc_is_i2c0' is already registered, aborting...
+[    1.751943] [c5] PM DOMAIN: spd-mscl0, Device : 12800000.scaler Registered
+[    1.751970] [c5] exynos5-scaler 12800000.scaler: exynos-iommu gpd_dev_ops inserted!
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.753099] [c5] exynos5-scaler 12800000.scaler: Driver probed successfully(version: 80010000)
+[    1.753388] [c5] PM DOMAIN: spd-mscl1, Device : 12810000.scaler Registered
+[    1.753415] [c5] exynos5-scaler 12810000.scaler: exynos-iommu gpd_dev_ops inserted!
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.754211] [c7] sec_touchkey_driver 3-0020: touchkey_power_on: on
+[    1.754601] exynos5-scaler 12810000.scaler: Driver probed successfully(version: 80010000)
+[    1.754766] [c7] sec_touchkey_driver 3-0020: touchkey_led_power_on: on
+[    1.754954] PM DOMAIN: spd-mscl2, Device : 12820000.scaler Registered
+[    1.754985] [c6] exynos5-scaler 12820000.scaler: exynos-iommu gpd_dev_ops inserted!
+[redacted sensitive line]
+[    1.755284] [c7] sec_touchkey_driver 3-0020: finish f/w update
+[    1.755324] [c7] sec_touchkey_driver 3-0020: touchkey_led_power_on: off
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.756271] [c7] exynos5-scaler 12820000.scaler: Driver probed successfully(version: 80010000)
+[    1.756527] [c7] Exynos Graphics 2D driver, (c) 2011 Samsung Electronics
+[    1.757073] [c7] s5p-fimg2d 10850000.fimg2d: ++fimg2d_probe
+[    1.757105] [c7] [parse_g2d_qos_platdata] cpu_min:1900000, kfc_min:1500000, mif_min:825000, int_min:400000
+[    1.757128] [c7] [parse_g2d_qos_platdata] cpu_min:0, kfc_min:800000, mif_min:633000, int_min:400000
+[    1.757151] [c7] [parse_g2d_qos_platdata] cpu_min:0, kfc_min:800000, mif_min:543000, int_min:333000
+[    1.757173] [c7] [parse_g2d_qos_platdata] cpu_min:0, kfc_min:800000, mif_min:413000, int_min:222000
+[    1.757196] [c7] [parse_g2d_qos_platdata] cpu_min:0, kfc_min:800000, mif_min:275000, int_min:222000
+[    1.757436] [c7] [fimg2d_clk_setup] gate clk: clk_g2d
+[    1.757453] [c7] [fimg2d_probe] enable runtime pm
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.758058] [c7] s5p-fimg2d 10850000.fimg2d: fimg2d registered successfully
+[    1.759411] [c7] jpeg-hx2 11f50000.jpeg: JPEG driver is registered to /dev/video14
+[    1.759620] [c7] jpeg-hx2 11f50000.jpeg: JPEG driver is registered to /dev/video13
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.760110] [c7] jpeg-hx2 11f50000.jpeg: jpeg-hx2.0 registered successfully
+[    1.760772] [c7] jpeg-hx2 11f60000.jpeg: JPEG driver is registered to /dev/video12
+[    1.760984] [c7] jpeg-hx2 11f60000.jpeg: JPEG driver is registered to /dev/video11
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.761470] [c7] jpeg-hx2 11f60000.jpeg: jpeg-hx2.1 registered successfully
+[    1.761852] [c7] i2c-core: driver [exynos_hdcp] using legacy suspend method
+[    1.761871] [c7] i2c-core: driver [exynos_hdcp] using legacy resume method
+[    1.761929] [c7] Samsung HDMI output driver, (c) 2010-2011 Samsung Electronics Co., Ltd.
+[    1.762538] [c7] PM DOMAIN: spd-hdmi, Device : 14530000.hdmi Registered
+[    1.762572] [c7] s5p-hdmi 14530000.hdmi: probe start
+[    1.762594] [c7] s5p-hdmi 14530000.hdmi: HDMI ip version 5
+[    1.762686] [c7] s5p-hdmi 14530000.hdmi: success request hdmi-int irq
+[    1.762923] [c7] of_get_named_gpio_flags exited with status 39
+[    1.763069] [c7] s5p-hdmi 14530000.hdmi: success request GPIO for hdmi-hpd
+[    1.763186] [c7] s5p-hdmi 14530000.hdmi: success register switch device
+[    1.763370] [c7] s5p-hdmi 14530000.hdmi: success request hdmi-ext irq
+[    1.763481] [c7] s5p-hdmi 14530000.hdmi: hdmi audio master 48fs support: no
+[    1.763666] [c5] s5p-hdmi 14530000.hdmi: probe sucessful
+[    1.764093] [c5] Samsung TV Mixer driver, (c) 2010-2011 Samsung Electronics Co., Ltd.
+[    1.764650] [c5] PM DOMAIN: spd-mixer, Device : 14450000.mixer Registered
+[    1.764677] [c5] s5p-mixer 14450000.mixer: exynos-iommu gpd_dev_ops inserted!
+[    1.764709] [c5] s5p-mixer 14450000.mixer: probe start
+[    1.764730] s5p-mixer 14450000.mixer: tv ip version5
+[    1.765018] [c5] s5p-mixer 14450000.mixer: resources acquired
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.765406] [c5] s5p-mixer 14450000.mixer: added output 'S5P HDMI connector' from module 's5p-hdmi'
+[    1.765688] [c5] s5p-mixer 14450000.mixer: registered layer mxr0_graph0 as /dev/video16
+[    1.765920] [c5] s5p-mixer 14450000.mixer: registered layer mxr0_graph1 as /dev/video17
+[    1.766159] [c5] s5p-mixer 14450000.mixer: registered layer mxr1_graph2 as /dev/video18
+[    1.766385] [c5] s5p-mixer 14450000.mixer: registered layer mxr1_graph3 as /dev/video19
+[    1.766406] [c5] s5p-mixer 14450000.mixer: mixer0 create links
+[    1.766435] [c5] s5p-mixer 14450000.mixer: mixer1 create links
+[    1.766464] [c5] s5p-mixer 14450000.mixer: mixer links are created successfully
+[    1.766502] [c5] s5p-mixer 14450000.mixer: probe successful
+[    1.767505] [c5] sec-thermistor sec_thermistor.24: sec_therm_probe: fail to get iio channel
+[    1.767537] [c5] platform sec_thermistor.24: Driver sec-thermistor requests probe deferral
+[    1.769179] [c7] sec_touchkey_driver 3-0020: touchkey_power_on: off
+[    1.776996] TRIMINFO[0] = 0x80672e
+[    1.777015] [c5] TMU_CONTROL[0] = 0x10609803
+[    1.777031] [c5] CURRENT_TEMP[0] = 0x39
+[    1.777046] [c5] THRESHOLD_TEMP_RISE[0] = 0x88796f65
+[    1.777061] [c5] THRESHOLD_TEMP_FALL[0] = 0x86776d63
+[    1.777076] [c5] INTEN[0] = 0x11111111
+[    1.777090] [c5] INTCLEAR[0] = 0x0
+[    1.788950] [c5] TRIMINFO[1] = 0x806b31
+[    1.788968] [c5] TMU_CONTROL[1] = 0x10609803
+[    1.788984] [c5] CURRENT_TEMP[1] = 0x3d
+[    1.788998] [c5] THRESHOLD_TEMP_RISE[1] = 0x8b7c7268
+[    1.789013] [c5] THRESHOLD_TEMP_FALL[1] = 0x897a7066
+[    1.789027] [c5] INTEN[1] = 0x11111111
+[    1.789042] [c5] INTCLEAR[1] = 0x0
+[    1.800886] [c5] TRIMINFO[2] = 0x806b30
+[    1.800903] [c5] TMU_CONTROL[2] = 0x10609803
+[    1.800918] [c5] CURRENT_TEMP[2] = 0x44
+[    1.800933] [c5] THRESHOLD_TEMP_RISE[2] = 0x8f80766c
+[    1.800948] [c5] THRESHOLD_TEMP_FALL[2] = 0x8d7e746a
+[    1.800963] [c5] INTEN[2] = 0x11111111
+[    1.800977] [c5] INTCLEAR[2] = 0x0
+[    1.812808] [c5] TRIMINFO[3] = 0x807035
+[    1.812825] [c5] TMU_CONTROL[3] = 0x10609803
+[    1.812840] [c5] CURRENT_TEMP[3] = 0x38
+[    1.812854] [c5] THRESHOLD_TEMP_RISE[3] = 0x84756b61
+[    1.812869] [c5] THRESHOLD_TEMP_FALL[3] = 0x8273695f
+[    1.812884] [c5] INTEN[3] = 0x11111111
+[    1.812898] [c5] INTCLEAR[3] = 0x0
+[    1.824183] [c7] sec_touchkey_driver 3-0020: touchkey_power_on: on
+[    1.824737] TRIMINFO[4] = 0x80662a
+[    1.824756] [c5] TMU_CONTROL[4] = 0x10609803
+[    1.824771] [c5] CURRENT_TEMP[4] = 0x3a
+[    1.824786] [c5] THRESHOLD_TEMP_RISE[4] = 0x8a7b7167
+[    1.824801] [c5] THRESHOLD_TEMP_FALL[4] = 0x88796f65
+[    1.824815] [c5] INTEN[4] = 0x11111111
+[    1.824829] [c5] INTCLEAR[4] = 0x0
+[    1.825982] [c5] s3c2410-wdt 101d0000.watchdog: watchdog inactive, reset disabled, irq disabled
+[    1.826950] [c5] device-mapper: ioctl: 4.24.0-ioctl (2013-01-15) initialised: dm-devel@redhat.com
+[    1.827632] [c5] [BT] bcm4354_bluetooth_probe.
+[    1.827665] [c5] of_get_named_gpio_flags exited with status 156
+[    1.827692] [c5] of_get_named_gpio_flags exited with status 34
+[    1.827719] [c5] of_get_named_gpio_flags exited with status 25
+[    1.828087] [c5] [BT] bcm4354_bluetooth_probe End 
+[    1.828233] [c5] CPUFREQ of CA7  L0 : 1300000 uV
+[    1.828251] [c5] CPUFREQ of CA7  L0 : ABB 255
+[    1.828266] [c5] CPUFREQ of CA7  L1 : 1287500 uV
+[    1.828279] [c5] CPUFREQ of CA7  L1 : ABB 4
+[    1.828293] [c5] CPUFREQ of CA7  L2 : 1225000 uV
+[    1.828307] [c5] CPUFREQ of CA7  L2 : ABB 4
+[    1.828320] [c5] CPUFREQ of CA7  L3 : 1175000 uV
+[    1.828334] [c5] CPUFREQ of CA7  L3 : ABB 4
+[    1.828348] [c5] CPUFREQ of CA7  L4 : 1125000 uV
+[    1.828361] [c5] CPUFREQ of CA7  L4 : ABB 4
+[    1.828375] [c5] CPUFREQ of CA7  L5 : 1087500 uV
+[    1.828388] [c5] CPUFREQ of CA7  L5 : ABB 4
+[    1.828401] [c5] CPUFREQ of CA7  L6 : 1050000 uV
+[    1.828414] [c5] CPUFREQ of CA7  L6 : ABB 4
+[    1.828427] [c5] CPUFREQ of CA7  L7 : 1012500 uV
+[    1.828440] [c5] CPUFREQ of CA7  L7 : ABB 4
+[    1.828453] [c5] CPUFREQ of CA7  L8 : 975000 uV
+[    1.828467] [c5] CPUFREQ of CA7  L8 : ABB 255
+[    1.828479] [c5] CPUFREQ of CA7  L9 : 937500 uV
+[    1.828492] [c5] CPUFREQ of CA7  L9 : ABB 255
+[    1.828506] [c5] CPUFREQ of CA7  L10 : 900000 uV
+[    1.828519] [c5] CPUFREQ of CA7  L10 : ABB 255
+[    1.828532] [c5] CPUFREQ of CA7  L11 : 900000 uV
+[    1.828545] [c5] CPUFREQ of CA7  L11 : ABB 255
+[    1.828558] [c5] CPUFREQ of CA7  L12 : 900000 uV
+[    1.828571] [c5] CPUFREQ of CA7  L12 : ABB 255
+[    1.828585] [c5] CPUFREQ of CA7  L13 : 900000 uV
+[    1.828597] [c5] CPUFREQ of CA7  L13 : ABB 255
+[    1.828611] [c5] CPUFREQ of CA7  L14 : 900000 uV
+[    1.828624] [c5] CPUFREQ of CA7  L14 : ABB 255
+[    1.828926] [c5] kfc clock[800000], mx_mspll clock[666000]
+[    1.828951] [c5] [SET_EMA_TEST] volt : 887500  value : 0x44
+[    1.828965] [c5] [SET_EMA_TEST] volt : 937500  value : 0x44
+[    1.828979] [c5] [SET_EMA_TEST] volt : 1032500  value : 0x33
+[    1.828994] [c5] [SET_EMA_TEST] volt : 1142500  value : 0x11
+[    1.829007] [c5] [SET_EMA_TEST] volt : 1167500  value : 0x11
+[    1.829022] [c5] CPUFREQ of CA15 L0 : 1362500 uV
+[    1.829036] [c5] CPUFREQ of CA15  L0 : ABB 255
+[    1.829050] [c5] CPUFREQ of CA15 L1 : 1362500 uV
+[    1.829063] [c5] CPUFREQ of CA15  L1 : ABB 255
+[    1.829077] [c5] CPUFREQ of CA15 L2 : 1362500 uV
+[    1.829090] [c5] CPUFREQ of CA15  L2 : ABB 255
+[    1.829103] [c5] CPUFREQ of CA15 L3 : 1325000 uV
+[    1.829154] [c5] CPUFREQ of CA15  L3 : ABB 255
+[    1.829168] [c5] CPUFREQ of CA15 L4 : 1275000 uV
+[    1.829182] [c5] CPUFREQ of CA15  L4 : ABB 255
+[    1.829196] [c5] CPUFREQ of CA15 L5 : 1200000 uV
+[    1.829209] [c5] CPUFREQ of CA15  L5 : ABB 255
+[    1.829222] [c5] CPUFREQ of CA15 L6 : 1150000 uV
+[    1.829236] [c5] CPUFREQ of CA15  L6 : ABB 255
+[    1.829249] [c5] CPUFREQ of CA15 L7 : 1112500 uV
+[    1.829262] [c5] CPUFREQ of CA15  L7 : ABB 255
+[    1.829276] [c5] CPUFREQ of CA15 L8 : 1075000 uV
+[    1.829289] [c5] CPUFREQ of CA15  L8 : ABB 255
+[    1.829302] [c5] CPUFREQ of CA15 L9 : 1037500 uV
+[    1.829315] [c5] CPUFREQ of CA15  L9 : ABB 255
+[    1.829329] [c5] CPUFREQ of CA15 L10 : 1012500 uV
+[    1.829342] [c5] CPUFREQ of CA15  L10 : ABB 255
+[    1.829356] [c5] CPUFREQ of CA15 L11 : 1000000 uV
+[    1.829370] [c5] CPUFREQ of CA15  L11 : ABB 255
+[    1.829383] [c5] CPUFREQ of CA15 L12 : 975000 uV
+[    1.829397] [c5] CPUFREQ of CA15  L12 : ABB 255
+[    1.829411] [c5] CPUFREQ of CA15 L13 : 950000 uV
+[    1.829424] [c5] CPUFREQ of CA15  L13 : ABB 255
+[    1.829438] [c5] CPUFREQ of CA15 L14 : 925000 uV
+[    1.829451] [c5] CPUFREQ of CA15  L14 : ABB 255
+[    1.829465] [c5] CPUFREQ of CA15 L15 : 900000 uV
+[    1.829478] [c5] CPUFREQ of CA15  L15 : ABB 255
+[    1.829491] [c5] CPUFREQ of CA15 L16 : 900000 uV
+[    1.829504] [c5] CPUFREQ of CA15  L16 : ABB 255
+[    1.829518] [c5] CPUFREQ of CA15 L17 : 900000 uV
+[    1.829531] [c5] CPUFREQ of CA15  L17 : ABB 255
+[    1.829545] [c5] CPUFREQ of CA15 L18 : 900000 uV
+[    1.829558] [c5] CPUFREQ of CA15  L18 : ABB 255
+[    1.829571] [c5] CPUFREQ of CA15 L19 : 900000 uV
+[    1.829585] [c5] CPUFREQ of CA15  L19 : ABB 255
+[    1.829598] [c5] CPUFREQ of CA15 L20 : 900000 uV
+[    1.829612] [c5] CPUFREQ of CA15  L20 : ABB 255
+[    1.829625] [c5] CPUFREQ of CA15 L21 : 900000 uV
+[    1.829638] [c5] CPUFREQ of CA15  L21 : ABB 255
+[    1.829652] [c5] CPUFREQ of CA15 L22 : 900000 uV
+[    1.829665] [c5] CPUFREQ of CA15  L22 : ABB 255
+[    1.830011] [c5] eagle clock[800000], mpll clock[800000]
+[    1.833251] [c6] Exynos: Kernel Thermal management registered
+[    1.833275] [c6] cpuidle: using governor ladder
+[    1.833291] [c6] cpuidle: using governor menu
+[    1.833358] [c6] Synopsys Designware Multimedia Card Interface Driver
+[    1.834376] [c6] dwmmc_exynos 12200000.dwmmc0: Clock pin control Pin:gpc0-0 Addr:13410000.pinctrl Val:3 Num:4
+[    1.834610] dwmmc_exynos 12200000.dwmmc0: Using internal DMA controller.
+[    1.834633] [c6] dwmmc_exynos 12200000.dwmmc0: FIFOTH: 0x 300f0030
+[    1.834650] dwmmc_exynos 12200000.dwmmc0: Version ID is 250a
+[    1.834929] [c6] dwmmc_exynos 12200000.dwmmc0: DW MMC controller at irq 107, 64 bit host data width, 64 deep fifo
+[redacted sensitive line]
+[    1.839187] [c7] sec_touchkey_driver 3-0020: touchkey_led_power_on: on
+[    1.869289] dw_mci_transferred_cnt_init: trans_count: successed.....
+[    1.869322] [c6] dwmmc_exynos 12200000.dwmmc0: 1 slots initialized
+[    1.869350] [c6] mmc_host mmc0: card inserted
+[    1.869792] [c6] dwmmc_exynos 12210000.dwmmc1: TP table info LV 0
+[    1.869814] [c6] dwmmc_exynos 12210000.dwmmc1: Range: 18000000 MIF: 825000 CPU: 2000000 KFC: 1500000
+[    1.869831] [c6] dwmmc_exynos 12210000.dwmmc1: TP table info LV 1
+[    1.869850] [c6] dwmmc_exynos 12210000.dwmmc1: Range: 12000000 MIF: 413000 CPU: 0 KFC: 0
+[    1.869866] [c6] dwmmc_exynos 12210000.dwmmc1: TP table info LV 2
+[    1.869883] [c6] dwmmc_exynos 12210000.dwmmc1: Range: 0 MIF: 0 CPU: 0 KFC: 0
+[    1.869950] [c6] dwmmc_exynos 12210000.dwmmc1: Clock pin control Pin:gpc1-0 Addr:13410000.pinctrl Val:3 Num:4
+[    1.870151] dwmmc_exynos 12210000.dwmmc1: Using internal DMA controller.
+[    1.870173] [c6] dwmmc_exynos 12210000.dwmmc1: FIFOTH: 0x 300f0030
+[    1.870190] dwmmc_exynos 12210000.dwmmc1: Version ID is 250a
+[    1.870498] [c6] dwmmc_exynos 12210000.dwmmc1: DW MMC controller at irq 108, 64 bit host data width, 64 deep fifo
+[redacted sensitive line]
+[    1.899289] [c6] dw_mci_transferred_cnt_init: trans_count: successed.....
+[    1.899322] [c6] dwmmc_exynos 12210000.dwmmc1: 1 slots initialized
+[    1.899918] [c6] of_get_named_gpio_flags exited with status 28
+[    1.899950] [c6] of_get_named_gpio_flags exited with status 87
+[    1.899973] [c6] of_get_named_gpio_flags exited with status 94
+[    1.900010] [c6] dwmmc_exynos 12220000.dwmmc2: Clock pin control Pin:gpc2-0 Addr:13410000.pinctrl Val:1 Num:4
+[    1.900190] dwmmc_exynos 12220000.dwmmc2: Using internal DMA controller.
+[    1.900212] [c6] dwmmc_exynos 12220000.dwmmc2: FIFOTH: 0x 300f0030
+[    1.900229] dwmmc_exynos 12220000.dwmmc2: Version ID is 250a
+[    1.900520] [c6] dwmmc_exynos 12220000.dwmmc2: DW MMC controller at irq 109, 64 bit host data width, 64 deep fifo
+[    1.900642] [c6] mmc2: vmmc regulator found
+[    1.901869] [c6] mmc2: vqmmc regulator found
+[redacted sensitive line]
+[    1.929940] [c4] sec_touchkey_driver 3-0020: cypress_touchkey_interrupt_set_dual: interrupt set: 0x0, failed.
+[    1.934293] [c6] dw_mci_transferred_cnt_init: trans_count: successed.....
+[    1.934336] [c6] mmc_host mmc2: card inserted
+[    1.934508] [c6] dwmmc_exynos 12220000.dwmmc2: success to request irq for card detect.
+[    1.934527] [c6] wake enabled for irq 569
+[    1.934642] [c6] dwmmc_exynos 12220000.dwmmc2: 1 slots initialized
+[    1.934662] [c6] _gpio_request: gpio-28 (DWMCI_EXT_CD) status -16
+[    1.934693] [c6] dwmmc_exynos 12220000.dwmmc2: vqmmc_en is low.
+[    1.934717] [c6] dwmmc_exynos 12220000.dwmmc2: vmmc_en is low.
+[    1.935599] [c6] of_lp5562_parsing_dt
+[    1.952624] [c7] mmc0: BKOPS_EN bit is not set
+[    1.954051] [c7] mmc0: STROBE ENHANCED enable
+[    1.959875] [c6] lp5562_post_init_device
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    1.964019] [c7] mmc0: new high speed HS200-DDR MMC card at address 0001
+[    1.964746] [c6] lp55xx_init_device: done
+[    1.964766] [c7] mmcblk0: mmc0:0001 H16GE2 14.6 GiB 
+[    1.964935] [c6] lp5562_set_led_current
+[    1.965222] [c4] sec_touchkey_driver 3-0020: cypress_touchkey_interrupt_set_dual: interrupt set: 0x1
+[    1.965237] [c7] mmcblk0boot0: mmc0:0001 H16GE2 partition 1 4.00 MiB
+[redacted sensitive line]
+[    1.965539] [c4] mmcblk0boot1: mmc0:0001 H16GE2 partition 2 4.00 MiB
+[    1.965825] [c6] lp5562_set_led_current
+[    1.965838] [c4] mmcblk0rpmb: mmc0:0001 H16GE2 partition 3 4.00 MiB
+[    1.966645] [c6] lp5562_set_led_current
+[    1.967383] [c6] lp5562_set_led_current
+[    1.968144] [c6] lp5562_probe: done
+[    1.968682] [c6] of_max77804_torch_dt failed to get a timer
+[    1.968700] [c6] of_max77804_torch_dt failed to get a timer_mode
+[    1.968719] [c6] [LED] max77804_led_probe 2 leds
+[    1.968733] [c6] max77804_led_probe led0 setup ...
+[    1.969244] [c5]  mmcblk0: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11 p12 p13 p14 p15 p16 p17 p18 p19 p20 p21
+[    1.970174] [c6] max77804_led_probe led1 setup ...
+[    1.972048] [c6] platform arizona-extcon: Driver arizona-extcon requests probe deferral
+[    1.972235] [c6] hidraw: raw HID events driver (C) Jiri Kosina
+[    1.975303] [c7] Successfully registered hid_synaptics_driver
+[    1.975391] [c7] usbcore: registered new interface driver usbhid
+[    1.975409] [c7] usbhid: USB HID core driver
+[    1.976129] [c6] ashmem: initialized
+[    1.976425] [c6] logger: created 2048K log 'log_main'
+[    1.976446] [c6] sec_getlog_supply_loggerinfo: log_main, 0xed600000
+[    1.976665] [c6] logger: created 256K log 'log_events'
+[    1.976684] [c6] sec_getlog_supply_loggerinfo: log_events, 0xed580000
+[    1.976976] [c6] logger: created 2048K log 'log_radio'
+[    1.976997] [c6] sec_getlog_supply_loggerinfo: log_radio, 0xed000000
+[    1.977164] [c6]  mmcblk0boot1: unknown partition table
+[    1.977701] [c6] logger: created 256K log 'log_system'
+[    1.977722] [c6] sec_getlog_supply_loggerinfo: log_system, 0xed5c0000
+[    1.977987] [c6] logger: created 256K log 'log_sf'
+[    1.978009] [c6] sec_getlog_supply_loggerinfo: log_sf, 0xed200000
+[    1.978611] [c7]  mmcblk0boot0: unknown partition table
+[    1.980238] [c6] of_get_named_gpio_flags exited with status 16
+[    1.980494] [c6] of_get_named_gpio_flags exited with status 14
+[    1.980720] [c6] gps_geofence_wake_init misc register, name gps_geofence_wake, irq 571, host req pin num 14
+[    1.981079] [c7] wake enabled for irq 571
+[    1.981109] [c7] (NULL device *): sec_fuelgauge_init: 
+[    1.981320] [c7] sec-fuelgauge 7-0036: sec_fuelgauge_probe: SEC Fuelgauge Driver Loading
+[    1.981351] [c7] of_get_named_gpio_flags exited with status 21
+[    1.981385] [c7] fuelgauge_parse_dt fg_irq: 21, capacity_max: 990
+[    1.981385] cpacity_max_margin: 30, capacity_min: 0
+[    1.981385] calculation_type: 0x1c, fuel_alert_soc: 2,
+[    1.981385] repeated_fuelalert: 1
+[    1.981417] [c7] max17048_parse_dt value 93
+[    1.981434] [c7] max17048_parse_dt value 93
+[    1.981464] [c7] max17048_parse_dt RCOMP0: 0x5d, RCOMP_charging: 0x5d, temp_cohot: -175,temp_cocold: -5825, is_using_model_data: 1, type_str: SDI,
+[    1.981479] [c7] sec_hal_fg_init
+[    1.982551] [c7] sec-fuelgauge 7-0036: MAX17048 Fuel-Gauge Ver 0x0012
+[    1.991081] [c7] sec_hal_fg_get_property: Fail to get psy (battery)
+[    1.991102] [c7] max17048_get_current: Fail to get psy (sec-charger)
+[    1.991121] [c7] max17048_get_current_average: Fail to get psy (sec-charger)
+[    1.991138] [c7] max17048_get_current_average: Fail to get psy (battery)
+[    1.994096] [c7] sec-fuelgauge 7-0036: sec_fg_get_scaled_capacity: scaled capacity (99.0)
+[    1.994164] [c7] sec-fuelgauge 7-0036: sec_fg_get_atomic_capacity: capacity (old 0 : new 1)
+[    2.000473] [c7] sec_hal_fg_get_property: Fail to get psy (battery)
+[    2.000494] [c7] max17048_get_current: Fail to get psy (sec-charger)
+[    2.000514] [c7] max17048_get_current_average: Fail to get psy (sec-charger)
+[    2.000531] [c7] max17048_get_current_average: Fail to get psy (battery)
+[    2.004183] [c7] sec-fuelgauge 7-0036: sec_fg_get_scaled_capacity: scaled capacity (99.0)
+[    2.004207] [c7] sec-fuelgauge 7-0036: sec_fg_get_atomic_capacity: capacity (old 0 : new 1)
+[    2.004267] [c4] wake enabled for irq 572
+[    2.006242] [c4] sec-fuelgauge 7-0036: sec_fuelgauge_probe: SEC Fuelgauge Driver Loaded
+[redacted sensitive line]
+[    2.006697] [c4] max77804_charger_probe: MAX77804 Charger driver probe
+[    2.008255] [c4] max77804_charger_initialize: battery cv voltage 0xdf
+[    2.008419] [c0] max77804k_irq_thread: interrupt source(0x01)
+[    2.008564] [c4] max77804_charger_probe: device found: ver.0x4
+[    2.008708] [c0] max77804k_irq_thread: charger interrupt(0x1d)
+[    2.009033] [c4] max77804_get_charger_state: CHG_DTLS : 0x 8
+[    2.009254] [c4] max77804_get_health_state: reg_data(0x3)
+[    2.009274] [c4] max77804_get_health_state: Fail to get psy (battery)
+[    2.009440] [c4] max77804_get_vbus_state: VBUS is invalid. CHGIN < CHGIN_UVLO
+[    2.009756] [c4] max77804_get_health_state: vbus_state : 0x0, chg_dtls : 0x8
+[    2.009770] [c4] max77804_get_health_state: vbus is under
+[    2.010097] [c4] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    2.010122] [c4] power_supply sec-charger: driver failed to report `charge_otg_control' property: -22
+[    2.010381] [c4] max77804_get_charger_state: CHG_DTLS : 0x 8
+[    2.010553] [c4] max77804_get_health_state: reg_data(0x3)
+[    2.010572] [c4] max77804_get_health_state: Fail to get psy (battery)
+[    2.010736] [c4] max77804_get_vbus_state: VBUS is invalid. CHGIN < CHGIN_UVLO
+[    2.011050] [c4] max77804_get_health_state: vbus_state : 0x0, chg_dtls : 0x8
+[    2.011064] [c4] max77804_get_health_state: vbus is under
+[    2.011388] [c4] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    2.011412] [c4] power_supply sec-charger: driver failed to report `charge_otg_control' property: -22
+[    2.013927] [c4] [VIB] ++ max77804_haptic_probe
+[    2.013945] [c4] of_max77804_haptic_dt : start dt parsing
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.016068] [c4] exynos-adc 12d10000.adc: operating without regulator vdd[-19]
+[    2.016427] [c4] exynos-adc 12d10000.adc: Probed successfully driver.
+[    2.016781] [c4] mckernelapi : Mobicore API module initialized!
+[    2.016829] [c4] MobiCore mcd: MobiCore Driver, Build: Thu Oct 12 00:26:45 2017
+[    2.016847] [c4] MobiCore mcd: MobiCore mcDrvModuleApi version is 1.1
+[    2.016863] [c4] MobiCore mcd: MobiCore *** t-base-300-Ares-2-Android-V004_P3 ###
+[    2.017466] [c4] vfsspi_init
+[    2.017921] [c4] vfsspi_probe
+[    2.017949] [c4] of_get_named_gpio_flags exited with status 70
+[redacted sensitive line]
+[    2.017982] [c4] of_get_named_gpio_flags exited with status 37
+[redacted sensitive line]
+[    2.018012] [c4] vfsspi_parse_dt: not set ocp_pin in dts
+[redacted sensitive line]
+[    2.018048] [c4] of_get_named_gpio_flags exited with status 114
+[redacted sensitive line]
+[    2.018080] [c4] of_get_named_gpio_flags exited with status 101
+[redacted sensitive line]
+[    2.018109] [c4] vfsspi_parse_dt: not set ldo2 in dts
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.018157] [c4] vfsspi_platformInit
+[    2.018177] [c4] vfsspi_platformInit ocp off
+[    2.018196] [c4] vfsspi_platformInit ldo off
+[    2.018338] [c4] vfsspi_disable_irq
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.018882] [c5] vfsspi_probe success...
+[    2.018961] [c5] vfsspi_init init is successful
+[    2.019224] [c5] [SSP] ssp_probe, is called
+[    2.019250] [c5] of_get_named_gpio_flags exited with status 35
+[    2.019270] [c5] of_get_named_gpio_flags exited with status 36
+[    2.019290] [c5] of_get_named_gpio_flags exited with status 32
+[    2.019320] [c5] of_get_named_gpio_flags exited with status 149
+[    2.019341] [c5] [SSP] acc-posi[6] mag-posi[6]
+[    2.019384] [c5] [SSP] No static matrix at DT for YAS532!(  (null))
+[    2.019426] [c5] 
+[    2.019426] #####################################################
+[    2.021771] [c5] input: light_sensor as /devices/virtual/input/input3
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.022924] [c5] input: gesture_sensor as /devices/virtual/input/input6
+[redacted sensitive line]
+[    2.023683] [c5] input: step_cnt_sensor as /devices/virtual/input/input8
+[    2.024063] [c5] input: meta_event as /devices/virtual/input/input9
+[    2.024520] [c6] [SSP]: requesting IRQ 574
+[    2.025850] [c6] [SSP] initialize_mobeam
+[    2.099355] [c6] input: ssp_context as /devices/virtual/input/input10
+[redacted sensitive line]
+[    2.100000] [c7] wake enabled for irq 574
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.118808] [c7] [SSP] Sensor Posision A : 6, G : 6, M: 6, P: 0
+[    2.125052] [c7] [SSP] FUSE ROM Data 6 , 6, 6
+[redacted sensitive line]
+[    2.137450] [c7] [SSP]: set_static_matrix: finished 
+[redacted sensitive line]
+[    2.149756] [c7] [SSP]: ssp_send_cmd - command 0xdc 0
+[    2.149766] [c7] [SSP]: ssp_probe - probe success!
+[    2.149775] [c7] #####################################################
+[    2.149775] 
+[    2.149977] [c7] max86900_probe - start 
+[    2.149992] [c7] of_get_named_gpio_flags exited with status 33
+[redacted sensitive line]
+[    2.152180] [c7] max86900_probe - MAX86900 OS21(0x57), REV ID : 0x05
+[    2.152292] [c7] input: hrm_sensor as /devices/virtual/input/input11
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.154103] [c5] max86900_probe success
+[    2.154478] [c5] usbcore: registered new interface driver snd-usb-audio
+[    2.156052] [c5] lpass_register_subip: i2s(ee32a010) registered
+[    2.157083] [c5] Exynos Audio Mixer driver, (c)2014 Samsung Electronics
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.181500] [c6] mmc2: new high speed SDHC card at address aaaa
+[    2.181827] [c6] mmcblk1: mmc2:aaaa SU08G 7.40 GiB 
+[    2.187033] [c6]  mmcblk1: p1
+[    2.286887] [c5] snd-soc-dummy snd-soc-dummy: ASoC: Failed to create platform debugfs directory
+[    2.286935] [c5] florida-codec florida-codec: ASoC: Failed to create platform debugfs directory
+[    2.313440] [c5] pacific-audio sound.22:  florida-aif1 <-> 3830000.i2s mapping ok
+[    2.314072] [c5] pacific-audio sound.22:  florida-aif2 <-> snd-soc-dummy-dai mapping ok
+[    2.314764] [c5] pacific-audio sound.22:  florida-aif3 <-> snd-soc-dummy-dai mapping ok
+[    2.315384] [c5] pacific-audio sound.22:  florida-aif1 <-> samsung-i2s-sec mapping ok
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.317055] [c5] pacific-audio sound.22:  florida-aif1 <-> samsung-eax.0 mapping ok
+[    2.317670] [c5] pacific-audio sound.22:  florida-aif1 <-> samsung-eax.1 mapping ok
+[    2.318285] [c5] pacific-audio sound.22:  florida-aif1 <-> samsung-eax.2 mapping ok
+[    2.318899] [c5] pacific-audio sound.22:  florida-aif1 <-> samsung-eax.3 mapping ok
+[    2.320320] [c5] of_get_named_gpio_flags exited with status 6
+[    2.320715] [c5] input: voicecontrol as /devices/sound.22/input/input12
+[    2.323966] [c6] GACT probability NOT on
+[    2.323981] [c6] Mirror/redirect action on
+[    2.323992] [c6] u32 classifier
+[    2.324001] [c6]     Actions configured
+[    2.324014] [c6] Netfilter messages via NETLINK v0.30.
+[    2.324071] [c6] nf_conntrack version 0.5.0 (16384 buckets, 65536 max)
+[    2.324470] [c6] ctnetlink v0.93: registering with nfnetlink.
+[    2.324546] [c6] NF_TPROXY: Transparent proxy support initialized, version 4.1.0
+[    2.324555] [c6] NF_TPROXY: Copyright (c) 2006-2007 BalaBit IT Ltd.
+[    2.324871] [c6] xt_time: kernel timezone is -0000
+[    2.324901] [c6] 939-23012-001-quicksec-vpnclient-for-android-3.5-4155-1a877303f36b-4155 
+[    2.324910] [c6] vpnclient kernel spd loaded.
+[    2.325110] [c6] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    2.325271] [c6] arp_tables: (C) 2002 David S. Miller
+[    2.325311] [c6] TCP: cubic registered
+[    2.325320] [c6] Initializing XFRM netlink socket
+[    2.325645] [c6] NET: Registered protocol family 10
+[    2.326098] [c6] mip6: Mobile IPv6
+[    2.326129] [c6] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[    2.326259] [c6] sit: IPv6 over IPv4 tunneling driver
+[    2.327052] [c6] NET: Registered protocol family 17
+[    2.327081] [c6] NET: Registered protocol family 15
+[    2.327095] [c6] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    2.327113] [c6] Bluetooth: HIDP socket layer initialized
+[    2.327137] [c6] NET: Registered protocol family 35
+[    2.327285] [c6] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
+[    2.327313] [c6] Registering SWP/SWPB emulation handler
+[    2.327326] [c6] SRAM ASV group [4] : MIF(925000), G3D(950000)
+[    2.331724] [c6] zswap: loading zswap
+[    2.331941] [c6] zswap: using lzo compressor
+[    2.332781] [c6] PM DOMAIN: spd-fimd, Device : 14400000.fimd_fb Registered
+[    2.332800] [c6] s5p-decon-display 14400000.fimd_fb: exynos-iommu gpd_dev_ops inserted!
+[    2.332970] [c6] parse_display_driver_dt: decon_driver.regs 14400000 dsi_driver.regs 14500000
+[    2.333101] [c6] of_get_named_gpio_flags exited with status 4
+[    2.333122] [c6] of_get_named_gpio_flags exited with status 95
+[    2.333146] [c6] of_get_named_gpio_flags exited with status 193
+[    2.334427] [c6] init_display_decon_clocks: pixel_clk_rate: 133000000
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.334542] [c6] s5p-decon-display 14400000.fimd_fb: MIC driver is ON;
+[    2.334551] [c6] s5p-decon-display 14400000.fimd_fb: MIC driver has been probed
+[redacted sensitive line]
+[    2.352683] [c6] s5p-decon-display 14400000.fimd_fb: rx fifo : 1600031c, response : 1c, rx_size : 3
+[    2.352846] [c6] s5p-decon-display 14400000.fimd_fb: rx fifo : 2f00061c, response : 1c, rx_size : 6
+[    2.352972] [c6] s5p-decon-display 14400000.fimd_fb: rx fifo : 2900051c, response : 1c, rx_size : 5
+[    2.353054] [c6] s5p-decon-display 14400000.fimd_fb: rx fifo : 3300041c, response : 1c, rx_size : 4
+[    2.353217] [c6] s5p-decon-display 14400000.fimd_fb: rx fifo : 3900571c, response : 1c, rx_size : 87
+[    2.353322] [c6] s5p-decon-display 14400000.fimd_fb: rx fifo :  f00151c, response : 1c, rx_size : 21
+[    2.353403] [c6] s5p-decon-display 14400000.fimd_fb: rx fifo : 2f00061c, response : 1c, rx_size : 6
+[    2.353440] [c6] lcd panel: ID: 60, 28, 13
+[    2.354014] [c6] Dynamic Aid Finished !
+[    2.354167] [c6] Dynamic Aid Finished !
+[    2.354255] [c6] Dynamic Aid Finished !
+[    2.354310] [c6] of_get_named_gpio_flags exited with status 194
+[redacted sensitive line]
+[    2.354610] [c6] lcd panel: acl: 0, auto_brightness: 0
+[    2.354646] [c6] lcd panel: temperature: 25, tset: 25
+[redacted sensitive line]
+[    2.354952] [c6] mdnie mdnie: STANDARD_UI
+[    2.354963] [c6] mdnie mdnie: registered successfully
+[redacted sensitive line]
+[    2.354991] [c6] s5p-decon-display 14400000.fimd_fb: mipi-dsi driver(CPU mode) has been probed.
+[    2.355004] [c6] ###create_decon_display_controller: Start 
+[    2.355020] [c6] s5p-decon-display 14400000.fimd_fb: PSR mode is 2(0: VIDEO, 1: DP, 2: MIPI)
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.388219] [c4] of_get_named_gpio_flags exited with status 155
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.388427] of_get_named_gpio_flags exited with status 76
+[    2.483589] [c4] Console: switching to colour frame buffer device 135x120
+[    2.517026] [c4] s5p-decon-display 14400000.fimd_fb: pm_stay_awake
+[    2.517037] s5p-decon-display 14400000.fimd_fb: window 0: fb 
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.517706] [c4] safeout1_range: disabling
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.517735] [c4] is_muic_usb_path_ap_usb: [0]
+[    2.517743] [c4] max77804_regulator_check_disable: cannot disable regulator(0)
+[    2.517751] [c4] safeout1_range: couldn't disable: -22
+[    2.519198] [c4] IR_3.3V_AP: disabling
+[    2.520280] [c7] PM DOMAIN: pd-isp can't add device exynos-fimc-is-companion
+[    2.520311] [c7] fimc_is_companion_parse_dt:196: use_pmic not use(0)
+[    2.520322] [c7] [@]fimc_is_power_setpin: sensor found(id 10). 
+[    2.520342] [c7] of_get_named_gpio_flags exited with status 130
+[    2.520361] [c7] of_get_named_gpio_flags exited with status 69
+[    2.520378] [c7] of_get_named_gpio_flags exited with status 129
+[    2.520394] [c7] of_get_named_gpio_flags exited with status 75
+[    2.520411] [c7] [0][0][7][ch0] gpio function cfg is seted
+[    2.520419] [0][0][9][af0] gpio function cfg is seted[0][1][1][off0] gpio function cfg is seted
+[    2.520724] [@][VID] exynos-fimc-is-sensor9(109) is created
+[    2.520734] [c7] [@][CP9:V:X] fimc_is_comp_video_probe(0)
+[    2.520747] [c7] [@][COMP:D] fimc_is_companion_probe(0)
+[    2.521206] [c7] sec-thermistor sec_thermistor.24: SEC Thermistor successfully probed.
+[    2.521368] [c7] of_get_named_gpio_flags: can't parse gpios property
+[    2.521382] [c7] CPU: 7 PID: 6 Comm: kworker/u16:0 Not tainted 3.10.9-LineageOS #3-postmarketOS
+[    2.521403] [c7] Workqueue: deferwq deferred_probe_work_func
+[    2.521417] [c7] Backtrace: 
+[    2.521438] [c7] [<c08ac5f0>] (dump_backtrace+0x0/0x124) from [<c08ac8dc>] (show_stack+0x18/0x1c)
+[    2.521451] [c7]  r7:00000000 r6:c0c11abc r5:c35aa9a8 r4:ee96fd14
+[    2.521484] [c7] [<c08ac8c4>] (show_stack+0x0/0x1c) from [<c08b5094>] (dump_stack+0x24/0x2c)
+[    2.521499] [c7] [<c08b5070>] (dump_stack+0x0/0x2c) from [<c02ecb6c>] (of_get_named_gpio_flags+0xc8/0xe8)
+[    2.521517] [c7] [<c02ecaa4>] (of_get_named_gpio_flags+0x0/0xe8) from [<c03c5064>] (arizona_of_get_named_gpio+0x2c/0x68)
+[    2.521527] [c7]  r7:c2250a10 r6:c0c11abc r5:00000000 r4:c213b410
+[    2.521561] [c7] [<c03c5038>] (arizona_of_get_named_gpio+0x0/0x68) from [<c0616e88>] (arizona_extcon_probe+0xa14/0x1334)
+[    2.521575] [c7]  r7:c2250a10 r6:00000000 r5:c213b410 r4:ecff8010
+[    2.521607] [c7] [<c0616474>] (arizona_extcon_probe+0x0/0x1334) from [<c03958c4>] (platform_drv_probe+0x1c/0x20)
+[    2.521619] [c7] [<c03958a8>] (platform_drv_probe+0x0/0x20) from [<c0393f78>] (really_probe+0x13c/0x260)
+[    2.521631] [c7] [<c0393e3c>] (really_probe+0x0/0x260) from [<c03940fc>] (__device_attach+0x60/0x80)
+[    2.521639] [c7]  r6:c039409c r5:c120f180 r4:c2250a10
+[    2.521660] [c7] [<c039409c>] (__device_attach+0x0/0x80) from [<c03923f4>] (bus_for_each_drv+0x78/0xa8)
+[    2.521667] [c7]  r5:c2250a10 r4:00000000
+[    2.521685] [c7] [<c039237c>] (bus_for_each_drv+0x0/0xa8) from [<c0394460>] (device_attach+0x80/0x98)
+[    2.521692] [c7]  r7:00000000 r6:c2250a10 r5:c2250a10 r4:c2250a10
+[    2.521715] [c7] [<c03943e0>] (device_attach+0x0/0x98) from [<c0392648>] (bus_probe_device+0x8c/0xb4)
+[    2.521723] [c7]  r7:00000000 r6:c2250a10 r5:c1201ee0 r4:c2250a10
+[    2.521746] [c7] [<c03925bc>] (bus_probe_device+0x0/0xb4) from [<c0393974>] (deferred_probe_work_func+0x64/0x148)
+[    2.521754] [c7]  r7:00000000 r6:c122dde0 r5:c1201cf0 r4:c2250a10
+[    2.521778] [c7] [<c0393910>] (deferred_probe_work_func+0x0/0x148) from [<c0049c20>] (process_one_work+0x1b4/0x59c)
+[    2.521789] [c7] [<c0049a6c>] (process_one_work+0x0/0x59c) from [<c004a4dc>] (worker_thread+0x130/0x460)
+[    2.521802] [c7] [<c004a3ac>] (worker_thread+0x0/0x460) from [<c00515ec>] (kthread+0xb8/0xc4)
+[    2.521815] [c7] [<c0051534>] (kthread+0x0/0xc4) from [<c000edd8>] (ret_from_fork+0x14/0x3c)
+[    2.541576] [c0] florida-codec florida-codec: SET GAIN 0 step for 2147483647 ohms
+[redacted sensitive line]
+[    2.543080] [c0] arizona spi2.0: Spurious HPDET IRQ
+[    2.544216] [c4] input: Headset as /devices/12d40000.spi/spi_master/spi2/spi2.0/arizona-extcon/input/input13
+[    2.545155] [c6] mif: modem_probe: mif_pdata.30
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.545730] [c6] of_get_named_gpio_flags exited with status 161
+[    2.545750] [c6] of_get_named_gpio_flags exited with status 168
+[    2.545765] [c6] of_get_named_gpio_flags exited with status 17
+[    2.545781] [c6] of_get_named_gpio_flags exited with status 38
+[    2.545797] [c6] of_get_named_gpio_flags exited with status 31
+[    2.545809] [c6] of_get_named_gpio_flags exited with status 30
+[    2.545829] [c6] of_get_named_gpio_flags exited with status 163
+[    2.545901] [c6] wake enabled for irq 585
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.545973] [c6] usbcore: registered new interface driver cdc_modem
+[    2.546005] [c6] mif: if_init_rx_urb: Complete init_rx_urb(3, 4)
+[    2.546031] [c6] mif: if_init_rx_urb: Complete init_rx_urb(4, 4)
+[    2.546060] [c6] mif: if_init_rx_urb: Complete init_rx_urb(5, 4)
+[    2.546095] [c6] mif: if_init_rx_urb: Complete init_rx_urb(6, 4)
+[redacted sensitive line]
+[    2.546117] [c6] mif: if_usb_init: if_usb_init() done : 0, usb_ld (0xece13800)
+[redacted sensitive line]
+[    2.546136] [c6] mif: modem_probe: link created: usb
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.549720] [c7] mif: modem_probe: Complete!!!
+[    2.550237] [c7] of_get_named_gpio_flags exited with status 164
+[    2.550387] [c7] of_get_named_gpio_flags exited with status 18
+[    2.550540] [c7] of_get_named_gpio_flags exited with status 157
+[    2.550689] [c7] of_get_named_gpio_flags exited with status 160
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.551295] [c5] wake enabled for irq 587
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.551419] [c5] usb: init
+[    2.551565] [c5] usb: android_bind disconnect
+[    2.551647] [c5] file system registered
+[    2.553682] [c6] android_usb gadget: Mass Storage Function, version: 2009/09/11
+[redacted sensitive line]
+[    2.553703] [c6]  lun0: LUN: removable CD-ROM file: (no medium)
+[    2.554172] [c4] conn_gadget_function_init(#) call conn_gadget_setup
+[    2.554184] [c4] conn_gadget_setup
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.554511] [c4] android_usb gadget: android_usb ready
+[redacted sensitive line]
+[    2.554857] [c4] of_get_named_gpio_flags exited with status 5
+[    2.554867] [c4] of_get_usb_redriver_dt, can_diable_usb 1
+[    2.554878] [c4] usb_notify: registered otg_notify +
+[    2.555026] [c4] usb_notify: redriver en gpio 5 is registered.
+[    2.555042] [c4] usb_notify: registered otg_notify -
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.555077] [c4] usb_notifier usb_notifier.19: usb notifier probe
+[    2.555493] [c4] of_get_named_gpio_flags exited with status 26
+[    2.555513] [c4] of_get_named_gpio_flags exited with status 11
+[    2.555531] [c4] of_get_named_gpio_flags exited with status 10
+[    2.555547] [c4] of_get_named_gpio_flags exited with status 13
+[    2.555656] [c4] gpiod_set_debounce: gpio-26 status -22
+[    2.555806] [c4] gpiod_set_debounce: gpio-11 status -22
+[    2.555936] [c4] gpiod_set_debounce: gpio-10 status -22
+[    2.556084] [c4] gpiod_set_debounce: gpio-13 status -22
+[    2.556439] [c4] input: gpio_keys.16 as /devices/gpio_keys.16/input/input14
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.556563] input_booster_send_event: booster is not loaded
+[    2.556796] [c4] gpio-keys gpio_keys.16: POWER_KEY(116) , gpio_val(0)
+[    2.556808] gpio-keys gpio_keys.16: VOL_DOWN(114) , gpio_val(1)
+[    2.556818] gpio-keys gpio_keys.16: VOL_UP(115) , gpio_val(0)
+[    2.556828] gpio-keys gpio_keys.16: HOME_KEY(172) , gpio_val(1)
+[redacted sensitive line]
+[    2.557532] [c4] hall_init start
+[    2.557944] [c4] of_get_named_gpio_flags exited with status 9
+[    2.557966] [c4] of_hall_data_parsing_dt: get the wa property
+[    2.558170] [c5] init_hall_ic_irq : success
+[    2.558298] [c5] input: hall as /devices/hall.13/input/input15
+[redacted sensitive line]
+[    2.560079] [c5] s2m-rtc s2m-rtc: setting system clock to 2026-09-27 17:53:43 UTC (1790531623)
+[    2.560095] [c5] Driver for 1-wire Dallas network protocol.
+[    2.560193] [c5] w1_init: Register pm notifier
+[    2.560496] [c5] w1_gpio_probe : start
+[    2.560529] [c5] of_get_named_gpio_flags exited with status 204
+[    2.560672] [c5] input: w1 as /devices/w1_gpio_exynos.14/input/input16
+[redacted sensitive line]
+[    2.561103] [c6] w1_add_master_device : W1 kthread will start
+[    2.561436] [c7] parse_dt_array: fail to get
+[    2.561640] [c7] [IPA] control_temp : 50
+[    2.561650] [c7] [IPA] temp_threshold : 10
+[    2.561659] [c7] [IPA] enabled : 1
+[    2.561668] [c7] [IPA] tdp : 3500
+[    2.561676] [c7] [IPA] boost : 1
+[    2.561684] [c7] [IPA] ros_power : 500
+[    2.561693] [c7] [IPA] a7_weight : 1024
+[    2.561701] [c7] [IPA] a15_weight : 256
+[    2.561709] [c7] [IPA] gpu_weight : 256
+[    2.561717] [c7] [IPA] a7_max_power : 1000
+[    2.561725] [c7] [IPA] a15_max_power : 6552
+[    2.561734] [c7] [IPA] gpu_max_power : 3110
+[    2.561742] [c7] [IPA] hotplug_in_threshold : 0
+[    2.561750] [c7] [IPA] hotplug_out_threshold : 10
+[    2.561759] [c7] [IPA] enable_ctlr : 1
+[    2.561767] [c7] [IPA] ctlr.mult : 2
+[    2.561775] [c7] [IPA] ctlr.k_i : 1
+[    2.561784] [c7] [IPA] ctlr.k_d : 0
+[    2.561792] [c7] [IPA] ctlr.feed_forward : 1
+[    2.561801] [c7] [IPA] ctlr.integral_reset_value : 0
+[    2.561809] [c7] [IPA] ctlr.integral_cutoff : 0
+[    2.561818] [c7] [IPA] ctlr.integral_reset_threshold : 5
+[    2.561827] [c7] Deferring initialisation...
+[redacted sensitive line]
+[    2.586079] [c7] MIF 825000Khz ASV is 925000uV
+[    2.586100] [c7] DEVFREQ(MIF) : 825000Khz, ABB 14
+[    2.586109] [c7] MIF 728000Khz ASV is 875000uV
+[    2.586118] [c7] DEVFREQ(MIF) : 728000Khz, ABB 14
+[    2.586126] [c7] MIF 633000Khz ASV is 837500uV
+[    2.586135] [c7] DEVFREQ(MIF) : 633000Khz, ABB 14
+[    2.586142] [c7] MIF 543000Khz ASV is 812500uV
+[    2.586151] [c7] DEVFREQ(MIF) : 543000Khz, ABB 14
+[    2.586159] [c7] MIF 413000Khz ASV is 762500uV
+[    2.586167] [c7] DEVFREQ(MIF) : 413000Khz, ABB 14
+[    2.586175] [c7] MIF 275000Khz ASV is 737500uV
+[    2.586184] [c7] DEVFREQ(MIF) : 275000Khz, ABB 14
+[    2.586191] [c7] MIF 206000Khz ASV is 737500uV
+[    2.586200] [c7] DEVFREQ(MIF) : 206000Khz, ABB 14
+[    2.586208] [c7] MIF 165000Khz ASV is 737500uV
+[    2.586216] [c7] DEVFREQ(MIF) : 165000Khz, ABB 14
+[    2.586224] [c7] MIF 138000Khz ASV is 737500uV
+[    2.586232] [c7] DEVFREQ(MIF) : 138000Khz, ABB 14
+[    2.587276] [c7] MIF: set ASV freq 825000, voltage 925000
+[    2.587908] [c7] INT 600000Khz ASV is 937500uV
+[    2.587926] [c7] DEVFREQ(INT) : 600000Khz, ABB 255
+[    2.587935] [c7] INT 500000Khz ASV is 925000uV
+[    2.587945] [c7] DEVFREQ(INT) : 500000Khz, ABB 255
+[    2.587953] [c7] INT 480000Khz ASV is 925000uV
+[    2.587965] [c7] DEVFREQ(INT) : 480000Khz, ABB 255
+[    2.587977] [c7] INT 460000Khz ASV is 925000uV
+[    2.587989] [c7] DEVFREQ(INT) : 460000Khz, ABB 255
+[    2.587998] [c7] INT 440000Khz ASV is 925000uV
+[    2.588008] [c7] DEVFREQ(INT) : 440000Khz, ABB 255
+[    2.588018] [c7] INT 420000Khz ASV is 925000uV
+[    2.588035] [c7] DEVFREQ(INT) : 420000Khz, ABB 255
+[    2.588046] [c7] INT 400000Khz ASV is 887500uV
+[    2.588056] [c7] DEVFREQ(INT) : 400000Khz, ABB 255
+[    2.588063] [c7] INT 333000Khz ASV is 862500uV
+[    2.588072] [c7] DEVFREQ(INT) : 333000Khz, ABB 255
+[    2.588080] [c7] INT 222000Khz ASV is 850000uV
+[    2.588088] [c7] DEVFREQ(INT) : 222000Khz, ABB 255
+[    2.588096] [c7] INT 111000Khz ASV is 850000uV
+[    2.588104] [c7] DEVFREQ(INT) : 111000Khz, ABB 14
+[    2.588112] [c7] INT 83000Khz ASV is 850000uV
+[    2.588120] [c7] DEVFREQ(INT) : 83000Khz, ABB 14
+[    2.591222] [c7] DEVFREQ(ISP) : 666000Khz, 962500V
+[    2.591234] [c7] DEVFREQ(ISP) : 555000Khz, 962500V
+[    2.591243] [c7] DEVFREQ(ISP) : 444000Khz, 962500V
+[    2.591253] [c7] DEVFREQ(ISP) : 333000Khz, 912500V
+[    2.591262] [c7] DEVFREQ(ISP) : 222000Khz, 912500V
+[    2.591271] [c7] DEVFREQ(ISP) : 111000Khz, 912500V
+[    2.591279] [c7] DEVFREQ(ISP) : 100000Khz, 912500V
+[    2.592661] [c7] sec_bat_parse_dt : chg_temp_check is Empty
+[    2.592675] [c7] sec_bat_parse_dt : inbat_voltage is Empty
+[redacted sensitive line]
+[    2.592936] [c7] sec_bat_parse_dt: swelling high temp block is Empty
+[    2.592948] [c7] sec_bat_parse_dt: swelling high temp recovery is Empty
+[    2.592960] [c7] sec_bat_parse_dt: swelling low temp block is Empty
+[    2.592972] [c7] sec_bat_parse_dt: swelling low temp recovery is Empty
+[    2.592984] [c7] sec_bat_parse_dt: swelling low temp chg current is Empty
+[    2.592996] [c7] sec_bat_parse_dt: swelling topoff current is Empty
+[    2.593007] [c7] sec_bat_parse_dt: swelling drop float voltage is Empty
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.593053] [c7] sec_bat_parse_dt : SWELLING -- NORMAL_VOLT(4400) DROP_VOLT(4200) HIGH_TEMP(500) HIGH_TEMP_RECOVERY(450) LOW_TEMP(50) LOW_TEMP_RECOVERY(100) CHG_CURRENT(1400) BLOCK_TIME(600)HIGH_RECHG_VOLT(4150) LOW_RECHG_VOLT(4050)
+[    2.593071] [c7] sec_bat_parse_dt: vendor : SDI SDI, technology : 2, cable_check_type : 4
+[    2.593071] cable_source_type : 1, event_waiting_time : 600
+[    2.593071] polling_type : 1, initial_count : 0, check_count : 0
+[    2.593071] check_adc_max : 1440, check_adc_min : 0
+[    2.593071] ovp_uvlo_check_type : 3, thermal_source : 2
+[    2.593071] temp_check_type : 2, temp_check_count : 1
+[    2.593071] temp_high_threshold_even : 580, temp_high_recovery_event : 530
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.594942] [c7] ice40lm_probe probe!
+[    2.594976] [c7] of_get_named_gpio_flags exited with status 169
+[    2.594997] [c7] of_get_named_gpio_flags exited with status 151
+[    2.595016] [c7] of_get_named_gpio_flags exited with status 12
+[    2.595044] [c7] of_get_named_gpio_flags exited with status 198
+[    2.595067] [c7] of_get_named_gpio_flags exited with status 221
+[    2.595091] [c7] of_get_named_gpio_flags exited with status 0
+[    2.595104] [c7] of_ice40lm_dt: clk_out
+[    2.595132] [c7] of_ice40lm_dt: ice40lm will use LDO
+[    2.595148] [c7] of_get_named_gpio_flags exited with status 109
+[    2.595209] [c7] ice4_check_cdone : CDONE_FAIL 0
+[    2.595219] [c7] FPGA FW is NOT loaded!
+[    2.595526] [c5] probe complete ice40lm_probe
+[    2.595837] [c5] PM DOMAIN: Power off unused power domains.
+[    2.595907] [c5] ALSA device list:
+[    2.595918] [c5]   #0: Pacific WM5110 Sound
+[    2.596306] [c5] Warning: unable to open an initial console.
+[    2.596329] [c5] kernel_init: GPIO DVS: check init gpio
+[    2.602560] [c4] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    2.602720] [c4] max77804_get_input_current: CHG_CNFG_09(0x14)
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.607264] [c4] sec-fuelgauge 7-0036: sec_fg_get_scaled_capacity: scaled capacity (99.0)
+[redacted sensitive line]
+[redacted sensitive line]
+[    2.607596] [c4] max77804_get_float_voltage: battery cv voltage 0x1f
+[    2.607606] [c4] sec_bat_swelling_check: status(2), swell_mode(0:0), cv(0x1f), temp(276)
+[    2.607615] [c4] sec_bat_swelling_check: DISCHARGING or NOT-CHARGING. stop swelling mode
+[redacted sensitive line]
+[    2.614239] [c5] ice40: fw_update
+[    2.614256] [c5] ice40: fw_update_start
+[    2.615502] [c5] ice4_check_cdone : CDONE_FAIL 0
+[    2.671525] [c4] syslogd started: BusyBox v1.38.0
+[    2.674066] [c7] [pmOS-rd]:   ❬❬ PMOS STAGE 1 ❭❭
+[    2.674093] [c7] [pmOS-rd]: initramfs version: 3.12.3-r3
+[    2.674172] [c7] [pmOS-rd]:   ❬❬ PMOS STAGE 2 ❭❭
+[    2.692039] [c5] udevd[2218]: starting version 3.2.14
+[    2.697929] [c4] udevd[2221]: starting eudev-3.2.14
+[    2.707341] [c6] EXT4-fs (mmcblk0p19): mounted filesystem with ordered data mode. Opts: (null)
+[    2.885658] [c5] max77804_get_charger_state: CHG_DTLS : 0x 8
+[    2.885846] [c5] max77804_get_health_state: reg_data(0x3)
+[    2.886040] [c5] max77804_get_vbus_state: VBUS is invalid. CHGIN < CHGIN_UVLO
+[    2.886365] [c5] max77804_get_health_state: vbus_state : 0x0, chg_dtls : 0x8
+[    2.886379] [c5] max77804_get_health_state: vbus is under
+[    2.886711] [c5] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    2.886733] [c5] power_supply sec-charger: driver failed to report `charge_otg_control' property: -22
+[    2.908607] [c6] synaptics_rmi4_i2c 8-0020: synaptics_power_ctrl: on
+[    2.926327] [c5] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    2.926521] [c5] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    2.931056] [c5] sec-fuelgauge 7-0036: sec_fg_get_scaled_capacity: scaled capacity (99.0)
+[    3.015032] [c3] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f12_set_feature: [0x00], Set All disabled
+[    3.015255] [c3] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f12_obj_report_enable: [0x07], Glove mode disabled
+[    3.015970] [c2] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f51_set_init: General control[0x64],2[0x20] Hsync is GD
+[    3.016162] [c2] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f51_set_proximity_enables: [0x82], Hover is disabled
+[    3.016360] [c0] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_reinit_device: Interrupt enable mask register[0] = 0x24
+[    3.049573] [c3] synaptics_rmi4_i2c 8-0020: synaptics_power_ctrl: off
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.059660] [c7] get_power_value: freq: 1400000 for cluster: 0 is greater than max. freq: 1300000
+[redacted sensitive line]
+[    3.059679] [c7] get_power_value: freq: 1500000 for cluster: 0 is greater than max. freq: 1300000
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.059814] [c7] get_power_value: freq: 2000000 for cluster: 1 is greater than max. freq: 1900000
+[redacted sensitive line]
+[    3.059838] [c7] Intelligent Power Allocation initialised.
+[redacted sensitive line]
+[    3.148743] [c5] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    3.148923] [c5] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    3.152370] [c5] sec-fuelgauge 7-0036: sec_fg_get_scaled_capacity: scaled capacity (99.0)
+[    3.159872] [c6] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    3.160057] [c6] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    3.163624] [c6] sec-fuelgauge 7-0036: sec_fg_get_scaled_capacity: scaled capacity (99.0)
+[    3.171082] [c6] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    3.171258] [c6] max77804_get_input_current: CHG_CNFG_09(0x14)
+[    3.175228] [c6] sec-fuelgauge 7-0036: sec_fg_get_scaled_capacity: scaled capacity (99.0)
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.551097] [c6] android_usb: already disabled
+[redacted sensitive line]
+[    3.551414] 
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.551537] [c6] usb: enable_store f:ncm
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.551569] [c6] usb: enable_store next cmd : usb_add_config
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.551639] [c6] android_usb gadget: using random self ethernet address
+[    3.551649] [c6] usb: set unique host mac
+[    3.552324] [c6] ncm0: MAC 1a:54:fa:d7:d6:59
+[    3.552340] [c6] ncm0: HOST MAC 02:64:66:07:56:03
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.558057] [c5] [pmOS-rd]:   Setting up USB gadget through configfs
+[    3.563188] [c2] [pmOS-rd]: mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/ncm.usb0': Function not implemented
+[    3.564814] [c2] [pmOS-rd]: mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/rndis.usb0': Function not implemented
+[redacted sensitive line]
+[    3.570113] [c6] dwc3 12000000.dwc3: request ecc37a00 was not queued to ep0out
+[redacted sensitive line]
+[    3.570135] [c6] usb: unbind_config, 
+[redacted sensitive line]
+[    3.570277] [c6] [pmOS-rd]:   Couldn't symlink ncm.usb0
+[    3.570310] [c6] [pmOS-rd]: INFO: android_usb owns the controller, asking it for a serial function
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.606998] 
+[redacted sensitive line]
+[    3.607078] [c2] [pmOS-rd]: INFO: android_usb was set to: [ncm]
+[redacted sensitive line]
+[    3.607242] [c6] usb: enable_store f:acm
+[redacted sensitive line]
+[    3.607265] [c4] [pmOS-rd]: INFO: asked android_usb for the acm function
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.607301] [c6] usb: enable_store next cmd : usb_add_config
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.607369] [c6] DUN is registerd
+[redacted sensitive line]
+[redacted sensitive line]
+[    3.610207] [c5] [pmOS-rd]: INFO: android_usb is now: [acm]
+[    3.613940] [c6] [pmOS-rd]: INFO: controllers available: [12000000.dwc3 12400000.dwc3 ]
+[    3.621365] [c6] [pmOS-rd]: ash: write error: Resource busy
+[    3.621403] [c6] [pmOS-rd]:   Couldn't write new UDC
+[    3.634178] [c6] keys:flip_cover_work #1 : 1
+[    3.664857] [c5] [pmOS-rd]:   Could not find an interface to run a dhcp server on
+[    3.664893] [c5] [pmOS-rd]:   Interfaces:
+[    3.667040] [c0] [pmOS-rd]: 1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN 
+[    3.667434] [c3] [pmOS-rd]:     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+[    3.667466] [c3] [pmOS-rd]: 2: sit0: <NOARP> mtu 1480 qdisc noop state DOWN 
+[    3.667620] [c4] [pmOS-rd]:     link/sit 0.0.0.0 brd 0.0.0.0
+[    3.667643] [c4] [pmOS-rd]: 3: ip6tnl0: <NOARP> mtu 1452 qdisc noop state DOWN 
+[    3.667668] [c4] [pmOS-rd]:     link/tunnel6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+[    3.667687] [c4] [pmOS-rd]: 4: rmnet0: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+[    3.667703] [c4] [pmOS-rd]:     link/ppp 
+[    3.667720] [c4] [pmOS-rd]: 5: rmnet1: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+[    3.667737] [c4] [pmOS-rd]:     link/ppp 
+[    3.667753] [c4] [pmOS-rd]: 6: rmnet2: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+[    3.667770] [c4] [pmOS-rd]:     link/ppp 
+[    3.667786] [c4] [pmOS-rd]: 7: rmnet3: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+[    3.667803] [c4] [pmOS-rd]:     link/ppp 
+[    3.852225] [c7] ice40lm firmware update success
+[    4.174170] [c4] keys:flip_cover_work #1 : 1
+[    4.589313] [c4] synaptics_rmi4_i2c 8-0020: synaptics_power_ctrl: on
+[    4.694669] [c4] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f12_set_feature: [0x00], Set All disabled
+[    4.694866] [c4] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f12_obj_report_enable: [0x07], Glove mode disabled
+[    4.695690] [c4] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f51_set_init: General control[0x64],2[0x20] Hsync is GD
+[    4.695887] [c4] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_f51_set_proximity_enables: [0x82], Hover is disabled
+[    4.696085] [c4] synaptics_rmi4_i2c 8-0020: synaptics_rmi4_reinit_device: Interrupt enable mask register[0] = 0x24
+[    4.729312] [c4] synaptics_rmi4_i2c 8-0020: synaptics_power_ctrl: off
+[    5.014270] [c4] max77804_chgin_init_work 
+[redacted sensitive line]
+[    5.459220] [c7] keys:flip_cover_work #1 : 1
+[    5.680867] [c4] [pmOS-rd]: Trying to mount subpartitions for 10 seconds...
+[redacted sensitive line]
+[    5.734204] [c7] sii8240: muic event: 0, att_dev: 0
+[    6.423605] [c4] [pmOS-rd]: Mount subpartitions of /dev/mmcblk0p21
+[    6.443305] [c7] bio: create slab <bio-1> at 1
+[    6.447650] [c6] udevd[3163]: conflicting device node '/dev/mapper/mmcblk0p21p1' found, link to '/dev/dm-0' will not be created
+[    6.492994] [c5] udevd[3163]: conflicting device node '/dev/mapper/mmcblk0p21p2' found, link to '/dev/dm-1' will not be created
+[redacted sensitive line]
+[    6.946112] [c5] [pmOS-rd]: Unable to resize root partition: failed to find qualifying partition
+[    6.952289] [c6] [pmOS-rd]: Auto-repair and check 'ext' filesystem (/dev/mapper/mmcblk0p21p2)
+[    6.959233] [c6] [pmOS-rd]: pmOS_root: recovering journal
+[    6.998058] [c6] [pmOS-rd]: pmOS_root: clean, 2458/761856 files, 85611/3043328 blocks
+[    7.022875] [c5] [pmOS-rd]: Resize 'ext4' root filesystem (/dev/mapper/mmcblk0p21p2)
+[    7.026992] [c7] [pmOS-rd]: modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+[    7.029060] [c7] [pmOS-rd]: resize2fs 1.47.4 (6-Mar-2025)
+[    7.045022] [c7] [pmOS-rd]: Please run 'e2fsck -f /dev/mapper/mmcblk0p21p2' first.
+[    7.045051] [c7] [pmOS-rd]: Mount root partition (/dev/mapper/mmcblk0p21p2) to /sysroot (read-write) with options 
+[    7.045070] [c7] [pmOS-rd]: modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+[    7.046183] [c6] EXT4-fs (dm-1): mounted filesystem with ordered data mode. Opts: (null)
+[redacted sensitive line]
+[redacted sensitive line]
+[    7.098037] [c4] [pmOS-rd]: INFO: android_usb functions: [acm]
+[redacted sensitive line]
+[redacted sensitive line]
+[    7.112150] [c5] [pmOS-rd]: INFO: android_usb enable: [1]
+[    7.112174] [c5] [pmOS-rd]: INFO: serial ports present: /dev/ttyGS0 /dev/ttyGS1 /dev/ttyGS2 /dev/ttyGS3 
+[    7.112190] [c5] [pmOS-rd]: INFO: those exist on every boot and do not mean a host can see them
+[    7.112205] [c5] [pmOS-rd]: INFO: controllers available: [12000000.dwc3 12400000.dwc3 ]
+[redacted sensitive line]
+[    7.112452] [c5] [pmOS-rd]: INFO: the existing ttyGS0 line: ttyGS0::respawn:/sbin/getty -L ttyGS0 vt100
+[    7.113196] [c5] [pmOS-rd]: INFO: the existing entry's /sbin/getty exists at /sysroot/sbin/getty
+[    7.124010] [c5] [pmOS-rd]: Auto-repair and check 'ext' filesystem (/dev/mapper/mmcblk0p21p1)
+[    7.145585] [c5] [pmOS-rd]: pmOS_boot was not cleanly unmounted, check forced.
+[    7.392260] [c5] [pmOS-rd]: pmOS_boot: 15/62248 files (6.7% non-contiguous), 44156/248832 blocks
+[    7.423142] [c5] [pmOS-rd]: Mount boot partition (/dev/mapper/mmcblk0p21p1) to /sysroot/boot (read-write)
+[    7.447930] [c5] [pmOS-rd]: modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+[    7.457814] [c4] [pmOS-rd]: Switching root

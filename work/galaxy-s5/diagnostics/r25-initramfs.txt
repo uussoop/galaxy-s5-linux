@@ -1,0 +1,160 @@
+tee: /dev/: Is a directory
+  ❬❬ PMOS STAGE 1 ❭❭
+initramfs version: 3.12.3-r3
+  ❬❬ PMOS STAGE 2 ❭❭
+  Setting up USB gadget through configfs
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/ncm.usb0': Function not implemented
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/rndis.usb0': Function not implemented
+ln: /sys/kernel/config/usb_gadget/g1/configs/c.1/ncm.usb0: No such file or directory
+  Couldn't symlink ncm.usb0
+INFO: android_usb owns the controller, asking it for a serial function
+INFO: android_usb was set to: [ncm]
+INFO: asked android_usb for the acm function
+INFO: android_usb is now: [acm]
+INFO: controllers available: [12000000.dwc3 12400000.dwc3 ]
+ash: write error: Resource busy
+  Couldn't write new UDC
+  Could not find an interface to run a dhcp server on
+  Interfaces:
+1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: sit0: <NOARP> mtu 1480 qdisc noop state DOWN 
+    link/sit 0.0.0.0 brd 0.0.0.0
+3: ip6tnl0: <NOARP> mtu 1452 qdisc noop state DOWN 
+    link/tunnel6 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 brd 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+4: rmnet0: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ppp 
+5: rmnet1: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ppp 
+6: rmnet2: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ppp 
+7: rmnet3: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ppp 
+Trying to mount subpartitions for 10 seconds...
+Mount subpartitions of /dev/mmcblk0p21
+Mounted subpartitions of /dev/mmcblk0p21 with device-mapper: /dev/mapper/mmcblk0p21p1 /dev/mapper/mmcblk0p21p2
+Unable to resize root partition: failed to find qualifying partition
+Auto-repair and check 'ext' filesystem (/dev/mapper/mmcblk0p21p2)
+pmOS_root: recovering journal
+pmOS_root: clean, 2461/761856 files, 85641/3043328 blocks
+Resize 'ext4' root filesystem (/dev/mapper/mmcblk0p21p2)
+modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+resize2fs 1.47.4 (6-Mar-2025)
+Please run 'e2fsck -f /dev/mapper/mmcblk0p21p2' first.
+
+Mount root partition (/dev/mapper/mmcblk0p21p2) to /sysroot (read-write) with options 
+modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+INFO: android_usb functions: [acm]
+INFO: android_usb enable: [1]
+INFO: serial ports present: /dev/ttyGS0 /dev/ttyGS1 /dev/ttyGS2 /dev/ttyGS3 
+INFO: those exist on every boot and do not mean a host can see them
+INFO: controllers available: [12000000.dwc3 12400000.dwc3 ]
+INFO: /sysroot/etc/inittab already has a ttyGS0 entry, leaving it untouched
+INFO: the existing ttyGS0 line: ttyGS0::respawn:/sbin/getty -L ttyGS0 vt100
+INFO: the existing entry's /sbin/getty exists at /sysroot/sbin/getty
+Auto-repair and check 'ext' filesystem (/dev/mapper/mmcblk0p21p1)
+pmOS_boot was not cleanly unmounted, check forced.
+pmOS_boot: 15/62248 files (6.7% non-contiguous), 44156/248832 blocks
+Mount boot partition (/dev/mapper/mmcblk0p21p1) to /sysroot/boot (read-write)
+modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+INFO: installed the USB keeper at /sysroot/usr/sbin/s5usbkeep
+INFO: the inittab entry already exists, leaving it alone
+INFO: verify: -rwxr-xr-x    1 0        501           8026 Sep 28 08:54 /sysroot/usr/sbin/s5usbkeep
+INFO: verify: 51603fd253194619c9a8ab9cef1bfb4b  /sbin/s5usbkeep 51603fd253194619c9a8ab9cef1bfb4b  /sysroot/usr/sbin/s5usbkeep 
+INFO: verify: inittab tail: s5usbkeep::respawn:/usr/sbin/s5usbkeep|s5usbconsole::respawn:/bin/sh -i|
+INFO: verify: the keeper parses as shell
+INFO: verify: the inittab line is present and exact
+INFO: the keeper holds android_usb on acm and logs to CACHE, /var/log and kmsg
+INFO: to remove it later: sed -i '/s5usbkeep/d' /etc/inittab; rm -f /usr/sbin/s5usbkeep
+INFO: a login-free shell is already in the inittab, 1 entry(ies)
+INFO: to remove it later: sed -i '/s5usbconsole/d' /etc/inittab
+INFO: /etc/shadow.s5bak already exists, shadow was blanked on an earlier boot
+INFO: to restore it later: mv /etc/shadow.s5bak /etc/shadow
+INFO: CACHE mounted at /mnt/s5r25, originals go to /mnt/s5r25/codex-s5-diagnostics/r25
+=== r25: /etc/init.d ===
+acpid
+avahi-daemon
+avahi-dnsconfd
+binfmt
+bootmisc
+btrfs-scan
+cgroups
+consolefont
+crond
+dbus
+deferred-initcalls
+devfs
+dmcrypt
+dmesg
+firstboot
+fsck
+functions.sh
+hostname
+hwclock
+hwdrivers
+killprocs
+klogd
+loadkmap
+local
+localmount
+logbookd
+loopback
+machine-id
+mdev
+modloop
+modules
+mount-ro
+msm-fb-refresher
+mtab
+net-online
+netmount
+networking
+ntpd
+numlock
+osclock
+postmarketos-zram-swap
+procfs
+rdate
+root
+runsvdir
+s5-usb-ncm
+s5-usb-ncm.s5bak
+s5-wifi
+s5-wifi-init
+s6-svscan
+save-keymaps
+save-termencoding
+savecache
+seedrng
+sshd
+staticroute
+swap
+swapfile
+swclock
+sysctl
+sysfs
+sysfsconf
+syslog
+systemd-sysusers
+systemd-tmpfiles-clean
+systemd-tmpfiles-setup
+systemd-tmpfiles-setup-dev
+systemd-tmpfiles-setup-dev-early
+termencoding
+tmpfs
+udev
+udev-postmount
+udev-settle
+udev-trigger
+unudhcpd
+unudhcpd.ncm0
+unudhcpd.usb0
+user
+watchdog
+wpa_cli
+[redacted sensitive line]
+
+=== r25: BEGIN /etc/init.d/s5-usb-ncm ===
+#!/sbin/openrc-run
+# Replaced by r25. This service switched the USB gadget to ncm about 2 min 52 s
+# into every boot, which is what took t

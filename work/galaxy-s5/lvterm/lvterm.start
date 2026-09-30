@@ -1,0 +1,121 @@
+#!/bin/sh
+# Bring the on-screen terminal up on its own after a boot.
+#
+# OpenRC runs this from the "local" service, which sits last in the default
+# runlevel and declares "after *", so by the time it gets here the console
+# login is already up on the framebuffer and lvterm takes it over cleanly
+# rather than fighting the kernel console for /dev/fb0.
+#
+# It is the whole of the persistence involved: one executable file, no
+# runlevel change (local was already enabled), nothing to uninstall beyond
+# deleting this file. Remove it and the phone boots to the console login
+# exactly as it did before.
+#
+# The guard matters because two lvterms on one framebuffer is a flickering
+# mess: if one is already running (a manual start, or a previous autostart
+# that has not exited) leave it alone.
+#
+# The environment below is not decoration. This script is eval'd by OpenRC, so
+# it inherits the *service* environment: PWD=/, no HOME, no USER, no LOGNAME,
+# and a PATH pointing at /usr/libexec/rc. lvterm's pty child inherits whatever
+# it has and execs /bin/sh without -l, so nothing sources /etc/profile. The
+# result is busybox's built-in fallback prompt with nothing to fill it in:
+#
+#     / #
+#
+# which is a working shell reached by typing commands at a stranger, not the
+# console login this terminal is standing in for. When lvterm was started by
+# hand from an ssh session it looked right for a reason that had nothing to do
+# with the binary: it inherited that session's environment. So hand it the
+# environment a console login would give, and nothing more.
+#
+# HOME stays /root because the shell really is root - it is spawned by a root
+# process and has no business pretending otherwise. What changes is the working
+# directory, which is what the prompt shows, and the PATH.
+
+BIN=/usr/local/sbin/lvterm
+LOG=/var/log/lvterm.log
+
+[ -x "$BIN" ] || exit 0
+
+# The environment is fixed up inside a subshell, not here, and that is not
+# tidiness. This script is eval'd by /etc/init.d/local, so it runs *inside* the
+# service's own shell: anything unset here stays unset for the local service
+# itself, which needs RC_SVCNAME and its siblings to finish its own bookkeeping.
+# Doing it in a subshell keeps the fix local to the process being started.
+#
+# What gets dropped, and why it exists at all: OpenRC's own RC_* and EINFO_*
+# bookkeeping vars, plus SVCNAME, describe the service framework and mean
+# nothing to a shell. SUDO_* appears only when this script is run by hand under
+# sudo, and dropping those keeps a hand start identical to a boot start - a
+# console login has neither set.
+launch() (
+    unset RC_BOOTLEVEL RC_CACHEDIR RC_CMD RC_DEFAULTLEVEL RC_LIBEXECDIR \
+          RC_OPENRC_PID RC_PID RC_RUNLEVEL RC_RUNSCRIPT_PID RC_SERVICE \
+          RC_SVCDIR RC_SVCNAME RC_TMPDIR RC_UNAME RC_VERSION \
+          EINFO_INDENT EINFO_LASTCMD EINFO_LOG \
+          SVCNAME \
+          SUDO_USER SUDO_UID SUDO_GID SUDO_HOME SUDO_COMMAND
+
+    cd /home/user || exit 0
+
+    # HOME stays /root because the shell really is root: it is forked by a root
+    # process and has no business pretending otherwise. What changes is the
+    # working directory, which is what the prompt shows, and the PATH.
+    HOME=/root
+    USER=root
+    LOGNAME=root
+    SHELL=/bin/sh
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    TERM=xterm-256color
+    export HOME USER LOGNAME SHELL PATH TERM
+
+    exec "$BIN" >"$LOG" 2>&1
+)
+
+# The framebuffer node is created by the driver, so it exists long before the
+# last service starts; the wait is only there so a slow probe cannot make the
+# autostart a silent no-op. Bounded, and the screen is the console login's if
+# it ever runs out.
+tries=5
+while [ ! -c /dev/fb0 ] && [ "$tries" -gt 0 ]; do
+    tries=$((tries - 1))
+    sleep 1
+done
+[ -c /dev/fb0 ] || exit 0
+
+# A live lvterm holds /dev/fb0, so starting a second one beside it is a
+# flickering mess: leave it alone. A *dying* one still holds it too, and
+# kill-then-restart is a normal thing to want, so wait a bounded moment for it
+# to let go rather than declining and leaving the console login up. At boot
+# there is nothing to wait for and this costs one pgrep.
+tries=5
+while pgrep -x lvterm >/dev/null 2>&1 && [ "$tries" -gt 0 ]; do
+    tries=$((tries - 1))
+    sleep 1
+done
+pgrep -x lvterm >/dev/null 2>&1 && exit 0
+
+launch &
+
+# Two seconds is enough for lvterm to open the framebuffer or die, and knowing
+# which happened is the difference between "it came up" and a mystery.
+#
+# This goes in its own file, not appended to $LOG. The obvious `>> "$LOG"` is a
+# trap: lvterm holds that log open on its own file offset, and two writers with
+# different offsets means the next line lvterm writes lands before this one and
+# overwrites it. The marker then survives or vanishes depending on timing, which
+# is worse than not having it - a check that is usually right teaches you to
+# trust a thing that is not always true. Separate file, separate writer, no
+# race. The local service discards this script's own stdout, so the log is the
+# only place a person will look.
+sleep 2
+if pgrep -x lvterm >/dev/null 2>&1; then
+    echo "$(date '+%Y-%m-%d %H:%M:%S') autostart: lvterm running (pid $(pgrep -x lvterm))" \
+        >>/var/log/lvterm.autostart
+else
+    echo "$(date '+%Y-%m-%d %H:%M:%S') autostart: lvterm did not start, see $LOG" \
+        >>/var/log/lvterm.autostart
+fi
+
+exit 0

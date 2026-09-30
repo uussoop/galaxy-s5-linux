@@ -1,0 +1,53 @@
+tee: /dev/: Is a directory
+  ❬❬ PMOS STAGE 1 ❭❭
+initramfs version: 3.12.3-r3
+  ❬❬ PMOS STAGE 2 ❭❭
+  Setting up USB gadget through configfs
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/ncm.usb0': Function not implemented
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/rndis.usb0': Function not implemented
+[redacted sensitive line]
+  Couldn't symlink ncm.usb0
+ash: write error: Resource busy
+  Couldn't write new UDC
+Trying to start server with parameters: Server IP addr: 172.16.42.1:67, client IP addr: 172.16.42.2, interface: ncm0
+Creating logs disk
+32+0 records in
+32+0 records out
+33554432 bytes (32.0MB) copied, 0.057334 seconds, 558.1MB/s
+modprobe: FATAL: Module vfat not found in directory /lib/modules/3.10.9-LineageOS
+./_info
+./blkid.txt
+./cmdline.txt
+./dmesg.txt
+./partitions.txt
+./pmOS_init.txt
+Making logs available via mass storage
+  Setting up USB gadget through configfs
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1': File exists
+  Couldn't create /sys/kernel/config/usb_gadget/g1
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/strings/0x409': File exists
+  Couldn't create /sys/kernel/config/usb_gadget/g1/strings/0x409
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/ncm.usb0': Function not implemented
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/rndis.usb0': Function not implemented
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/configs/c.1': File exists
+  Couldn't create /sys/kernel/config/usb_gadget/g1/configs/c.1
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/configs/c.1/strings/0x409': File exists
+  Couldn't create /sys/kernel/config/usb_gadget/g1/configs/c.1/strings/0x409
+[redacted sensitive line]
+  Couldn't symlink ncm.usb0
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/mass_storage.0': Function not implemented
+  Couldn't create /sys/kernel/config/usb_gadget/g1/functions/mass_storage.0
+/init_2nd.sh: line 1299: can't create /sys/kernel/config/usb_gadget/g1/functions/mass_storage.0/lun.0/file: nonexistent directory
+[redacted sensitive line]
+  Couldn't symlink mass_storage.0
+ash: write error: Resource busy
+  Couldn't write new UDC
+Entering debug shell
+/usr/bin/buffyboard
+modprobe: FATAL: Module uinput not found in directory /lib/modules/3.10.9-LineageOS
+Ignoring invalid config file /usr/share/buffyboard/buffyboard.conf
+Ignoring invalid config file /etc/buffyboard.conf
+ash: write error: Resource busy
+  Couldn't write new UDC
+ioctl(FBIOBLANK): Resource busy
+Could not set up uinput device

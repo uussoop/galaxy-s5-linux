@@ -1,0 +1,13 @@
+#!/bin/sh
+phase=$1
+case "$phase:$#" in
+    sysinit:1|boot:1|default:1) ;;
+    *) exec /sbin/openrc "$@" ;;
+esac
+umask 077
+logdir=/var/log/s5-boot-diagnostics
+if { [ -d "$logdir" ] || mkdir -m 700 "$logdir"; } 2>/dev/null &&
+   [ -w "$logdir" ] && ( : >> "$logdir/$phase.log" ) 2>/dev/null; then
+    exec /sbin/openrc "$phase" >> "$logdir/$phase.log" 2>&1
+fi
+exec /sbin/openrc "$phase"

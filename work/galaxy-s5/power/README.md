@@ -1,0 +1,5 @@
+# Charge-limit service draft
+
+`s5-charge-limit` is a draft OpenRC service, not installed or enabled in the native image. Deploy it only after live native Linux testing confirms that the battery charges normally, the `store_mode` node exists, writing `1` succeeds, and the kernel's stop/resume behavior is observed at healthy charge levels.
+
+The reviewed kernel implements store mode as charge inhibition around 70% and resumption around 60%, but it skips that logic when booted with `androidboot.mode=charger`. The draft service checks `/proc/cmdline` and refuses that mode before writing. It does not establish true battery power bypass or automatic power-on after a fully depleted battery. In normal mode, the service writes only `1` to `/sys/class/power_supply/battery/store_mode` and verifies the value. Stopping the service does not change the kernel setting; a reboot returns to the kernel default unless the service is started again. It does not modify thermal protection, swelling checks, charger current, or other battery controls.

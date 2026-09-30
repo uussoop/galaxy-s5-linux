@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+
+description="Run deferred S5 hardware initialization after firmware is mounted"
+
+depend() {
+	need localmount
+	after sshd
+}
+
+start() {
+	ebegin "Running deferred hardware initialization"
+	if [ -r /proc/deferred_initcalls ]; then
+		cat /proc/deferred_initcalls > /dev/null
+	fi
+	eend $?
+}

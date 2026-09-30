@@ -1,0 +1,4 @@
+[01:49:51] watching 7200s, interval 5.0s, log /tmp/s5-usb-descriptor-r19.log
+[01:49:51] bcdDevice 1024 means acm (serial console live); 65535 means ncm only
+[01:49:51] SERIAL CONSOLE LIVE  bcdDevice=1024 serial=01f44ecab714 nodes=['cu.usbmodem01f44ecab7141']
+[01:50:01] acm LOST, ncm only  bcdDevice=65535 serial=01f44ecab714 nodes=[]

@@ -1,0 +1,7 @@
+Source guard passed; probing loop7 read-only.
+direct-io=on first512=9ab4ada0e4d08037da6a6b350bc498990f36905cefd043086718721da00303ed
+loop7p1 start=2048 size=497664
+loop7p2 start=499712 size=24346624
+direct-io=off first512=9ab4ada0e4d08037da6a6b350bc498990f36905cefd043086718721da00303ed
+loop7p1 start=2048 size=497664
+loop7p2 start=499712 size=24346624

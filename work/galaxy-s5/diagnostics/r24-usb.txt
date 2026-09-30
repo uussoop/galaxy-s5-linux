@@ -1,0 +1,2 @@
+08:26:32 [s5keep] keeper started, logging to /mnt/s5diag/codex-s5-diagnostics/boot-XXBLFCeN
+08:26:39 [s5keep] handover done; keeper alive, now watching android_usb every 15s

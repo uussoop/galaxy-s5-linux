@@ -1,0 +1,80 @@
+[08:01:17] $ /src/pmbootstrap/pmbootstrap.py --details-to-stdout initfs build[0m
+[08:01:17] pmbootstrap v3.11.1 (Python 3.12.14 (main, Aug 13 2026, 15:04:11) [GCC 14.2.0])[0m
+[08:01:17] % cd /src/pmaports; git remote -v[0m
+[08:01:17] % cd /src/pmaports; git show origin/main:channels.cfg[0m
+[08:01:17] Attempting to build: postmarketos-mkinitfs[0m
+[08:01:17] armv7/postmarketos-mkinitfs: Generating dependency tree[0m
+[08:01:17] check_version_constraints: ignoring postmarketos-mkinitfs[0m
+[08:01:18] postmarketos-mkinitfs: picked provider(s) with highest priority 999: postmarketos-mkinitfs[0m
+[08:01:18] boot-deploy>=0.23.0: matches package[0m
+[08:01:18] check_version_constraints: ignoring boot-deploy[0m
+[08:01:18] check_version_constraints: ignoring go[0m
+[08:01:18] check_version_constraints: ignoring scdoc[0m
+[08:01:18] check_version_constraints: ignoring postmarketos-mkinitfs[0m
+[08:01:18] postmarketos-mkinitfs: picked provider(s) with highest priority 999: postmarketos-mkinitfs[0m
+[08:01:18] check_version_constraints: ignoring /bin/sh[0m
+[08:01:18] check_version_constraints: ignoring /bin/sh[0m
+[08:01:18] check_version_constraints: ignoring /bin/sh[0m
+[08:01:18] check_version_constraints: ignoring /bin/sh[0m
+[08:01:18] check_version_constraints: ignoring /bin/sh[0m
+[08:01:18] /bin/sh: picked provider(s) with highest priority 100: busybox-binsh[0m
+[08:01:18] check_version_constraints: ignoring boot-deploy[0m
+[08:01:18] check_version_constraints: ignoring busybox[0m
+[08:01:18] check_version_constraints: ignoring generate-kernel-cmdline[0m
+[08:01:18] (rootfs_samsung-k3gxx) install postmarketos-mkinitfs[0m
+[08:01:18] % sudo mkdir -p /home/pmos/work/tmp[0m
+[08:01:18] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[08:01:18] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[08:01:18] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[08:01:18] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_rootfs_samsung-k3gxx --arch armv7 --cache-dir /home/pmos/work/cache_apk_armv7 --repository /home/pmos/work/packages/edge add --no-interactive postmarketos-mkinitfs ;[0m
+[08:01:18] New background process: pid=8400, output=background[0m
+WARNING: opening /mnt/pmbootstrap/packages/edge/armv7/APKINDEX.tar.gz: No such file or directory
+OK: 54.3 MiB in 164 packages
+[08:01:19] (rootfs_samsung-k3gxx) mkinitfs[0m
+[08:01:19] (rootfs_samsung-k3gxx) % mkinitfs[0m
+04:01:19.219895 Generating for kernel version: 3.10.9-LineageOS
+04:01:19.221604 Output directory: /boot
+04:01:19.221758 Unknown or no compression format set, using gzip
+04:01:19.221838 == Generating initramfs ==
+04:01:19.221960 - Using compression format gzip with level "default"
+04:01:19.223766 - Searching for directories specified in /usr/share/mkinitfs/dirs
+04:01:19.225029 -- Creating directories from: /usr/share/mkinitfs/dirs/00-initramfs-base.dirs
+04:01:19.226439 - Searching for directories specified in /etc/mkinitfs/dirs
+04:01:19.226927 - Searching for file lists from /usr/share/mkinitfs/files
+04:01:19.227240 -- Including files from: /usr/share/mkinitfs/files/00-initramfs-base.files
+04:01:19.232899 --- Unable to find optional path, skipping...
+04:01:19.233019 --- Unable to find optional path, skipping...
+04:01:19.240498 -- Including files from: /usr/share/mkinitfs/files/00-msm-fb-refresher.files
+04:01:19.241082 -- Including files from: /usr/share/mkinitfs/files/postmarketos-base.files
+04:01:19.241771 - Searching for file lists from /etc/mkinitfs/files
+04:01:19.241853 - Searching for hook scripts from /usr/share/mkinitfs/hooks
+04:01:19.241973 -- Including script: /usr/share/mkinitfs/hooks/00-msm-fb-refresher.sh
+04:01:19.242039 - Searching for hook scripts from /etc/mkinitfs/hooks
+04:01:19.242080 - Searching for hook scripts from /usr/share/mkinitfs/hooks-cleanup
+04:01:19.242156 -- Unable to find dir, skipping...
+04:01:19.242199 - Searching for hook scripts from /etc/mkinitfs/hooks-cleanup
+04:01:19.242210 -- Unable to find dir, skipping...
+04:01:19.242461 -- kernel module directory not found: "/lib/modules/3.10.9-LineageOS", not including modules
+04:01:19.242616 -- kernel module directory not found: "/lib/modules/3.10.9-LineageOS", not including modules
+04:01:19.244557 - Searching for file lists from /usr/share/mkinitfs/files-extra
+04:01:19.244710 -- Including files from: /usr/share/mkinitfs/files-extra/00-initramfs-extra-base.files
+04:01:19.279746 - Searching for file lists from /etc/mkinitfs/files-extra
+04:01:19.279822 - Searching for hook scripts from /usr/share/mkinitfs/hooks-extra
+04:01:19.280069 - Searching for hook scripts from /etc/mkinitfs/hooks-extra
+04:01:19.280242 -- kernel module directory not found: "/lib/modules/3.10.9-LineageOS", not including modules
+04:01:19.280383 -- kernel module directory not found: "/lib/modules/3.10.9-LineageOS", not including modules
+04:01:20.878221 initramfs completed in: 1.66s
+04:01:20.879046 == Using boot-deploy to finalize/install files ==
+==> Running hooks
+==> initramfs: creating boot.img
+Parsing /usr/lib/kernel-cmdline.d/00-base.conf
+Parsing /usr/lib/kernel-cmdline.d/50-device-samsung-k3gxx.conf
+systemd-boot: systemd-boot EFI app or powervm-boot not found, skipping
+==> Checking free space at /boot
+... OK!
+==> Installing: /boot/initramfs
+==> Installing: /boot/boot.img
+04:01:23.068691 boot-deploy completed in: 2.19s
+04:01:23.070677 mkinitfs completed in: 3.85s
+[08:01:23] [94mNOTE:[0m chroot is still active (use 'pmbootstrap shutdown' as necessary)[0m
+[08:01:23] [92mDONE![0m[0m

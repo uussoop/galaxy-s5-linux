@@ -1,0 +1,315 @@
+#!/bin/busybox ash
+# Temporary, fail-open boot diagnostics. Never format or write outside CACHE p19.
+#
+# r19: this logger is deliberately NOT stopped at switch_root.
+#
+# Earlier revisions called "s5diag stop" from init_2nd.sh just before
+# switch_root, which wrote the stage marker, took a final snapshot and unmounted
+# CACHE. That is why the r18 log stops dead at "Switching root" (7.457s) and why
+# the acm -> ncm change that actually breaks the console was never captured: it
+# happens in the real system, after the initramfs is gone.
+#
+# "s5diag start" is a background child of PID 1, forked before switch_root.
+# busybox switch_root only moves the old root aside and pivots; a process that
+# already holds that root keeps its own /sys, /proc, /dev and its CACHE mount, so
+# the keeper survives and can report on android_usb for as long as the phone is
+# up. Nothing here can affect the boot: every write is guarded, writes to CACHE
+# only, and if the post-root half cannot run at all the pre-root log is still on
+# CACHE exactly as before.
+umask 077
+cache=/dev/mmcblk0p19
+mountpoint=/mnt/s5diag
+stopfile=/run/s5diag.stop
+pathfile=/run/s5diag.path
+donefile=/run/s5diag.done
+# r21: the handover flag lives on CACHE, not on /run. switch_root does
+# umount2("/oldroot", MNT_DETACH), which takes the old root's tmpfs with it, so
+# a flag written to /run is invisible to a keeper that survived the handover. The
+# r19 and r20 boots both spent their whole lives in the pre-switch_root branch
+# because of this, silently. $dir is on CACHE, which the keeper provably still
+# holds, so the flag is set to a path inside it once the directory exists.
+handoverfile=
+want=acm
+settle=10
+every=15
+# Growth caps. kernel.log holds the whole ring buffer and is appended on a
+# cadence and only while it is under KERNEL_LOG_MAX. usb.log is capped twice, and
+# the two caps have to be separate on purpose: the filtered ring-buffer lines
+# stop at USB_DMESG_MAX so a chatty kernel cannot starve the keeper's own
+# transition notes, which are the primary record and are what the panel shows.
+# Both caps are far below the 200 MB CACHE partition, because a logger that fills
+# CACHE takes its own evidence down with it.
+KERNEL_LOG_MAX=8388608
+USB_LOG_MAX=16777216
+USB_DMESG_MAX=1048576
+FULL_EVERY=6
+
+# Tag deliberately avoids the word "watchdog": capture_last_kmsg.py treats that
+# as a fatal-signature keyword and it is already a benign line on every boot.
+TAG=s5keep
+
+snapshot() {
+	[ -n "$dir" ] || return 0
+	dmesg 2>/dev/null | tail -c 2097152 > "$dir/kernel.tmp" && mv -f "$dir/kernel.tmp" "$dir/kernel.log"
+	if [ -f /pmOS_init.log ]; then
+		tail -c 1048576 /pmOS_init.log > "$dir/initramfs.tmp" && mv -f "$dir/initramfs.tmp" "$dir/initramfs.log"
+	fi
+}
+
+# r21: establish, once, exactly which of the old root's facilities survived
+# switch_root. r19 and r20 both failed silently because every one of these came
+# back empty and nothing recorded that. "no android_usb device" is only evidence
+# once you know whether sysfs itself is still readable.
+probe() {
+	[ -n "$dir" ] || return 0
+	local ks=/dev/kmsg dmesg_ok=no sys_ok=no
+	[ -w "$ks" ] && ks=rw || ks=gone
+	[ -d /sys ] && sys_ok=present || sys_ok=gone
+	dmesg 2>/dev/null | head -1 > /dev/null 2>&1 && dmesg_ok=yes
+	local add
+	added="$(ls -1 /sys/class 2>/dev/null | grep -c android_usb)"
+	detail "probe: dev/kmsg=$ks sys=$sys_ok dmesg=$dmesg_ok android_usb_entries=$added"
+	detail "probe: /proc/mounts readable=$( [ -r /proc/mounts ] && echo yes || echo no ) run=$( [ -d /run ] && echo yes || echo no ) mnt=$( [ -d /mnt/s5diag ] && echo yes || echo no )"
+	return 0
+}
+
+# After switch_root the real system's syslog competes for the ring buffer and
+# may clear it, so from that point on append rather than overwriting. Never let a
+# missing file abort the loop.
+filesize() {
+	s="$(wc -c < "$1" 2>/dev/null)"
+	case "$s" in
+		'' | *[!0-9]*) echo 0 ;;
+		*) echo "$s" ;;
+	esac
+}
+
+append_dmesg() {
+	[ -n "$dir" ] || return 0
+	[ -f "$dir/usb.log" ] || : > "$dir/usb.log" 2>/dev/null || return 0
+	[ "$(filesize "$dir/usb.log")" -lt "$USB_LOG_MAX" ] || return 0
+	if [ "$(filesize "$dir/usb.log")" -lt "$USB_DMESG_MAX" ]; then
+		dmesg 2>/dev/null | grep -iE 'android_usb|usb:|acm|ncm|conn_gadget|udc|dwc3|ttyGS' \
+			>> "$dir/usb.log" 2>/dev/null || true
+	fi
+	if [ $(( ${ticks:-0} % FULL_EVERY )) -eq 0 ] \
+		&& [ "$(filesize "$dir/kernel.log")" -lt "$KERNEL_LOG_MAX" ]; then
+		dmesg 2>/dev/null | tail -c 2097152 >> "$dir/kernel.log" 2>/dev/null || true
+	fi
+	sync
+}
+
+is_mounted() {
+	grep -q " $mountpoint " /proc/mounts
+}
+
+unmount_cache() {
+	if is_mounted; then
+		sync
+		umount "$mountpoint" || umount -l "$mountpoint" || true
+	fi
+}
+
+stamp() {
+	date '+%H:%M:%S' 2>/dev/null || echo --:--:--
+}
+
+# Every keeper message goes to usb.log and to the kernel ring buffer, so it also
+# shows on the framebuffer console and in the real system's own syslog. The
+# cap check keeps a permanently-drifting gadget from filling CACHE with its own
+# transitions; when it trips, one final line is written so a truncated log says
+# why it stopped.
+note() {
+	[ -n "$dir" ] || return 0
+	if [ "$(filesize "$dir/usb.log")" -ge "$USB_LOG_MAX" ]; then
+		[ -e "$dir/capped" ] && return 0
+		: > "$dir/capped" 2>/dev/null || true
+		printf '%s [%s] usb.log hit %s B; keeper notes stopped here\n' \
+			"$(stamp)" "$TAG" "$USB_LOG_MAX" >> "$dir/usb.log" 2>/dev/null || true
+		return 0
+	fi
+	printf '%s [%s] %s\n' "$(stamp)" "$TAG" "$*" >> "$dir/usb.log" 2>/dev/null || true
+	echo "$TAG: $*" > /dev/kmsg 2>/dev/null || true
+}
+
+# For a run of lines that is evidence rather than a status line -- the ring
+# buffer immediately before a drift, for instance. These go to usb.log only. The
+# /dev/kmsg path is a single write per line and a burst of it would push the very
+# lines being collected out of the ring buffer, and would put twenty-five lines on
+# the panel where a status line belongs.
+detail() {
+	[ -n "$dir" ] || return 0
+	[ "$(filesize "$dir/usb.log")" -lt "$USB_LOG_MAX" ] || return 0
+	printf '%s [%s] %s\n' "$(stamp)" "$TAG" "$*" >> "$dir/usb.log" 2>/dev/null || true
+}
+
+android_dir() {
+	for candidate in /sys/class/android_usb/android*; do
+		if [ -e "$candidate/functions" ]; then
+			echo "$candidate"
+			return 0
+		fi
+	done
+	return 1
+}
+
+read_attr() {
+	cat "$1" 2>/dev/null | tr -d '\r\n'
+}
+
+# Re-assert the acm function only when it has actually drifted, so a healthy
+# console is never disturbed and the host does not see a reconnect every cycle.
+keep_acm() {
+	ad="$1"
+	funcs="$(read_attr "$ad/functions")"
+	enab="$(read_attr "$ad/enable")"
+	if [ "$funcs" = "$want" ] && [ "$enab" = "1" ]; then
+		return 0
+	fi
+	note "DRIFT functions=[$funcs] enable=[$enab] ports=[$(ls /dev/ttyGS* 2>/dev/null | tr '\n' ' ')]"
+	detail "ring buffer lines immediately before the re-assert:"
+	dmesg 2>/dev/null | grep -iE 'android_usb|usb:|acm|ncm|conn_gadget|udc|dwc3' \
+		| tail -n 25 | while IFS= read -r l; do detail "  was: $l"; done
+	echo 0 > "$ad/enable" 2>/dev/null || true
+	echo "$want" > "$ad/functions" 2>/dev/null || true
+	echo 1 > "$ad/enable" 2>/dev/null || true
+	sleep 2
+	note "RE-ASSERTED functions=[$(read_attr "$ad/functions")] enable=[$(read_attr "$ad/enable")]"
+}
+
+case "$1" in
+start)
+	n=0
+	while [ ! -b "$cache" ]; do
+		[ -e "$stopfile" ] && exit 0
+		[ "$n" -ge 20 ] && exit 0
+		n=$((n + 1))
+		sleep 1
+	done
+	[ "$(cat /sys/class/block/mmcblk0p19/partition 2>/dev/null)" = 19 ] || exit 0
+	[ "$(cat /sys/class/block/mmcblk0p19/start 2>/dev/null)" = 5406720 ] || exit 0
+	[ "$(cat /sys/class/block/mmcblk0p19/size 2>/dev/null)" = 409600 ] || exit 0
+	case "$(readlink -f /sys/class/block/mmcblk0p19 2>/dev/null)" in
+		*/block/mmcblk0/mmcblk0p19) ;;
+		*) exit 0 ;;
+	esac
+	[ "$(blkid -s UUID -o value "$cache" 2>/dev/null)" = 57f8f4bc-abf4-655f-bf67-946fc0f9f25b ] || exit 0
+	[ -e "$stopfile" ] && exit 0
+	mkdir -p "$mountpoint" || exit 0
+	mount -t ext4 -o rw,noatime,nodev,nosuid,noexec "$cache" "$mountpoint" || exit 0
+	if [ -e "$stopfile" ]; then
+		unmount_cache
+		exit 0
+	fi
+	mkdir -p "$mountpoint/codex-s5-diagnostics" || { unmount_cache; exit 0; }
+	chmod 700 "$mountpoint/codex-s5-diagnostics" || { unmount_cache; exit 0; }
+	dir="$(mktemp -d "$mountpoint/codex-s5-diagnostics/boot-XXXXXXXX")" || { unmount_cache; exit 0; }
+	handoverfile="$dir/handover"
+	printf '%s\n' "$dir" > "$pathfile"
+	: > "$dir/usb.log" 2>/dev/null || true
+	snapshot
+	sync
+	note "keeper started, logging to $dir"
+	while [ ! -e "$stopfile" ]; do
+		n=0
+		while [ "$n" -lt 5 ] && [ ! -e "$stopfile" ]; do
+			n=$((n + 1))
+			sleep 1
+		done
+		[ -e "$stopfile" ] && break
+		if [ -e "$handoverfile" ]; then
+			# ticks has to advance before append_dmesg reads it, so the
+			# FULL_EVERY ring-buffer cadence is counted from the first
+			# post-switch_root cycle onwards.
+			if [ "${probed:-0}" = 0 ]; then
+				probed=1
+				probe
+			fi
+			ticks=$(( ${ticks:-0} + 1 ))
+			append_dmesg
+			if [ $((ticks * 5)) -ge "$settle" ]; then
+				ad="$(android_dir)" || ad=""
+				if [ -n "$ad" ]; then
+					keep_acm "$ad"
+				else
+					note "no android_usb device found"
+				fi
+			fi
+			if [ $((ticks % 3)) -eq 0 ]; then
+				note "alive functions=[$(read_attr "$ad/functions")] enable=[$(read_attr "$ad/enable")]"
+			fi
+		else
+			snapshot
+			sync
+		fi
+	done
+	touch "$donefile"
+	;;
+handover)
+	# Called by init_2nd.sh immediately before switch_root. Record the handover
+	# but deliberately leave the keeper, and its CACHE mount, running.
+	[ -e "$stopfile" ] && exit 0
+	p="$(cat "$pathfile" 2>/dev/null | head -1)"
+	if [ -n "$p" ] && [ -d "$p" ]; then
+		handoverfile="$p/handover"
+		touch "$handoverfile" 2>/dev/null \
+			&& detail "handover: flagged $handoverfile on CACHE"
+	else
+		detail "handover: no keeper directory in $pathfile, flagging /run only"
+	fi
+	touch /run/s5diag.handover 2>/dev/null || true
+	# The old stop path waited three seconds so the keeper could finish a
+	# snapshot before being killed. There is no kill here, and this branch
+	# writes the stage file and takes its own snapshot, so a wait would only
+	# add dead seconds to the boot. Liveness is checked and recorded instead:
+	# if the keeper is already gone, the stage file has to say so rather than
+	# claim a keeper that does not exist.
+	pID="$2"
+	if [ -n "$pID" ] && kill -0 "$pID" 2>/dev/null; then
+		keeper=alive
+	else
+		keeper=gone
+	fi
+	if [ -f "$pathfile" ]; then
+		dir="$(cat "$pathfile")"
+		case "$dir" in
+			"$mountpoint"/codex-s5-diagnostics/boot-*)
+				if [ -d "$dir" ]; then
+					printf 'initramfs switch_root reached; CACHE keeper %s\n' "$keeper" > "$dir/stage"
+					snapshot
+					note "handover done; keeper $keeper, now watching android_usb every ${every}s"
+				fi
+				;;
+		esac
+	fi
+	;;
+stop)
+	# Kept for compatibility with an older init_2nd.sh. r19 never calls this.
+	touch "$stopfile"
+	pID="$2"
+	n=0
+	while [ "$n" -lt 3 ] && [ ! -e "$donefile" ] && [ -n "$pID" ] && kill -0 "$pID" 2>/dev/null; do
+		n=$((n + 1))
+		sleep 1
+	done
+	if [ -n "$pID" ] && kill -0 "$pID" 2>/dev/null; then
+		kill "$pID" 2>/dev/null || true
+		# Give an interrupted snapshot time to release its temporary file.
+		sleep 1
+	fi
+	if [ -f "$pathfile" ]; then
+		dir="$(cat "$pathfile")"
+		case "$dir" in
+			"$mountpoint"/codex-s5-diagnostics/boot-*)
+				if [ -d "$dir" ]; then
+					printf 'initramfs switch_root reached\n' > "$dir/stage"
+					snapshot
+				fi
+				;;
+		esac
+	fi
+	unmount_cache
+	;;
+*) exit 0 ;;
+esac
+exit 0

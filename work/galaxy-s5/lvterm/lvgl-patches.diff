@@ -1,0 +1,111 @@
+diff -ru --label pristine --label patched ../scratch-lvgl/pristine/src/drivers/display/fb/lv_linux_fbdev.c ../scratch-lvgl/patched/src/drivers/display/fb/lv_linux_fbdev.c
+--- pristine
++++ patched
+@@ -16,6 +16,7 @@
+ #include <fcntl.h>
+ #include <sys/mman.h>
+ #include <sys/ioctl.h>
++#include <string.h>
+ #include <time.h>
+ #include <errno.h>
+ 
+@@ -66,6 +67,7 @@
+ #endif
+     uint8_t * rotated_buf;
+     size_t rotated_buf_size;
++    int stacked;                /* complete screen buffers held in smem_len */
+     long int screensize;
+     int fbfd;
+     bool force_refresh;
+@@ -190,8 +192,29 @@
+     LV_LOG_INFO("%dx%d, %dbpp", dsc->vinfo.xres, dsc->vinfo.yres, dsc->vinfo.bits_per_pixel);
+ 
+     /* Figure out the size of the screen in bytes*/
++    /* The panel memory may hold several stacked screen buffers that the kernel
++     * pans between. Map all of them, and paint all of them, otherwise a pan
++     * lands the viewer on a buffer we never drew into. */
++    {
++        struct fb_fix_screeninfo realfix;
++        memset(&realfix, 0, sizeof(realfix));
++        if(ioctl(dsc->fbfd, FBIOGET_FSCREENINFO, &realfix) == 0 &&
++           realfix.line_length && realfix.smem_len > dsc->finfo.smem_len) {
++            dsc->finfo.smem_len = realfix.smem_len;
++        }
++    }
++
+     dsc->screensize =  dsc->finfo.smem_len;/*finfo.line_length * vinfo.yres;*/
+ 
++    {
++        size_t one = (size_t)dsc->finfo.line_length * dsc->vinfo.yres;
++        dsc->stacked = one ? (int)(dsc->finfo.smem_len / one) : 1;
++        if(dsc->stacked < 1) dsc->stacked = 1;
++        if(dsc->stacked > 8) dsc->stacked = 8;
++        LV_LOG_INFO("panel memory holds %d stacked screen buffers, painting"
++                    " all of them", dsc->stacked);
++    }
++
+ #if LV_LINUX_FBDEV_MMAP
+     /* Map the device to memory*/
+     dsc->fbp = (char *)mmap(0, dsc->screensize, PROT_READ | PROT_WRITE, MAP_SHARED, dsc->fbfd, 0);
+@@ -401,6 +424,13 @@
+             (clipped_area.y1 - disp->offset_y) * disp->hor_res * px_size;
+         for(int32_t y = clipped_area.y1; y <= clipped_area.y2; y++) {
+             write_to_fb(dsc, fb_pos, &color_p[color_pos], w * px_size);
++
++            for(int b = 1; b < dsc->stacked; b++) {
++                write_to_fb(dsc,
++                            fb_pos + (size_t)b * dsc->finfo.line_length * dsc->vinfo.yres,
++                            &color_p[color_pos], w * px_size);
++            }
++
+             fb_pos += dsc->finfo.line_length;
+             color_pos += disp->hor_res * px_size;
+         }
+@@ -415,6 +445,15 @@
+ 
+         for(int32_t y = clipped_area.y1; y <= clipped_area.y2; y++) {
+             write_to_fb(dsc, fb_pos, color_p, w * px_size);
++
++            /* The same rows into every other stacked buffer, so whichever one
++             * the kernel's pan settles on shows the same picture. */
++            for(int b = 1; b < dsc->stacked; b++) {
++                write_to_fb(dsc,
++                            fb_pos + (size_t)b * dsc->finfo.line_length * dsc->vinfo.yres,
++                            color_p, w * px_size);
++            }
++
+             fb_pos += dsc->finfo.line_length;
+             color_p += stride;
+         }
+diff -ru --label pristine --label patched ../scratch-lvgl/pristine/src/drivers/evdev/lv_evdev.c ../scratch-lvgl/patched/src/drivers/evdev/lv_evdev.c
+--- pristine
++++ patched
+@@ -44,6 +44,10 @@
+ #define EVDEV_DISCOVERY_PATH_BUF_SIZE 32
+ #define REL_XY_MASK ((1 << REL_X) | (1 << REL_Y))
+ #define ABS_XY_MASK ((1 << ABS_X) | (1 << ABS_Y))
++
++/* A multitouch digitiser may publish ABS_MT_POSITION_X/Y instead of ABS_X/ABS_Y.
++ * Those codes are all above 31, so a 32 bit capability mask cannot see them. */
++#define ABS_MT_XY_MASK ((1ULL << ABS_MT_POSITION_X) | (1ULL << ABS_MT_POSITION_Y))
+ #define MAX_TOUCH_POINTS 5
+ 
+ /**********************
+@@ -505,10 +509,14 @@
+     }
+ 
+     if(indev_type == LV_INDEV_TYPE_NONE) {
+-        uint32_t abs_bits = 0;
++        /* Wide enough to hold every EV_ABS code. 32 bits silently truncated
++         * this and hid the multitouch axes. */
++        uint64_t abs_bits = 0;
+         if(ioctl(dsc->fd, EVIOCGBIT(EV_ABS, sizeof(abs_bits)), &abs_bits) >= 0) {
+-            /* if this device can emit absolute X and Y events, it shall be a pointer indev */
+-            if((abs_bits & ABS_XY_MASK) == ABS_XY_MASK) {
++            /* if this device can emit absolute X and Y events, under either the
++             * single touch or the multitouch naming, it shall be a pointer */
++            if(((abs_bits & ABS_XY_MASK) == ABS_XY_MASK) ||
++               ((abs_bits & ABS_MT_XY_MASK) == ABS_MT_XY_MASK)) {
+                 indev_type = LV_INDEV_TYPE_POINTER;
+                 dsc->type = LV_EVDEV_TYPE_ABS;
+             }

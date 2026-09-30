@@ -1,0 +1,901 @@
+[10:42:14] $ /src/pmbootstrap/pmbootstrap.py --details-to-stdout build --arch armv7 postmarketos-initramfs[0m
+[10:42:14] pmbootstrap v3.11.1 (Python 3.12.14 (main, Aug 13 2026, 15:04:11) [GCC 14.2.0])[0m
+[10:42:15] % cd /src/pmaports; git remote -v[0m
+[10:42:15] % cd /src/pmaports; git show origin/main:channels.cfg[0m
+[10:42:15] Zapping buildroots (running in strict mode by default, use --lax to skip zap)[0m
+[10:42:15] % sudo losetup --json --list[0m
+{
+   "loopdevices": [
+
+   ]
+}
+[10:42:15] % sudo rm /home/pmos/work/chroot_native/in-pmbootstrap[0m
+[10:42:15] % sudo rm /home/pmos/work/chroot_buildroot_armv7/in-pmbootstrap[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/var/cache/distfiles[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/var/cache/apk[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/sys[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/proc[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/sysroot[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/sccache[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/rust[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/packages[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/netboot[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/go[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/git[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/ccache[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/abuild-config[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/pmaports[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/mnt/appstream-data[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/etc/apk/keys[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/dev/shm[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/dev/pts[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_native/dev[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/var/cache/distfiles[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/var/cache/apk[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/usr/bin/qemu-arm-static[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/sys[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/proc[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/sccache[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/rust[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/packages[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/netboot[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/go[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/git[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/ccache[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/abuild-config[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/appstream-data[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/etc/apk/keys[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/dev/shm[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/dev/pts[0m
+[10:42:15] % sudo umount /home/pmos/work/chroot_buildroot_armv7/dev[0m
+[10:42:15] % sudo rm -rf /home/pmos/work/chroot_buildroot_armv7[0m
+[10:42:15] % sudo rm -rf /home/pmos/work/chroot_native[0m
+[10:42:15] Attempting to build: postmarketos-initramfs[0m
+[10:42:15] armv7/postmarketos-initramfs: Generating dependency tree[0m
+[10:42:15] check_version_constraints: ignoring postmarketos-initramfs[0m
+[10:42:15] check_version_constraints: ignoring postmarketos-initramfs[0m
+[10:42:16] postmarketos-initramfs: picked provider(s) with highest priority 10: postmarketos-initramfs[0m
+[10:42:16] Build is necessary for package 'postmarketos-initramfs': binary package out of date (binary: 3.12.3-r3, local pmaports: 3.12.3-r4)[0m
+[10:42:16] check_version_constraints: ignoring postmarketos-initramfs[0m
+[10:42:16] check_version_constraints: ignoring postmarketos-initramfs[0m
+[10:42:16] postmarketos-initramfs: picked provider(s) with highest priority 10: postmarketos-initramfs[0m
+[10:42:16] check_version_constraints: ignoring beebzzr[0m
+[10:42:16] check_version_constraints: ignoring blkid[0m
+[10:42:16] check_version_constraints: ignoring btrfs-progs[0m
+[10:42:16] check_version_constraints: ignoring buffyboard[0m
+[10:42:16] check_version_constraints: ignoring buffyboard[0m
+[10:42:16] check_version_constraints: ignoring buffybox[0m
+[10:42:16] check_version_constraints: ignoring busybox-extras[0m
+[10:42:16] check_version_constraints: ignoring bzip2[0m
+[10:42:16] check_version_constraints: ignoring cryptsetup[0m
+[10:42:16] check_version_constraints: ignoring device-mapper[0m
+[10:42:16] devicepkg-utils>=0.2.0: matches package[0m
+[10:42:16] check_version_constraints: ignoring devicepkg-utils[0m
+[10:42:16] check_version_constraints: ignoring dosfstools[0m
+[10:42:16] check_version_constraints: ignoring e2fsprogs[0m
+[10:42:16] check_version_constraints: ignoring e2fsprogs-extra[0m
+[10:42:16] check_version_constraints: ignoring f2fs-tools[0m
+[10:42:16] check_version_constraints: ignoring font-terminus[0m
+[10:42:16] check_version_constraints: ignoring iskey[0m
+[10:42:16] check_version_constraints: ignoring buffybox[0m
+[10:42:16] check_version_constraints: ignoring kmod[0m
+[10:42:17] check_version_constraints: ignoring libinput-libs[0m
+[10:42:17] check_version_constraints: ignoring libinput-udev[0m
+[10:42:17] check_version_constraints: ignoring losetup[0m
+[10:42:17] check_version_constraints: ignoring lz4[0m
+[10:42:17] check_version_constraints: ignoring parted[0m
+[10:42:17] check_version_constraints: ignoring postmarketos-fde-unlocker[0m
+[10:42:17] check_version_constraints: ignoring postmarketos-fde-unlocker[0m
+[10:42:17] postmarketos-fde-unlocker: has multiple providers (postmarketos-base-nofde, postmarketos-buffybox-unl0kr), picked shortest: postmarketos-base-nofde[0m
+[10:42:17] check_version_constraints: ignoring postmarketos-base-nofde[0m
+[10:42:17] postmarketos-mkinitfs>=2.2: matches package[0m
+[10:42:17] postmarketos-mkinitfs>=2.2: picked provider(s) with highest priority 999: postmarketos-mkinitfs[0m
+[10:42:17] check_version_constraints: ignoring postmarketos-mkinitfs[0m
+[10:42:17] postmarketos-mkinitfs: picked provider(s) with highest priority 999: postmarketos-mkinitfs[0m
+[10:42:17] check_version_constraints: ignoring postmarketos-testlib[0m
+[10:42:17] check_version_constraints: ignoring postmarketos-testlib[0m
+[10:42:17] check_version_constraints: ignoring udev[0m
+[10:42:17] check_version_constraints: ignoring udev[0m
+[10:42:17] udev: picked provider(s) with highest priority 100: eudev[0m
+[10:42:17] check_version_constraints: ignoring eudev[0m
+[10:42:17] check_version_constraints: ignoring eudev[0m
+[10:42:17] eudev: picked provider(s) with highest priority 100: eudev[0m
+[10:42:17] check_version_constraints: ignoring unudhcpd[0m
+[10:42:17] check_version_constraints: ignoring util-linux-misc[0m
+[10:42:17] check_version_constraints: ignoring xfsprogs[0m
+[10:42:17] check_version_constraints: ignoring xfsprogs-extra[0m
+[10:42:17] check_version_constraints: ignoring xz[0m
+[10:42:17] check_version_constraints: ignoring beebzzr[0m
+[10:42:17] check_version_constraints: ignoring blkid[0m
+[10:42:17] check_version_constraints: ignoring btrfs-progs[0m
+[10:42:17] check_version_constraints: ignoring busybox-extras[0m
+[10:42:17] check_version_constraints: ignoring bzip2[0m
+[10:42:17] check_version_constraints: ignoring cryptsetup[0m
+[10:42:17] check_version_constraints: ignoring device-mapper[0m
+[10:42:17] devicepkg-utils>=0.2.0: matches package[0m
+[10:42:17] check_version_constraints: ignoring dosfstools[0m
+[10:42:17] check_version_constraints: ignoring e2fsprogs[0m
+[10:42:17] check_version_constraints: ignoring e2fsprogs-extra[0m
+[10:42:17] check_version_constraints: ignoring f2fs-tools[0m
+[10:42:17] check_version_constraints: ignoring font-terminus[0m
+[10:42:17] check_version_constraints: ignoring kmod[0m
+[10:42:17] check_version_constraints: ignoring libinput-libs[0m
+[10:42:17] check_version_constraints: ignoring libinput-udev[0m
+[10:42:17] check_version_constraints: ignoring losetup[0m
+[10:42:17] check_version_constraints: ignoring lz4[0m
+[10:42:17] check_version_constraints: ignoring parted[0m
+[10:42:17] postmarketos-mkinitfs>=2.2: matches package[0m
+[10:42:17] check_version_constraints: ignoring unudhcpd[0m
+[10:42:17] check_version_constraints: ignoring util-linux-misc[0m
+[10:42:17] check_version_constraints: ignoring xfsprogs[0m
+[10:42:17] check_version_constraints: ignoring xfsprogs-extra[0m
+[10:42:17] check_version_constraints: ignoring xz[0m
+[10:42:17] Building [94m1[0m package[0m
+[10:42:17]    [94m*[0m edge/postmarketos-initramfs[0m
+[10:42:17] [93m=> (1/1)[0m [94medge/postmarketos-initramfs[0m: Installing dependencies[0m
+[10:42:17] Initializing armv7 buildroot[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/dev[0m
+[10:42:17] % sudo mount -t tmpfs -o size=1M,noexec,dev tmpfs /home/pmos/work/chroot_native/dev[0m
+[10:42:17] % sudo ln -s /proc/self/fd/0 /home/pmos/work/chroot_native/dev/stdin[0m
+[10:42:17] % sudo ln -s /proc/self/fd/1 /home/pmos/work/chroot_native/dev/stdout[0m
+[10:42:17] % sudo ln -s /proc/self/fd/2 /home/pmos/work/chroot_native/dev/stderr[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/dev/pts /home/pmos/work/chroot_native/dev/shm[0m
+[10:42:17] % sudo mount -t tmpfs -o nodev,nosuid,noexec tmpfs /home/pmos/work/chroot_native/dev/shm[0m
+[10:42:17] % sudo mount -t devpts -o ptmxmode=0666 devpts /home/pmos/work/chroot_native/dev/pts[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_native/dev/null c 1 3[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_native/dev/null[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_native/dev/zero c 1 5[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_native/dev/zero[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_native/dev/full c 1 7[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_native/dev/full[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_native/dev/random c 1 8[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_native/dev/random[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_native/dev/urandom c 1 9[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_native/dev/urandom[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_native/dev/tty c 5 0[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_native/dev/tty[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_native/dev/ptmx c 5 2[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_native/dev/ptmx[0m
+[10:42:17] % sudo ln -sf /proc/self/fd /home/pmos/work/chroot_native/dev/[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/proc[0m
+[10:42:17] % sudo mount --bind /proc /home/pmos/work/chroot_native/proc[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/sys[0m
+[10:42:17] % sudo mount --bind /sys /home/pmos/work/chroot_native/sys[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/var/cache/apk[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_apk_aarch64 /home/pmos/work/chroot_native/var/cache/apk[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/appstream-data[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_appstream/aarch64/edge /home/pmos/work/chroot_native/mnt/appstream-data[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/ccache[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_ccache_aarch64 /home/pmos/work/chroot_native/mnt/pmbootstrap/ccache[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/var/cache/distfiles[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_distfiles /home/pmos/work/chroot_native/var/cache/distfiles[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/git[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_git /home/pmos/work/chroot_native/mnt/pmbootstrap/git[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/go[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_go /home/pmos/work/chroot_native/mnt/pmbootstrap/go[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/rust[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_rust /home/pmos/work/chroot_native/mnt/pmbootstrap/rust[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/abuild-config[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/config_abuild /home/pmos/work/chroot_native/mnt/pmbootstrap/abuild-config[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/etc/apk/keys[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/config_apk_keys /home/pmos/work/chroot_native/etc/apk/keys[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/sccache[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/cache_sccache /home/pmos/work/chroot_native/mnt/pmbootstrap/sccache[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/netboot[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/images_netboot /home/pmos/work/chroot_native/mnt/pmbootstrap/netboot[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmbootstrap/packages[0m
+[10:42:17] % sudo mount --bind /home/pmos/work/packages /home/pmos/work/chroot_native/mnt/pmbootstrap/packages[0m
+[10:42:17] % sudo touch /home/pmos/work/chroot_native/in-pmbootstrap[0m
+[10:42:17] check_version_constraints: ignoring apk-tools-static[0m
+[10:42:17] sigfilename: sbin/apk.static.SIGN.RSA.sha256.alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub[0m
+[10:42:17] sigkey: alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub[0m
+[10:42:17] extracted: /tmp/pmbootstrapr_s3__ojapk[0m
+[10:42:17] extracted: /tmp/pmbootstrapsuigs7dbsig[0m
+[10:42:17] Verify apk.static signature with /src/pmbootstrap/pmb/data/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub[0m
+[10:42:17] % openssl dgst -sha256 -verify /src/pmbootstrap/pmb/data/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub -signature /tmp/pmbootstrapsuigs7dbsig /tmp/pmbootstrapr_s3__ojapk[0m
+Verified OK
+[10:42:17] Verify the version reported by the apk.static binary (must match the package version 3.0.8-r0)[0m
+[10:42:17] % /tmp/pmbootstrapr_s3__ojapk --version[0m
+apk-tools 3.0.8-r0, compiled for aarch64.
+[10:42:17] (native) Creating chroot[0m
+[10:42:17] % sudo cp /etc/resolv.conf /home/pmos/work/chroot_native/etc/resolv.conf[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/etc/apk[0m
+[10:42:17] (chroot_native) update /etc/apk/repositories[0m
+[10:42:17] % sudo sh -c echo https://mirror.postmarketos.org/postmarketos/main >> /home/pmos/work/chroot_native/etc/apk/repositories[0m
+[10:42:17] % sudo sh -c echo https://dl-cdn.alpinelinux.org/alpine/edge/main >> /home/pmos/work/chroot_native/etc/apk/repositories[0m
+[10:42:17] % sudo sh -c echo https://dl-cdn.alpinelinux.org/alpine/edge/community >> /home/pmos/work/chroot_native/etc/apk/repositories[0m
+[10:42:17] % sudo sh -c echo https://dl-cdn.alpinelinux.org/alpine/edge/testing >> /home/pmos/work/chroot_native/etc/apk/repositories[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_native/usr/bin /home/pmos/work/chroot_native/usr/sbin /home/pmos/work/chroot_native/usr/lib[0m
+[10:42:17] % sudo ln -s usr/bin usr/sbin usr/lib /home/pmos/work/chroot_native/[0m
+[10:42:17] % sudo rm -r /home/pmos/work/chroot_native/sbin /home/pmos/work/chroot_native/usr/sbin[0m
+[10:42:17] % sudo ln -s usr/bin /home/pmos/work/chroot_native/sbin[0m
+[10:42:17] % sudo ln -s bin /home/pmos/work/chroot_native/usr/sbin[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:17] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:17] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:17] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:17] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_native --arch aarch64 --cache-dir /home/pmos/work/cache_apk_aarch64 --repository /home/pmos/work/packages/edge --initdb add --no-interactive alpine-baselayout apk-tools busybox musl-utils ;[0m
+[10:42:17] New background process: pid=44613, output=background[0m
+WARNING: opening /home/pmos/work/packages/edge/aarch64/APKINDEX.tar.gz: No such file or directory
+( 1/14) Installing alpine-baselayout-data (3.7.2-r1)
+( 2/14) Installing musl (1.2.6-r3)
+( 3/14) Installing busybox (1.38.0-r7)
+  Executing busybox-1.38.0-r7.post-install
+( 4/14) Installing busybox-binsh (1.38.0-r7)
+( 5/14) Installing alpine-baselayout (3.7.2-r1)
+  Executing alpine-baselayout-3.7.2-r1.pre-install
+  Executing alpine-baselayout-3.7.2-r1.post-install
+( 6/14) Installing libcrypto3 (3.5.8-r1)
+( 7/14) Installing libssl3 (3.5.8-r1)
+( 8/14) Installing ssl_client (1.38.0-r7)
+( 9/14) Installing zlib (1.3.2-r0)
+(10/14) Installing libapk (3.0.8-r0)
+(11/14) Installing ca-certificates-bundle (20260909-r0)
+(12/14) Installing apk-tools (3.0.8-r0)
+(13/14) Installing scanelf (1.3.9-r1)
+(14/14) Installing musl-utils (1.2.6-r3)
+Executing busybox-1.38.0-r7.trigger
+OK: 8422 KiB in 14 packages
+[10:42:17] (native) % adduser -D pmos -u 12345[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/abuild-config /home/pmos/.abuild ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/abuild-config[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/ccache /home/pmos/.ccache ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/ccache[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/.cache ;[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/go/gocache /home/pmos/.cache/go-build ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/go/gocache[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/go/pkg ;[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/go/gomodcache /home/pmos/go/pkg/mod ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/go/gomodcache[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/.cargo/git ;[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/git/db /home/pmos/.cargo/git/db ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/rust/git/db[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/.cargo/registry ;[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/registry/cache /home/pmos/.cargo/registry/cache ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/rust/registry/cache[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/registry/index /home/pmos/.cargo/registry/index ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/rust/registry/index[0m
+[10:42:17] (native) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/sccache /home/pmos/.cache/sccache ;[0m
+[10:42:17] (native) % chown pmos:pmos /mnt/pmbootstrap/sccache[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/dev[0m
+[10:42:17] % sudo mount -t tmpfs -o size=1M,noexec,dev tmpfs /home/pmos/work/chroot_buildroot_armv7/dev[0m
+[10:42:17] % sudo ln -s /proc/self/fd/0 /home/pmos/work/chroot_buildroot_armv7/dev/stdin[0m
+[10:42:17] % sudo ln -s /proc/self/fd/1 /home/pmos/work/chroot_buildroot_armv7/dev/stdout[0m
+[10:42:17] % sudo ln -s /proc/self/fd/2 /home/pmos/work/chroot_buildroot_armv7/dev/stderr[0m
+[10:42:17] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/dev/pts /home/pmos/work/chroot_buildroot_armv7/dev/shm[0m
+[10:42:17] % sudo mount -t tmpfs -o nodev,nosuid,noexec tmpfs /home/pmos/work/chroot_buildroot_armv7/dev/shm[0m
+[10:42:17] % sudo mount -t devpts -o ptmxmode=0666 devpts /home/pmos/work/chroot_buildroot_armv7/dev/pts[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_buildroot_armv7/dev/null c 1 3[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_buildroot_armv7/dev/null[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_buildroot_armv7/dev/zero c 1 5[0m
+[10:42:17] % sudo chmod 666 /home/pmos/work/chroot_buildroot_armv7/dev/zero[0m
+[10:42:17] % sudo mknod /home/pmos/work/chroot_buildroot_armv7/dev/full c 1 7[0m
+[10:42:18] % sudo chmod 666 /home/pmos/work/chroot_buildroot_armv7/dev/full[0m
+[10:42:18] % sudo mknod /home/pmos/work/chroot_buildroot_armv7/dev/random c 1 8[0m
+[10:42:18] % sudo chmod 666 /home/pmos/work/chroot_buildroot_armv7/dev/random[0m
+[10:42:18] % sudo mknod /home/pmos/work/chroot_buildroot_armv7/dev/urandom c 1 9[0m
+[10:42:18] % sudo chmod 666 /home/pmos/work/chroot_buildroot_armv7/dev/urandom[0m
+[10:42:18] % sudo mknod /home/pmos/work/chroot_buildroot_armv7/dev/tty c 5 0[0m
+[10:42:18] % sudo chmod 666 /home/pmos/work/chroot_buildroot_armv7/dev/tty[0m
+[10:42:18] % sudo mknod /home/pmos/work/chroot_buildroot_armv7/dev/ptmx c 5 2[0m
+[10:42:18] % sudo chmod 666 /home/pmos/work/chroot_buildroot_armv7/dev/ptmx[0m
+[10:42:18] % sudo ln -sf /proc/self/fd /home/pmos/work/chroot_buildroot_armv7/dev/[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/proc[0m
+[10:42:18] % sudo mount --bind /proc /home/pmos/work/chroot_buildroot_armv7/proc[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/sys[0m
+[10:42:18] % sudo mount --bind /sys /home/pmos/work/chroot_buildroot_armv7/sys[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/var/cache/apk[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_apk_armv7 /home/pmos/work/chroot_buildroot_armv7/var/cache/apk[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/appstream-data[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_appstream/armv7/edge /home/pmos/work/chroot_buildroot_armv7/mnt/appstream-data[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/ccache[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_ccache_armv7 /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/ccache[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/var/cache/distfiles[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_distfiles /home/pmos/work/chroot_buildroot_armv7/var/cache/distfiles[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/git[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_git /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/git[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/go[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_go /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/go[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/rust[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_rust /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/rust[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/abuild-config[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/config_abuild /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/abuild-config[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/etc/apk/keys[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/config_apk_keys /home/pmos/work/chroot_buildroot_armv7/etc/apk/keys[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/sccache[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/cache_sccache /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/sccache[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/netboot[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/images_netboot /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/netboot[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/packages[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/packages /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/packages[0m
+[10:42:18] Attempting to build: qemu-arm[0m
+[10:42:18] check_version_constraints: ignoring qemu-arm[0m
+[10:42:18] check_version_constraints: ignoring qemu-arm[0m
+[10:42:18] (native) install qemu-arm[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:18] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:18] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:18] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:18] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_native --arch aarch64 --cache-dir /home/pmos/work/cache_apk_aarch64 --repository /home/pmos/work/packages/edge add --no-interactive qemu-arm ;[0m
+[10:42:18] New background process: pid=44783, output=background[0m
+WARNING: opening /home/pmos/work/packages/edge/aarch64/APKINDEX.tar.gz: No such file or directory
+(1/1) Installing qemu-arm (11.1.1-r0)
+Executing busybox-1.38.0-r7.trigger
+OK: 12.4 MiB in 15 packages
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/usr/bin[0m
+[10:42:18] % sudo touch /home/pmos/work/chroot_buildroot_armv7/usr/bin/qemu-arm-static[0m
+[10:42:18] % sudo mount --bind /home/pmos/work/chroot_native/usr/bin/qemu-arm /home/pmos/work/chroot_buildroot_armv7/usr/bin/qemu-arm-static[0m
+[10:42:18] % sudo touch /home/pmos/work/chroot_buildroot_armv7/in-pmbootstrap[0m
+[10:42:18] check_version_constraints: ignoring apk-tools-static[0m
+[10:42:18] sigfilename: sbin/apk.static.SIGN.RSA.sha256.alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub[0m
+[10:42:18] sigkey: alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub[0m
+[10:42:18] extracted: /tmp/pmbootstrapfobkx_c7apk[0m
+[10:42:18] extracted: /tmp/pmbootstrapidzpdu9xsig[0m
+[10:42:18] Verify apk.static signature with /src/pmbootstrap/pmb/data/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub[0m
+[10:42:18] % openssl dgst -sha256 -verify /src/pmbootstrap/pmb/data/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub -signature /tmp/pmbootstrapidzpdu9xsig /tmp/pmbootstrapfobkx_c7apk[0m
+Verified OK
+[10:42:18] Verify the version reported by the apk.static binary (must match the package version 3.0.8-r0)[0m
+[10:42:18] % /tmp/pmbootstrapfobkx_c7apk --version[0m
+apk-tools 3.0.8-r0, compiled for aarch64.
+[10:42:18] (buildroot_armv7) Creating chroot[0m
+[10:42:18] % sudo cp /etc/resolv.conf /home/pmos/work/chroot_buildroot_armv7/etc/resolv.conf[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/etc/apk[0m
+[10:42:18] (chroot_buildroot_armv7) update /etc/apk/repositories[0m
+[10:42:18] % sudo sh -c echo https://mirror.postmarketos.org/postmarketos/main >> /home/pmos/work/chroot_buildroot_armv7/etc/apk/repositories[0m
+[10:42:18] % sudo sh -c echo https://dl-cdn.alpinelinux.org/alpine/edge/main >> /home/pmos/work/chroot_buildroot_armv7/etc/apk/repositories[0m
+[10:42:18] % sudo sh -c echo https://dl-cdn.alpinelinux.org/alpine/edge/community >> /home/pmos/work/chroot_buildroot_armv7/etc/apk/repositories[0m
+[10:42:18] % sudo sh -c echo https://dl-cdn.alpinelinux.org/alpine/edge/testing >> /home/pmos/work/chroot_buildroot_armv7/etc/apk/repositories[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/chroot_buildroot_armv7/usr/bin /home/pmos/work/chroot_buildroot_armv7/usr/sbin /home/pmos/work/chroot_buildroot_armv7/usr/lib[0m
+[10:42:18] % sudo ln -s usr/bin usr/sbin usr/lib /home/pmos/work/chroot_buildroot_armv7/[0m
+[10:42:18] % sudo rm -r /home/pmos/work/chroot_buildroot_armv7/sbin /home/pmos/work/chroot_buildroot_armv7/usr/sbin[0m
+[10:42:18] % sudo ln -s usr/bin /home/pmos/work/chroot_buildroot_armv7/sbin[0m
+[10:42:18] % sudo ln -s bin /home/pmos/work/chroot_buildroot_armv7/usr/sbin[0m
+[10:42:18] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:18] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:18] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:18] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:18] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_buildroot_armv7 --arch armv7 --cache-dir /home/pmos/work/cache_apk_armv7 --repository /home/pmos/work/packages/edge --initdb add --no-interactive alpine-baselayout apk-tools busybox musl-utils ;[0m
+[10:42:18] New background process: pid=44827, output=background[0m
+( 1/14) Installing alpine-baselayout-data (3.7.2-r1)
+( 2/14) Installing musl (1.2.6-r3)
+( 3/14) Installing busybox (1.38.0-r7)
+  Executing busybox-1.38.0-r7.post-install
+( 4/14) Installing busybox-binsh (1.38.0-r7)
+( 5/14) Installing alpine-baselayout (3.7.2-r1)
+  Executing alpine-baselayout-3.7.2-r1.pre-install
+  Executing alpine-baselayout-3.7.2-r1.post-install
+( 6/14) Installing libcrypto3 (3.5.8-r1)
+( 7/14) Installing libssl3 (3.5.8-r1)
+( 8/14) Installing ssl_client (1.38.0-r7)
+( 9/14) Installing zlib (1.3.2-r0)
+(10/14) Installing libapk (3.0.8-r0)
+(11/14) Installing ca-certificates-bundle (20260909-r0)
+(12/14) Installing apk-tools (3.0.8-r0)
+(13/14) Installing scanelf (1.3.9-r1)
+(14/14) Installing musl-utils (1.2.6-r3)
+Executing busybox-1.38.0-r7.trigger
+OK: 5296 KiB in 14 packages
+[10:42:19] (buildroot_armv7) % adduser -D pmos -u 12345[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/abuild-config /home/pmos/.abuild ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/abuild-config[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/ccache /home/pmos/.ccache ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/ccache[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/.cache ;[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/go/gocache /home/pmos/.cache/go-build ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/go/gocache[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/go/pkg ;[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/go/gomodcache /home/pmos/go/pkg/mod ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/go/gomodcache[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/.cargo/git ;[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/git/db /home/pmos/.cargo/git/db ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/rust/git/db[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/.cargo/registry ;[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/registry/cache /home/pmos/.cargo/registry/cache ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/rust/registry/cache[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/rust/registry/index /home/pmos/.cargo/registry/index ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/rust/registry/index[0m
+[10:42:19] (buildroot_armv7) % busybox su pmos -c HOME=/home/pmos ln -s /mnt/pmbootstrap/sccache /home/pmos/.cache/sccache ;[0m
+[10:42:19] (buildroot_armv7) % chown pmos:pmos /mnt/pmbootstrap/sccache[0m
+[10:42:19] check_version_constraints: ignoring git[0m
+[10:42:19] check_version_constraints: ignoring pigz[0m
+[10:42:19] check_version_constraints: ignoring build-base[0m
+[10:42:19] check_version_constraints: ignoring apk-tools[0m
+[10:42:19] check_version_constraints: ignoring ccache[0m
+[10:42:19] check_version_constraints: ignoring abuild[0m
+[10:42:19] check_version_constraints: ignoring musl[0m
+[10:42:19] check_version_constraints: ignoring file[0m
+[10:42:19] check_version_constraints: ignoring binutils[0m
+[10:42:19] check_version_constraints: ignoring scanelf[0m
+[10:42:19] check_version_constraints: ignoring openssl[0m
+[10:42:19] openssl: picked provider(s) with highest priority 100: openssl[0m
+[10:42:19] check_version_constraints: ignoring libapk[0m
+[10:42:19] check_version_constraints: ignoring tar[0m
+[10:42:19] check_version_constraints: ignoring libcrypto3[0m
+[10:42:19] libcrypto3: picked provider(s) with highest priority 100: libcrypto3[0m
+[10:42:19] check_version_constraints: ignoring musl-utils[0m
+[10:42:19] check_version_constraints: ignoring /bin/sh[0m
+[10:42:19] check_version_constraints: ignoring /bin/sh[0m
+[10:42:19] check_version_constraints: ignoring /bin/sh[0m
+[10:42:19] check_version_constraints: ignoring /bin/sh[0m
+[10:42:19] check_version_constraints: ignoring /bin/sh[0m
+[10:42:19] /bin/sh: picked provider(s) with highest priority 100: busybox-binsh[0m
+[10:42:19] check_version_constraints: ignoring g++[0m
+[10:42:19] check_version_constraints: ignoring make[0m
+[10:42:19] check_version_constraints: ignoring fakeroot[0m
+[10:42:19] check_version_constraints: ignoring fakeroot[0m
+[10:42:19] fakeroot: picked provider(s) with highest priority 100: fakeroot[0m
+[10:42:19] check_version_constraints: ignoring patch[0m
+[10:42:19] check_version_constraints: ignoring pkgconf[0m
+[10:42:19] check_version_constraints: ignoring libstdc++[0m
+[10:42:19] check_version_constraints: ignoring libstdc++-dev[0m
+[10:42:19] check_version_constraints: ignoring musl-dev[0m
+[10:42:19] check_version_constraints: ignoring libc-dev[0m
+[10:42:19] check_version_constraints: ignoring lzip[0m
+[10:42:19] check_version_constraints: ignoring libssl3[0m
+[10:42:19] libssl3: picked provider(s) with highest priority 100: libssl3[0m
+[10:42:19] check_version_constraints: ignoring ca-certificates-bundle[0m
+[10:42:19] check_version_constraints: ignoring fortify-headers[0m
+[10:42:19] check_version_constraints: ignoring gcc[0m
+[10:42:19] check_version_constraints: ignoring libgomp[0m
+[10:42:19] check_version_constraints: ignoring busybox[0m
+[10:42:19] check_version_constraints: ignoring libgcc-static[0m
+[10:42:19] check_version_constraints: ignoring libatomic[0m
+[10:42:19] (buildroot_armv7) install abuild apk-tools build-base ccache git pigz[0m
+[10:42:19] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:19] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:20] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:20] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:20] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_buildroot_armv7 --arch armv7 --cache-dir /home/pmos/work/cache_apk_armv7 --repository /home/pmos/work/packages/edge add --no-interactive abuild apk-tools build-base ccache git pigz ;[0m
+[10:42:20] New background process: pid=44988, output=background[0m
+( 1/47) Installing libcap2 (2.78-r0)
+( 2/47) Installing libcap-getcap (2.78-r0)
+( 3/47) Installing fakeroot (1.37.2-r0)
+( 4/47) Installing libgcc (15.2.0-r9)
+( 5/47) Installing libstdc++ (15.2.0-r9)
+( 6/47) Installing lzip (1.26-r0)
+( 7/47) Installing openssl (3.5.8-r1)
+( 8/47) Installing patch (2.8-r0)
+( 9/47) Installing pkgconf (3.0.7-r0)
+(10/47) Installing acl-libs (2.3.2-r1)
+(11/47) Installing tar (1.35-r5)
+(12/47) Installing abuild (3.18.0_rc5-r1)
+  Executing abuild-3.18.0_rc5-r1.pre-install
+(13/47) Installing abuild-sudo (3.18.0_rc5-r1)
+(14/47) Installing jansson (2.15.0-r0)
+(15/47) Installing zstd-libs (1.5.7-r2)
+(16/47) Installing binutils (2.45.1-r1)
+(17/47) Installing libmagic (5.48-r0)
+(18/47) Installing file (5.48-r0)
+(19/47) Installing libgcc-static (15.2.0-r9)
+(20/47) Installing libgomp (15.2.0-r9)
+(21/47) Installing libatomic (15.2.0-r9)
+(22/47) Installing gmp (6.3.0-r4)
+(23/47) Installing isl26 (0.26-r2)
+(24/47) Installing mpfr4 (4.2.2-r0)
+(25/47) Installing mpc1 (1.3.1-r1)
+(26/47) Installing gcc (15.2.0-r9)
+(27/47) Installing libstdc++-dev (15.2.0-r9)
+(28/47) Installing musl-dev (1.2.6-r3)
+(29/47) Installing g++ (15.2.0-r9)
+(30/47) Installing make (4.4.1-r4)
+(31/47) Installing fortify-headers (3.0.2-r0)
+(32/47) Installing build-base (0.5-r4)
+(33/47) Installing hiredis (1.3.0-r0)
+(34/47) Installing libxxhash (0.8.3-r1)
+(35/47) Installing ccache (4.13.6-r0)
+(36/47) Installing brotli-libs (1.2.0-r1)
+(37/47) Installing c-ares (1.34.8-r0)
+(38/47) Installing libunistring (1.4.2-r0)
+(39/47) Installing libidn2 (2.3.8-r0)
+(40/47) Installing nghttp2-libs (1.70.0-r0)
+(41/47) Installing libpsl (0.21.5-r3)
+(42/47) Installing libcurl (8.22.0-r0)
+(43/47) Installing libexpat (2.8.5-r0)
+(44/47) Installing pcre2 (10.48-r0)
+(45/47) Installing git (2.55.0-r1)
+(46/47) Installing git-init-template (2.55.0-r1)
+(47/47) Installing pigz (2.8-r1)
+Executing busybox-1.38.0-r7.trigger
+OK: 173.2 MiB in 61 packages
+[10:42:20] (buildroot_armv7) % chown root:abuild /var/cache/distfiles[0m
+[10:42:20] (buildroot_armv7) % chmod g+w /var/cache/distfiles[0m
+[10:42:20] (buildroot_armv7) % adduser pmos abuild[0m
+[10:42:21] (buildroot_armv7) % cp /tmp/apk_wrapper.sh /usr/local/bin/abuild-apk[0m
+[10:42:21] (buildroot_armv7) % chmod +x /usr/local/bin/abuild-apk[0m
+[10:42:21] (buildroot_armv7) % sed -i -e s/^CLEANUP=.*/CLEANUP=''/ /etc/abuild.conf[0m
+[10:42:21] (buildroot_armv7) % sed -i -e s/^ERROR_CLEANUP=.*/ERROR_CLEANUP=''/ /etc/abuild.conf[0m
+[10:42:21] Initializing aarch64 buildroot[0m
+[10:42:21] check_version_constraints: ignoring git[0m
+[10:42:21] check_version_constraints: ignoring pigz[0m
+[10:42:21] check_version_constraints: ignoring build-base[0m
+[10:42:21] check_version_constraints: ignoring apk-tools[0m
+[10:42:21] check_version_constraints: ignoring ccache[0m
+[10:42:21] check_version_constraints: ignoring abuild[0m
+[10:42:21] check_version_constraints: ignoring musl[0m
+[10:42:21] check_version_constraints: ignoring file[0m
+[10:42:21] check_version_constraints: ignoring binutils[0m
+[10:42:21] check_version_constraints: ignoring scanelf[0m
+[10:42:21] check_version_constraints: ignoring openssl[0m
+[10:42:21] openssl: picked provider(s) with highest priority 100: openssl[0m
+[10:42:21] check_version_constraints: ignoring libapk[0m
+[10:42:21] check_version_constraints: ignoring tar[0m
+[10:42:21] check_version_constraints: ignoring libcrypto3[0m
+[10:42:21] libcrypto3: picked provider(s) with highest priority 100: libcrypto3[0m
+[10:42:21] check_version_constraints: ignoring musl-utils[0m
+[10:42:21] check_version_constraints: ignoring /bin/sh[0m
+[10:42:21] check_version_constraints: ignoring /bin/sh[0m
+[10:42:21] check_version_constraints: ignoring /bin/sh[0m
+[10:42:21] check_version_constraints: ignoring /bin/sh[0m
+[10:42:21] check_version_constraints: ignoring /bin/sh[0m
+[10:42:21] /bin/sh: picked provider(s) with highest priority 100: busybox-binsh[0m
+[10:42:21] check_version_constraints: ignoring g++[0m
+[10:42:21] check_version_constraints: ignoring make[0m
+[10:42:21] check_version_constraints: ignoring fakeroot[0m
+[10:42:21] check_version_constraints: ignoring fakeroot[0m
+[10:42:21] fakeroot: picked provider(s) with highest priority 100: fakeroot[0m
+[10:42:21] check_version_constraints: ignoring patch[0m
+[10:42:21] check_version_constraints: ignoring pkgconf[0m
+[10:42:21] check_version_constraints: ignoring libstdc++[0m
+[10:42:21] check_version_constraints: ignoring libstdc++-dev[0m
+[10:42:21] check_version_constraints: ignoring musl-dev[0m
+[10:42:21] check_version_constraints: ignoring libc-dev[0m
+[10:42:21] check_version_constraints: ignoring lzip[0m
+[10:42:21] check_version_constraints: ignoring libssl3[0m
+[10:42:21] libssl3: picked provider(s) with highest priority 100: libssl3[0m
+[10:42:21] check_version_constraints: ignoring ca-certificates-bundle[0m
+[10:42:21] check_version_constraints: ignoring fortify-headers[0m
+[10:42:21] check_version_constraints: ignoring gcc[0m
+[10:42:21] check_version_constraints: ignoring libgomp[0m
+[10:42:21] check_version_constraints: ignoring busybox[0m
+[10:42:21] check_version_constraints: ignoring libgcc-static[0m
+[10:42:21] check_version_constraints: ignoring libatomic[0m
+[10:42:21] (native) install abuild apk-tools build-base ccache git pigz[0m
+[10:42:21] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:21] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:21] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:21] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:21] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_native --arch aarch64 --cache-dir /home/pmos/work/cache_apk_aarch64 --repository /home/pmos/work/packages/edge add --no-interactive abuild apk-tools build-base ccache git pigz ;[0m
+[10:42:21] New background process: pid=45039, output=background[0m
+WARNING: opening /home/pmos/work/packages/edge/aarch64/APKINDEX.tar.gz: No such file or directory
+( 1/47) Installing libcap2 (2.78-r0)
+( 2/47) Installing libcap-getcap (2.78-r0)
+( 3/47) Installing fakeroot (1.37.2-r0)
+( 4/47) Installing libgcc (15.2.0-r9)
+( 5/47) Installing libstdc++ (15.2.0-r9)
+( 6/47) Installing lzip (1.26-r0)
+( 7/47) Installing openssl (3.5.8-r1)
+( 8/47) Installing patch (2.8-r0)
+( 9/47) Installing pkgconf (3.0.7-r0)
+(10/47) Installing acl-libs (2.3.2-r1)
+(11/47) Installing tar (1.35-r5)
+(12/47) Installing abuild (3.18.0_rc5-r1)
+  Executing abuild-3.18.0_rc5-r1.pre-install
+(13/47) Installing abuild-sudo (3.18.0_rc5-r1)
+(14/47) Installing jansson (2.15.0-r0)
+(15/47) Installing zstd-libs (1.5.7-r2)
+(16/47) Installing binutils (2.45.1-r1)
+(17/47) Installing libmagic (5.48-r0)
+(18/47) Installing file (5.48-r0)
+(19/47) Installing libgcc-static (15.2.0-r9)
+(20/47) Installing libgomp (15.2.0-r9)
+(21/47) Installing libatomic (15.2.0-r9)
+(22/47) Installing gmp (6.3.0-r4)
+(23/47) Installing isl26 (0.26-r2)
+(24/47) Installing mpfr4 (4.2.2-r0)
+(25/47) Installing mpc1 (1.3.1-r1)
+(26/47) Installing gcc (15.2.0-r9)
+(27/47) Installing libstdc++-dev (15.2.0-r9)
+(28/47) Installing musl-dev (1.2.6-r3)
+(29/47) Installing g++ (15.2.0-r9)
+(30/47) Installing make (4.4.1-r4)
+(31/47) Installing fortify-headers (3.0.2-r0)
+(32/47) Installing build-base (0.5-r4)
+(33/47) Installing hiredis (1.3.0-r0)
+(34/47) Installing libxxhash (0.8.3-r1)
+(35/47) Installing ccache (4.13.6-r0)
+(36/47) Installing brotli-libs (1.2.0-r1)
+(37/47) Installing c-ares (1.34.8-r0)
+(38/47) Installing libunistring (1.4.2-r0)
+(39/47) Installing libidn2 (2.3.8-r0)
+(40/47) Installing nghttp2-libs (1.70.0-r0)
+(41/47) Installing libpsl (0.21.5-r3)
+(42/47) Installing libcurl (8.22.0-r0)
+(43/47) Installing libexpat (2.8.5-r0)
+(44/47) Installing pcre2 (10.48-r0)
+(45/47) Installing git (2.55.0-r1)
+(46/47) Installing git-init-template (2.55.0-r1)
+(47/47) Installing pigz (2.8-r1)
+Executing busybox-1.38.0-r7.trigger
+OK: 268.1 MiB in 62 packages
+[10:42:22] (native) % chown root:abuild /var/cache/distfiles[0m
+[10:42:22] (native) % chmod g+w /var/cache/distfiles[0m
+[10:42:22] (native) % adduser pmos abuild[0m
+[10:42:22] (native) % sed -i -e s/^CLEANUP=.*/CLEANUP=''/ /etc/abuild.conf[0m
+[10:42:22] (native) % sed -i -e s/^ERROR_CLEANUP=.*/ERROR_CLEANUP=''/ /etc/abuild.conf[0m
+[10:42:22] (native) % sed -i $ a\export JOBS=4 /etc/abuild.conf[0m
+[10:42:22] Attempting to build: g++-armv7, gcc-armv7, abuild, ccache-cross-symlinks[0m
+[10:42:22] aarch64/g++-armv7: Generating dependency tree[0m
+[10:42:22] check_version_constraints: ignoring gcc-armv7[0m
+[10:42:22] check_version_constraints: ignoring binutils-armv7[0m
+[10:42:22] check_version_constraints: ignoring bison[0m
+[10:42:22] check_version_constraints: ignoring flex[0m
+[10:42:22] check_version_constraints: ignoring g++[0m
+[10:42:22] check_version_constraints: ignoring gawk[0m
+[10:42:22] check_version_constraints: ignoring gcc[0m
+[10:42:22] check_version_constraints: ignoring gmp-dev[0m
+[10:42:22] check_version_constraints: ignoring isl-dev[0m
+[10:42:22] check_version_constraints: ignoring linux-headers[0m
+[10:42:22] check_version_constraints: ignoring mpc1[0m
+[10:42:22] check_version_constraints: ignoring mpc1-dev[0m
+[10:42:22] check_version_constraints: ignoring mpfr-dev[0m
+[10:42:22] check_version_constraints: ignoring musl-dev-armv7[0m
+[10:42:22] check_version_constraints: ignoring musl-armv7[0m
+[10:42:22] check_version_constraints: ignoring so:libgcc_s.so.1[0m
+[10:42:22] check_version_constraints: ignoring so:libgmp.so.10[0m
+[10:42:22] check_version_constraints: ignoring so:libisl.so.23[0m
+[10:42:22] check_version_constraints: ignoring so:libisl.so.23[0m
+[10:42:22] so:libisl.so.23: has multiple providers (isl25, isl26), picked shortest: isl25[0m
+[10:42:22] check_version_constraints: ignoring so:libmpc.so.3[0m
+[10:42:22] check_version_constraints: ignoring so:libmpfr.so.6[0m
+[10:42:22] check_version_constraints: ignoring so:libstdc++.so.6[0m
+[10:42:22] check_version_constraints: ignoring so:libz.so.1[0m
+[10:42:22] check_version_constraints: ignoring texinfo[0m
+[10:42:22] check_version_constraints: ignoring zip[0m
+[10:42:22] check_version_constraints: ignoring zlib-dev[0m
+[10:42:22] aarch64/gcc-armv7: Generating dependency tree[0m
+[10:42:22] check_version_constraints: ignoring gcc-armv7[0m
+[10:42:22] aarch64/binutils-armv7: marked for build[0m
+[10:42:22] aarch64/bison: marked for build[0m
+[10:42:22] aarch64/flex: marked for build[0m
+[10:42:22] aarch64/g++: marked for build[0m
+[10:42:22] aarch64/gawk: marked for build[0m
+[10:42:22] aarch64/gcc: marked for build[0m
+[10:42:22] aarch64/gmp-dev: marked for build[0m
+[10:42:22] aarch64/isl-dev: marked for build[0m
+[10:42:22] aarch64/linux-headers: marked for build[0m
+[10:42:22] aarch64/mpc1: marked for build[0m
+[10:42:22] aarch64/mpc1-dev: marked for build[0m
+[10:42:22] aarch64/mpfr-dev: marked for build[0m
+[10:42:22] aarch64/musl-dev-armv7: marked for build[0m
+[10:42:22] aarch64/so:libgcc_s.so.1: marked for build[0m
+[10:42:22] aarch64/so:libgmp.so.10: marked for build[0m
+[10:42:22] aarch64/so:libisl.so.23: marked for build[0m
+[10:42:22] aarch64/so:libmpc.so.3: marked for build[0m
+[10:42:22] aarch64/so:libmpfr.so.6: marked for build[0m
+[10:42:22] aarch64/so:libstdc++.so.6: marked for build[0m
+[10:42:22] aarch64/so:libz.so.1: marked for build[0m
+[10:42:22] aarch64/texinfo: marked for build[0m
+[10:42:22] aarch64/zip: marked for build[0m
+[10:42:22] aarch64/zlib-dev: marked for build[0m
+[10:42:22] check_version_constraints: ignoring abuild[0m
+[10:42:22] aarch64/ccache-cross-symlinks: Generating dependency tree[0m
+[10:42:22] check_version_constraints: ignoring ccache-cross-symlinks[0m
+[10:42:22] check_version_constraints: ignoring ccache[0m
+[10:42:22] check_version_constraints: ignoring gcc-armv7[0m
+[10:42:22] check_version_constraints: ignoring mpc1[0m
+[10:42:22] check_version_constraints: ignoring binutils-armv7[0m
+[10:42:22] check_version_constraints: ignoring g++-armv7[0m
+[10:42:22] check_version_constraints: ignoring abuild[0m
+[10:42:22] check_version_constraints: ignoring scanelf[0m
+[10:42:22] check_version_constraints: ignoring fakeroot[0m
+[10:42:22] check_version_constraints: ignoring fakeroot[0m
+[10:42:22] fakeroot: picked provider(s) with highest priority 100: fakeroot[0m
+[10:42:22] check_version_constraints: ignoring patch[0m
+[10:42:22] check_version_constraints: ignoring ccache-cross-symlinks[0m
+[10:42:22] check_version_constraints: ignoring pkgconf[0m
+[10:42:22] check_version_constraints: ignoring apk-tools[0m
+[10:42:22] check_version_constraints: ignoring tar[0m
+[10:42:22] check_version_constraints: ignoring musl-dev[0m
+[10:42:22] check_version_constraints: ignoring musl[0m
+[10:42:22] check_version_constraints: ignoring libstdc++-dev-armv7[0m
+[10:42:22] check_version_constraints: ignoring openssl[0m
+[10:42:22] openssl: picked provider(s) with highest priority 100: openssl[0m
+[10:42:22] check_version_constraints: ignoring libapk[0m
+[10:42:22] check_version_constraints: ignoring libssl3[0m
+[10:42:22] libssl3: picked provider(s) with highest priority 100: libssl3[0m
+[10:42:22] check_version_constraints: ignoring musl-utils[0m
+[10:42:22] check_version_constraints: ignoring libcrypto3[0m
+[10:42:22] libcrypto3: picked provider(s) with highest priority 100: libcrypto3[0m
+[10:42:22] check_version_constraints: ignoring /bin/sh[0m
+[10:42:22] check_version_constraints: ignoring /bin/sh[0m
+[10:42:22] check_version_constraints: ignoring /bin/sh[0m
+[10:42:22] check_version_constraints: ignoring /bin/sh[0m
+[10:42:22] check_version_constraints: ignoring /bin/sh[0m
+[10:42:22] /bin/sh: picked provider(s) with highest priority 100: busybox-binsh[0m
+[10:42:22] check_version_constraints: ignoring ca-certificates-bundle[0m
+[10:42:22] check_version_constraints: ignoring lzip[0m
+[10:42:22] check_version_constraints: ignoring ccache[0m
+[10:42:22] check_version_constraints: ignoring busybox[0m
+[10:42:22] (native) install ccache-cross-symlinks abuild gcc-armv7 g++-armv7[0m
+[10:42:22] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:22] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:22] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:22] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:22] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_native --arch aarch64 --cache-dir /home/pmos/work/cache_apk_aarch64 --repository /home/pmos/work/packages/edge add --no-interactive g++-armv7 gcc-armv7 abuild ccache-cross-symlinks ;[0m
+[10:42:22] New background process: pid=45066, output=background[0m
+WARNING: opening /home/pmos/work/packages/edge/aarch64/APKINDEX.tar.gz: No such file or directory
+(1/5) Installing ccache-cross-symlinks (3-r3)
+(2/5) Installing libstdc++-dev-armv7 (15.2.0-r9)
+(3/5) Installing binutils-armv7 (2.45.1-r1)
+(4/5) Installing gcc-armv7 (15.2.0-r9)
+(5/5) Installing g++-armv7 (15.2.0-r9)
+Executing busybox-1.38.0-r7.trigger
+OK: 460.6 MiB in 67 packages
+[10:42:23] [92m*** Install host dependencies[0m
+[10:42:23] check_version_constraints: ignoring postmarketos-testlib[0m
+[10:42:23] check_version_constraints: ignoring busybox-binsh[0m
+[10:42:23] busybox-binsh: picked provider(s) with highest priority 100: busybox-binsh[0m
+[10:42:23] check_version_constraints: ignoring busybox[0m
+[10:42:23] (buildroot_armv7) install postmarketos-testlib[0m
+[10:42:23] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:23] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:23] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:23] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:23] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_buildroot_armv7 --arch armv7 --cache-dir /home/pmos/work/cache_apk_armv7 --repository /home/pmos/work/packages/edge add --no-interactive postmarketos-testlib ;[0m
+[10:42:23] New background process: pid=45078, output=background[0m
+(1/1) Installing postmarketos-testlib (1.0.0-r0)
+Executing busybox-1.38.0-r7.trigger
+OK: 173.2 MiB in 62 packages
+[10:42:23] [92m*** Install build dependencies[0m
+[10:42:23] check_version_constraints: ignoring postmarketos-testlib[0m
+[10:42:23] check_version_constraints: ignoring busybox-binsh[0m
+[10:42:23] busybox-binsh: picked provider(s) with highest priority 100: busybox-binsh[0m
+[10:42:23] check_version_constraints: ignoring busybox[0m
+[10:42:23] (native) install postmarketos-testlib[0m
+[10:42:23] % sudo mkdir -p /home/pmos/work/tmp[0m
+[10:42:23] % sudo rm -f /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:23] % sudo mkfifo /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:23] % sudo cat /home/pmos/work/tmp/apk_progress_fifo[0m
+[10:42:23] % sudo sh -c exec 3>/home/pmos/work/tmp/apk_progress_fifo; /home/pmos/work/apk.static --progress-fd 3 --no-progress --root /home/pmos/work/chroot_native --arch aarch64 --cache-dir /home/pmos/work/cache_apk_aarch64 --repository /home/pmos/work/packages/edge add --no-interactive postmarketos-testlib ;[0m
+[10:42:23] New background process: pid=45093, output=background[0m
+WARNING: opening /home/pmos/work/packages/edge/aarch64/APKINDEX.tar.gz: No such file or directory
+(1/1) Installing postmarketos-testlib (1.0.0-r0)
+Executing busybox-1.38.0-r7.trigger
+OK: 460.6 MiB in 68 packages
+[10:42:23] [93m=>[0m [94medge/postmarketos-initramfs[0m: Building package (cross compiling: cross-native2)[0m
+[10:42:23] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/sysroot[0m
+[10:42:23] % sudo mount --bind /home/pmos/work/chroot_buildroot_armv7 /home/pmos/work/chroot_native/mnt/sysroot[0m
+[10:42:23] (native) % mkdir -p /home/pmos/packages; rm -f /home/pmos/packages/pmos; ln -sf /mnt/pmbootstrap/packages/edge /home/pmos/packages/pmos[0m
+[10:42:23] % sudo mkdir -p /home/pmos/work/chroot_native/home/pmos/build[0m
+[10:42:23] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/init_functions_2nd.sh /home/pmos/work/chroot_native/home/pmos/build/init_functions_2nd.sh[0m
+[10:42:23] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/mdev.conf /home/pmos/work/chroot_native/home/pmos/build/mdev.conf[0m
+[10:42:23] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/00-initramfs-base.dirs /home/pmos/work/chroot_native/home/pmos/build/00-initramfs-base.dirs[0m
+[10:42:23] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/00-initramfs-base.files /home/pmos/work/chroot_native/home/pmos/build/00-initramfs-base.files[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/init.sh /home/pmos/work/chroot_native/home/pmos/build/init.sh[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/00-initramfs-extra-base.files /home/pmos/work/chroot_native/home/pmos/build/00-initramfs-extra-base.files[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/tests /home/pmos/work/chroot_native/home/pmos/build/tests[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/00-default-extra.modules /home/pmos/work/chroot_native/home/pmos/build/00-default-extra.modules[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/init_functions.sh /home/pmos/work/chroot_native/home/pmos/build/init_functions.sh[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/APKBUILD /home/pmos/work/chroot_native/home/pmos/build/APKBUILD[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/00-default.modules /home/pmos/work/chroot_native/home/pmos/build/00-default.modules[0m
+[10:42:24] % sudo cp -rL /src/pmaports/main/postmarketos-initramfs/init_2nd.sh /home/pmos/work/chroot_native/home/pmos/build/init_2nd.sh[0m
+[10:42:24] (native) % chown -R pmos:pmos /home/pmos/build[0m
+[10:42:24] % sudo mkdir -p /home/pmos/work/chroot_native/mnt/pmaports[0m
+[10:42:24] % sudo mount --bind /src/pmaports /home/pmos/work/chroot_native/mnt/pmaports[0m
+[10:42:24] (native) % busybox su pmos -c HOME=/home/pmos mkdir -p /home/pmos/build ;[0m
+[10:42:24] (native) % busybox su pmos -c HOME=/home/pmos ln -sf /mnt/pmaports/.git /home/pmos/build/.git ;[0m
+[10:42:24] (native) % cd /home/pmos/build; busybox su pmos -c SUDO_APK='abuild-apk --no-progress' PMB_CROSS=cross-native2 CHOST=armv7 CBUILDROOT=/mnt/sysroot CFLAGS=-Wl,-rpath-link=/mnt/sysroot/usr/lib CGO_CFLAGS=--sysroot=/mnt/sysroot CGO_LDFLAGS=--sysroot=/mnt/sysroot GOARCH=arm RUSTC_WRAPPER=/usr/bin/sccache GOCACHE=/home/pmos/.cache/go-build HOME=/home/pmos abuild -d -D postmarketOS ;[0m
+>>> postmarketos-initramfs: Building pmos/postmarketos-initramfs 3.12.3-r4 (using abuild 3.18.0_rc5-r1) started Sun, 27 Sep 2026 10:42:24 +0000
+>>> postmarketos-initramfs: Validating /home/pmos/build/APKBUILD...
+>>> WARNING: postmarketos-initramfs: tests is not in $source/$install/$triggers
+>>> postmarketos-initramfs: Cleaning up srcdir
+>>> postmarketos-initramfs: Cleaning up pkgdir
+>>> postmarketos-initramfs: Cleaning up tmpdir
+/home/pmos/build/00-default.modules: OK
+/home/pmos/build/00-default-extra.modules: OK
+/home/pmos/build/00-initramfs-base.dirs: OK
+/home/pmos/build/00-initramfs-base.files: OK
+/home/pmos/build/00-initramfs-extra-base.files: OK
+/home/pmos/build/init.sh: OK
+/home/pmos/build/init_functions.sh: OK
+/home/pmos/build/init_2nd.sh: OK
+/home/pmos/build/init_functions_2nd.sh: OK
+/home/pmos/build/mdev.conf: OK
+/home/pmos/build/tests/01-parse-cmdline-testlib.sh: OK
+/home/pmos/build/tests/02-find-partition-testlib.sh: OK
+/home/pmos/build/00-default.modules: OK
+/home/pmos/build/00-default-extra.modules: OK
+/home/pmos/build/00-initramfs-base.dirs: OK
+/home/pmos/build/00-initramfs-base.files: OK
+/home/pmos/build/00-initramfs-extra-base.files: OK
+/home/pmos/build/init.sh: OK
+/home/pmos/build/init_functions.sh: OK
+/home/pmos/build/init_2nd.sh: OK
+/home/pmos/build/init_functions_2nd.sh: OK
+/home/pmos/build/mdev.conf: OK
+/home/pmos/build/tests/01-parse-cmdline-testlib.sh: OK
+/home/pmos/build/tests/02-find-partition-testlib.sh: OK
+>>> postmarketos-initramfs: Entering fakeroot...
+>>> postmarketos-initramfs*: Running postcheck for postmarketos-initramfs
+>>> postmarketos-initramfs*: Preparing package postmarketos-initramfs...
+>>> postmarketos-initramfs*: Tracing dependencies...
+	beebzzr
+	blkid
+	btrfs-progs
+	buffyboard
+	busybox-extras
+	bzip2
+	cryptsetup
+	device-mapper
+	devicepkg-utils>=0.2.0
+	dosfstools
+	e2fsprogs
+	e2fsprogs-extra
+	f2fs-tools
+	font-terminus
+	iskey
+	kmod
+	libinput-libs
+	libinput-udev
+	losetup
+	lz4
+	parted
+	postmarketos-fde-unlocker
+	postmarketos-mkinitfs>=2.2
+	udev
+	unudhcpd
+	util-linux-misc
+	xfsprogs
+	xfsprogs-extra
+	xz
+>>> postmarketos-initramfs*: Package size: 51.6 KB
+>>> postmarketos-initramfs*: Compressing data...
+>>> postmarketos-initramfs*: Create checksum...
+>>> postmarketos-initramfs*: Create postmarketos-initramfs-3.12.3-r4.apk
+>>> postmarketos-initramfs: Build complete at Sun, 27 Sep 2026 10:42:24 +0000 elapsed time 0h 0m 0s
+>>> postmarketos-initramfs: Cleaning up srcdir
+>>> postmarketos-initramfs: Cleaning up pkgdir
+>>> postmarketos-initramfs: Cleaning up tmpdir
+>>> postmarketos-initramfs: Updating the pmos/armv7 repository index...
+>>> postmarketos-initramfs: Signing the index...
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/sysroot[0m
+[10:42:24] Zapping buildroots (running in strict mode by default, use --lax to skip zap)[0m
+[10:42:24] % sudo losetup --json --list[0m
+{
+   "loopdevices": [
+
+   ]
+}
+[10:42:24] % sudo rm /home/pmos/work/chroot_native/in-pmbootstrap[0m
+[10:42:24] % sudo rm /home/pmos/work/chroot_buildroot_armv7/in-pmbootstrap[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/var/cache/distfiles[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/var/cache/apk[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/sys[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/proc[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/sccache[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/rust[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/packages[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/netboot[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/go[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/git[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/ccache[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmbootstrap/abuild-config[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/pmaports[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/mnt/appstream-data[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/etc/apk/keys[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/dev/shm[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/dev/pts[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_native/dev[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/var/cache/distfiles[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/var/cache/apk[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/usr/bin/qemu-arm-static[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/sys[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/proc[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/sccache[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/rust[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/packages[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/netboot[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/go[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/git[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/ccache[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/pmbootstrap/abuild-config[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/mnt/appstream-data[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/etc/apk/keys[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/dev/shm[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/dev/pts[0m
+[10:42:24] % sudo umount /home/pmos/work/chroot_buildroot_armv7/dev[0m
+[10:42:24] % sudo rm -rf /home/pmos/work/chroot_buildroot_armv7[0m
+[10:42:24] % sudo rm -rf /home/pmos/work/chroot_native[0m
+[10:42:24] [93m=>[0m [94medge/postmarketos-initramfs[0m: Done![0m
+[10:42:24] [93m=>[0m [92mFinished building packages[0m
+[10:42:24] [92mDONE![0m[0m

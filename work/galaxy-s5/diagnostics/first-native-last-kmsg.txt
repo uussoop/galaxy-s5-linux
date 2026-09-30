@@ -1,0 +1,310 @@
+
+Samsung S-Boot 4.0 for SM-G900H (Aug 12 2022 - 15:12:28)
+
+EXYNOS5422 EVT 0.1 (Base on ARM CortexA7)
+2026MB / 0MB / Rev 10 / G900HXXU1CVHA /(PKG_ID 0x1f088328)
+
+BOOTLOADER VERSION : G900HXXU1CVHA
+
+MUIC rev = MAX77804K(157)
+MON: 0x0(0)
+MON[0] = (0)[0x00, 0x00]
+MON[1] = (1)[0x00, 0x00]
+MON[2] = (2)[0x00, 0x00]
+MON[3] = (3)[0x00, 0x00]
+init_microusb_ic: MUIC: CDETCTRL:0x2d
+init_microusb_ic: MUIC: CONTROL1:0x00
+init_microusb_ic: MUIC: CONTROL2:0x33
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+init_microusb_ic: MUIC: CONTROL4:0xb2
+set_muic_uart_early: MUIC: CONTROL1: 0x00
+cardtype: 0x00000007
+SB_MMC_HS_52MHZ_1_8V_3V_IO
+mmc->card_caps: 0x00000f11
+mmc->host_caps: 0x00000f11
+!!!Enter 8 Bit DDR mode.!!!
+[mmc] capacity = 30777344
+
+
+MODEL_NAME:{{SM-G900H}}
+eMMC_SERIAL_NUMBER:{{110100483136474532086863596F61F9}}
+
+Current SBOOT version : VERSION_-+A1
+- read_bl1
+pit_check_signature (PIT) valid.
+initialize_ddi_data: usable! (1:0xe), warranty reason : (0x0304)
+[RPMB] emmc_rpmb_open: 
+Get DATA success.
+
+[RPMB] emmc_rpmb_close: 
+initialize_rpmb_data: usable! (SM-G900H:VERSION_-+A1)
+PARAM ENV VERSION: v1.0..
+DDR SIZE: 2G (0x0004)
+EXYNOS5422 : LOT ID is N76P6, androidboot.serialno=0000000000000000
+muic_api_print_init_regs: INTMASK[1:0x00, 2:0x00]
+muic_api_print_init_regs: MUIC: CDETCTRL:0x2d
+muic_api_print_init_regs: MUIC: CONTROL1:0x00
+muic_api_print_init_regs: MUIC: CONTROL2:0x3a
+muic_api_print_init_regs: MUIC: CONTROL3:0x00
+muic_api_print_init_regs: MUIC: CONTROL4:0xb2
+set_charger_state: buck(1), chg(1), reg(0x05)
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+set_auto_current: get_charger_status(0)
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+get_wireless_charger_detect: wireless check 0
+get_wireless_charger_detect : CHG_DTLS(0x00)
+set_auto_current: unknown_state, curr(475)
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+get_wireless_charger_detect: wireless check 0
+get_wireless_charger_detect : CHG_DTLS(0x00)
+set_charger_current: chg curr(12), in curr(0)
+fuelgauge_read_i2c_word : 0x10, 0x0
+fuelguage : mode=0x1000
+fuelgauge_read_i2c_word : 0x0, 0x0
+fuelguage : hibrt(0000) == 0x0
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+get_wireless_charger_detect: wireless check 0
+get_wireless_charger_detect : CHG_DTLS(0x00)
+fuelguage : wpc_status(0)
+muic_api_interrupt_reg_clear: INTR[1:0x00, 2:0x03]
+AP_PMIC_SDA     = 1
+PMIC_ID         = 0x83 
+PMIC_STATUS1    = 0x0f 
+PMIC_STATUS2    = 0x11 
+PMIC_OFFSRC     = 0x00 
+PMIC_PWRON      = 0x01 
+PMIC_IRQ1       = 0x02 
+PMIC_IRQ2       = 0x11 
+PMIC_IRQ3       = 0x00 
+PMIC_RTC_INT1   = 0x63 
+PMIC_RTC_INT2   = 0x11 
+PMIC_RTC_INT3   = 0x00 
+PMIC_RTC_OFFSRC = 0x80 
+PMIC_RTC_SMPL   = 0x03 
+RTC TIME: 2026-09-27 07:58:43(0x01)AM
+s5p_check_keypad: 0x10110000
+s5p_check_keypad: recovery mode
+set_oneshot_recovery: recovery mode set! sys_bootm=0x80000
+s5p_check_reboot_mode: INFORM3 = 0 ... skip
+board_get_clock_info : 
+      CLK_SRC_TOP3 (0x1002020c) = 0x11111111
+      CLK_SRC_TOP2 (0x10020208) = 0x11102010
+      CLK_SRC_TOP1 (0x10020204) = 0x00200000
+      CLK_SRC_TOP0 (0x10020200) = 0x10021100
+      CLK_SRC_FSYS (0x10020244) = 0x00044400
+      CLK_DIV_CPU0 (0x10010500) = 0x03550020
+      CLK_DIV_TOP0 (0x10020500) = 0x22504200
+       CLK_DIV_KFC (0x10038500) = 0x03500720
+     CLK_DIV_FSYS1 (0x1002054c) = 0x00102801
+     CLK_DIV_FSYS2 (0x10020550) = 0x04000000
+         MPLL_CON0 (0x10020180) = 0xa10a0302(532 MHz)
+         BPLL_CON0 (0x10030110) = 0xa1130401(825 MHz)
+         CPLL_CON0 (0x10020120) = 0xa06f0201(666 MHz)
+         KPLL_CON0 (0x10038100) = 0xa0c80301(800 MHz)
+         SPLL_CON0 (0x10020160) = 0xa0c80301(800 MHz)
+         DPLL_CON0 (0x10020128) = 0xa0c80202
+         DIV_FSYS1 (0x1002054c) = 0x00102801
+	mmc0 sclk_mmc : 400000KHz
+	mmc2 sclk_mmc : 400000KHz
+board_get_clock_info : time = 0
+s5p_check_upload: MAGIC(0xFFFFFFFF), RST_STAT(0x100)
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+s5p_check_upload: debug level is LO! (mask: 0x20)
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+s5p_check_download: 0
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+get_wireless_charger_detect: wireless check 0
+get_wireless_charger_detect : CHG_DTLS(0x00)
+check_pm_status: charger is not detected
+fuelgauge_read_i2c_word : 0xc4, 0xe0
+check_pm_status: voltage(3937) is ok
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+get_wireless_charger_detect: wireless check 0
+get_wireless_charger_detect : CHG_DTLS(0x00)
+fuelguage : wpc_status(0)
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+get_wireless_charger_detect: wireless check 0
+get_wireless_charger_detect : CHG_DTLS(0x00)
+[fuelgauge] start set model data for max17048
+[fuelguage] : OriginRCOMP = 0x97, OriginAlert = 0x1c
+fuelguage : OCV_DATA1 = 0xcc, OCV_DATA2 = 0x2f
+[BATT]fuelguage : re-write RCOMPseg data
+fuelguage : SOC_DATA1 = 0xf3, SOC_DATA2 = 0xa
+fuelguage : model was loaded successful
+fuelguage : RCOMP(0x5d)
+fuelguage : OCV_DATA1 = 0xcc, OCV_DATA2 = 0x2f
+[max17048] hibrt, vart, vreset setting
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+fuelgauge_read_i2c_word : 0x0, 0x0
+fuelgauge_read_i2c_word : 0x0, 0xff
+fuelgauge_read_i2c_word : 0x7d, 0x0
+fuelgauge_read_i2c_word : 0x9a, 0xf1
+fuelgauge_read_i2c_word : 0xc4, 0xc0
+fuelgauge_read_i2c_word : 0xc4, 0xc0
+fuelgauge_read_i2c_word : 0xc4, 0xc0
+fuelgauge_read_i2c_word : 0xc4, 0xc0
+fuelgauge_read_i2c_word : 0xc4, 0xc0
+fuelgauge_read_i2c_word : 0xcc, 0x2e
+muic_get_adc_value: STATUS1:0x3f
+muic_get_adc_value: ADC:0x1f
+muic_get_chg_typ: STATUS2:0x00
+muic_get_chg_typ: CHGTYP:0x00
+get_wireless_charger_detect: wireless check 0
+get_wireless_charger_detect : CHG_DTLS(0x00)
+[fuelgauge] Discharging table soc
+[BATT]6381 = ( 388500 - 332535 ) *100 / 877
+[fuelgauge]soc(77), table_soc(63), vcell(388500)
+fuelgauge : fg_reset_soc (0)
+fuelgauge_read_i2c_word : 0x1, 0xff
+fuelguage : REG_VCELL = 0xc4, 0xc0
+fuelguage : REG_SOC = 0x9a, 0xf1
+fuelguage : REG_MODE = 0x0, 0x0
+fuelguage : REG_VERSION = 0x0, 0x12
+fuelguage : REG_HIBRT = 0x0, 0x0
+fuelguage : REG_RCOMP = 0x5d, 0x1e
+fuelguage : REG_VART = 0x0, 0xff
+fuelguage : REG_CRATE = 0x21, 0xf0
+fuelguage : REG_VRESET = 0x7d, 0x0
+fuelguage : REG_STATUS = 0x0, 0xff
+fuelguage : REG_RCOMP = 0x5d, 0x1e
+scr_draw_image: draw 'logo.jpg'...
+read 'logo.jpg'(104016) completed.
+[TMU] 41, 43, 45, 43, 41
+fimd_set_div: sclk=532000000, vclk=128404800, cmu_div=4, div=1
+mic_init
+60, 28, 13, 0x602813
+[mobi_drv] add: 0x43e55c50, size: 14677
+MobiCore INIT response = 0
+MobiCore RTM has initialized!
+MobiCore IDLE flag = 0
+MobiCore driver address 43e55c50, size = 14677
+MobiCore RTM Notified back!
+MobiCore Driver loaded and RTM IDLE!
+MobiCore RTM has been uninitialized!
+[RPMB] emmc_rpmb_open: 
+Get DATA success.
+
+[RLOCK] lock flags are not initialized yet.
+[RPMB] emmc_rpmb_close: 
+secure info base: 45620000
+SMC Num = 0x83000013
+
+secure smc success!!! [ret = 0]
+Set debug level to low(4f4c)
+load_kernel: loading boot image from 141312..
+dt_size:565248, dt_actual:565248
+0xbc Error!
+Verify_Binary_Signature: failed.
+pit_check_signature (RECOVERY) invalid.
+[TIMA trusted boot]: SEAndroid MAGIC failure (recovery.img)
+RECOVERY IS NOT SEANDROID ENFORCINGRECOVERY IS NOT SEANDROID ENFORCINGSet invalid sign flag
+ No need to update kernel type.
+
+SMC Num = 0x83000001
+
+mobismc success!!! [ret = 0]
+Pass. DTBH size is smaller than a page.
+
+<dtbh_header Info>
+    magic:0x48425444, version:0x00000002, num_entries:0x00000005
+
+<device info>
+        chip_id: 0x0000152e
+    platform_id: 0x00001e92
+     subtype_id: 0x7d64f612
+         hw_rev: 0x0000000a
+
+dt_entry[00]
+        chip_id: 0x0000152e
+    platform_id: 0x00001e92
+     subtype_id: 0x7d64f612
+         hw_rev: 0x00000002
+     hw_rev_end: 0x00000002
+         offset: 0x00000800
+       dtb size: 0x0001b800
+dt_entry[01]
+        chip_id: 0x0000152e
+    platform_id: 0x00001e92
+     subtype_id: 0x7d64f612
+         hw_rev: 0x00000003
+     hw_rev_end: 0x00000003
+         offset: 0x0001c000
+       dtb size: 0x0001b800
+dt_entry[02]
+        chip_id: 0x0000152e
+    platform_id: 0x00001e92
+     subtype_id: 0x7d64f612
+         hw_rev: 0x00000004
+     hw_rev_end: 0x00000004
+         offset: 0x00037800
+       dtb size: 0x0001b800
+dt_entry[03]
+        chip_id: 0x0000152e
+    platform_id: 0x00001e92
+     subtype_id: 0x7d64f612
+         hw_rev: 0x00000005
+     hw_rev_end: 0x00000009
+         offset: 0x00053000
+       dtb size: 0x0001b800
+dt_entry[04]
+        chip_id: 0x0000152e
+    platform_id: 0x00001e92
+     subtype_id: 0x7d64f612
+         hw_rev: 0x0000000a
+     hw_rev_end: 0x000000ff
+         offset: 0x0006e800
+       dtb size: 0x0001b800
+Selected entry hw_ver : 10
+dt_entry of hw_rev 10 is loaded at 0x41f00000.(112640 Bytes)
+successfully protected 0
+[s5p_check_sboot_version_rpmb]cur_version:VERSION_-+A1, rpmb_version:VERSION_-+A1
+rpmb_version:49, cur_version:49
+DDI value :0x0000000e
+[MMC] Set write protection (boot partition)
+ATAG_CORE: 5 54410001 0 0 0
+ATAG_MEM: 4 54410002 20000000 40000000
+ATAG_MEM: 4 54410002 20000000 60000000
+ATAG_MEM: 4 54410002 20000000 80000000
+ATAG_MEM: 4 54410002 1EA00000 A0000000
+ATAG_SERIAL: 4 54410006 32086863 596f61f9
+ATAG_INITRD2: 4 54420005 42000000 6408de
+ATAG_REVISION: 3 54410007 a
+check_rustproof [1,0] Off
+ATAG_CMDLINE: cf 54410009 'console=ram loglevel=4 bootmode=2 sec_debug.level=0 sec_watchdog.sec_pet=5 printk.core_num=1 androidboot.debug_level=0x4f4c sec_log=0x200000@0x46000000 androidboot.hw_rev=10 sec_tima_log=0x200000@0x46202000 sec_avc_log=0x40000@0x46404000 s3cfb.bootloaderfb=0x87000000 sysscope=0xff000000 lcdtype=6301715 consoleblank=0 lpj=3977216 vmalloc=256m sec_debug.reset_reason=9 noexec=off oops=panic pmic_info=91 cordon=f32606d88bdf44e27436d6fbd28e7c5a connie=SM-G900H_OPEN_EUR_060ddd2e6820cb8a540d824aab07f64d androidboot.emmc_checksum=3 androidboot.boot_salescode= androidboot.odin_download=1 androidboot.bootloader=G900HXXU1CVHA androidboot.selinux=enforcing androidboot.hardware=universal5422 androidboot.warranty_bit=1 androidboot.sec_atd.tty=/dev/ttySAC2 androidboot.serialno=0000000000000000 snd_soc_core.pmdown_time=1000'
+ATAG_NONE: 0 0
+Updating device tree @0x41f00000: done
+
+Starting kernel at 0x40008000...
+
+SWITCH_SEL(3)

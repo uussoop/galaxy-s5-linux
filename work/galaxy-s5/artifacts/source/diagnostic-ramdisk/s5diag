@@ -1,0 +1,99 @@
+#!/bin/busybox ash
+# Temporary, fail-open boot diagnostics. Never format or write outside CACHE p19.
+umask 077
+cache=/dev/mmcblk0p19
+mountpoint=/mnt/s5diag
+stopfile=/run/s5diag.stop
+pathfile=/run/s5diag.path
+donefile=/run/s5diag.done
+
+snapshot() {
+	[ -n "$dir" ] || return 0
+	dmesg 2>/dev/null | tail -c 2097152 > "$dir/kernel.tmp" && mv -f "$dir/kernel.tmp" "$dir/kernel.log"
+	if [ -f /pmOS_init.log ]; then
+		tail -c 1048576 /pmOS_init.log > "$dir/initramfs.tmp" && mv -f "$dir/initramfs.tmp" "$dir/initramfs.log"
+	fi
+}
+
+is_mounted() {
+	grep -q " $mountpoint " /proc/mounts
+}
+
+unmount_cache() {
+	if is_mounted; then
+		sync
+		umount "$mountpoint" || umount -l "$mountpoint" || true
+	fi
+}
+
+case "$1" in
+start)
+	n=0
+	while [ ! -b "$cache" ]; do
+		[ -e "$stopfile" ] && exit 0
+		[ "$n" -ge 20 ] && exit 0
+		n=$((n + 1))
+		sleep 1
+	done
+	[ "$(cat /sys/class/block/mmcblk0p19/partition 2>/dev/null)" = 19 ] || exit 0
+	[ "$(cat /sys/class/block/mmcblk0p19/start 2>/dev/null)" = 5406720 ] || exit 0
+	[ "$(cat /sys/class/block/mmcblk0p19/size 2>/dev/null)" = 409600 ] || exit 0
+	case "$(readlink -f /sys/class/block/mmcblk0p19 2>/dev/null)" in
+		*/block/mmcblk0/mmcblk0p19) ;;
+		*) exit 0 ;;
+	esac
+	[ "$(blkid -s UUID -o value "$cache" 2>/dev/null)" = 57f8f4bc-abf4-655f-bf67-946fc0f9f25b ] || exit 0
+	[ -e "$stopfile" ] && exit 0
+	mkdir -p "$mountpoint" || exit 0
+	mount -t ext4 -o rw,noatime,nodev,nosuid,noexec "$cache" "$mountpoint" || exit 0
+	if [ -e "$stopfile" ]; then
+		unmount_cache
+		exit 0
+	fi
+	mkdir -p "$mountpoint/codex-s5-diagnostics" || { unmount_cache; exit 0; }
+	chmod 700 "$mountpoint/codex-s5-diagnostics" || { unmount_cache; exit 0; }
+	dir="$(mktemp -d "$mountpoint/codex-s5-diagnostics/boot-XXXXXXXX")" || { unmount_cache; exit 0; }
+	printf '%s\n' "$dir" > "$pathfile"
+	snapshot
+	sync
+	while [ ! -e "$stopfile" ]; do
+		n=0
+		while [ "$n" -lt 5 ] && [ ! -e "$stopfile" ]; do
+			n=$((n + 1))
+			sleep 1
+		done
+		[ -e "$stopfile" ] && break
+		snapshot
+		sync
+	done
+	touch "$donefile"
+	;;
+stop)
+	touch "$stopfile"
+	pID="$2"
+	n=0
+	while [ "$n" -lt 3 ] && [ ! -e "$donefile" ] && [ -n "$pID" ] && kill -0 "$pID" 2>/dev/null; do
+		n=$((n + 1))
+		sleep 1
+	done
+	if [ -n "$pID" ] && kill -0 "$pID" 2>/dev/null; then
+		kill "$pID" 2>/dev/null || true
+		# Give an interrupted snapshot time to release its temporary file.
+		sleep 1
+	fi
+	if [ -f "$pathfile" ]; then
+		dir="$(cat "$pathfile")"
+		case "$dir" in
+			"$mountpoint"/codex-s5-diagnostics/boot-*)
+				if [ -d "$dir" ]; then
+					printf 'initramfs switch_root reached\n' > "$dir/stage"
+					snapshot
+				fi
+				;;
+		esac
+	fi
+	unmount_cache
+	;;
+*) exit 0 ;;
+esac
+exit 0

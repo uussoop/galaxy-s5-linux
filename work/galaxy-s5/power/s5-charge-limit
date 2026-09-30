@@ -1,0 +1,45 @@
+#!/sbin/openrc-run
+# Draft only. Install/enable after live native battery and store_mode testing.
+
+description="Enable the Galaxy S5 kernel's battery store mode"
+store_node=/sys/class/power_supply/battery/store_mode
+
+depend() {
+    need localmount
+}
+
+start() {
+    if [ ! -r /proc/cmdline ]; then
+        eerror "Cannot determine boot mode; charge limit was not enabled"
+        return 1
+    fi
+    if grep -Eq '(^|[[:space:]])androidboot[.]mode=charger' /proc/cmdline; then
+        eerror "Kernel charger mode ignores the store_mode charge limit"
+        return 1
+    fi
+    if [ ! -e "$store_node" ]; then
+        eerror "Battery store_mode is absent; charge limit was not enabled"
+        return 1
+    fi
+    if [ ! -w "$store_node" ]; then
+        eerror "Battery store_mode is not writable; charge limit was not enabled"
+        return 1
+    fi
+
+    ebegin "Enabling battery store mode"
+    if ! printf '1\n' > "$store_node"; then
+        eend 1 "Could not enable battery store mode"
+        return 1
+    fi
+    actual=
+    if ! IFS= read -r actual < "$store_node" || [ "$actual" != 1 ]; then
+        eend 1 "Battery store_mode readback was not 1"
+        return 1
+    fi
+    eend 0
+}
+
+stop() {
+    einfo "Leaving battery store mode unchanged"
+    return 0
+}

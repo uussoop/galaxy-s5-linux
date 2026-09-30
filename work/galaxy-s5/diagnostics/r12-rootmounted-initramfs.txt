@@ -1,0 +1,32 @@
+tee: /dev/: Is a directory
+  ❬❬ PMOS STAGE 1 ❭❭
+initramfs version: 3.12.3-r3
+  ❬❬ PMOS STAGE 2 ❭❭
+  Setting up USB gadget through configfs
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/ncm.usb0': Function not implemented
+mkdir: can't create directory '/sys/kernel/config/usb_gadget/g1/functions/rndis.usb0': Function not implemented
+[redacted sensitive line]
+  Couldn't symlink ncm.usb0
+ash: write error: Resource busy
+  Couldn't write new UDC
+Trying to start server with parameters: Server IP addr: 172.16.42.1:67, client IP addr: 172.16.42.2, interface: ncm0
+Trying to mount subpartitions for 10 seconds...
+Mount subpartitions of /dev/mmcblk0p21
+[redacted sensitive line]
+Unable to resize root partition: failed to find qualifying partition
+Auto-repair and check 'ext' filesystem (/dev/mapper/mmcblk0p21p2)
+pmOS_root: recovering journal
+pmOS_root: clean, 2458/761856 files, 85591/3043328 blocks
+Resize 'ext4' root filesystem (/dev/mapper/mmcblk0p21p2)
+modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+resize2fs 1.47.4 (6-Mar-2025)
+Please run 'e2fsck -f /dev/mapper/mmcblk0p21p2' first.
+
+Mount root partition (/dev/mapper/mmcblk0p21p2) to /sysroot (read-write) with options 
+modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+Auto-repair and check 'ext' filesystem (/dev/mapper/mmcblk0p21p1)
+pmOS_boot was not cleanly unmounted, check forced.
+pmOS_boot: 15/62248 files (6.7% non-contiguous), 44156/248832 blocks
+Mount boot partition (/dev/mapper/mmcblk0p21p1) to /sysroot/boot (read-write)
+modprobe: FATAL: Module ext4 not found in directory /lib/modules/3.10.9-LineageOS
+Switching root

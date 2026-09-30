@@ -1,0 +1,8 @@
+host view of the phone's USB descriptor, read while pmOS is running
+
+idProduct              = 53249
+bcdDevice              = 65535
+USB Product Name       = SAMSUNG_Android
+bcdUSB                 = 528
+idVendor               = 6353
+USB Serial Number      = 01f44ecab714

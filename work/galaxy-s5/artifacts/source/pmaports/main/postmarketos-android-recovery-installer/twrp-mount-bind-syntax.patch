@@ -1,0 +1,22 @@
+--- a/pmos_chroot
++++ b/pmos_chroot
+@@ -24,8 +24,8 @@
+ 	{ umount "$CHROOT"/"$file" ; rm "$CHROOT"/"$file" ; } || :
+ 	touch "$CHROOT"/"$file"
+ done
+-mount --bind /tmp/postmarketos/pmos.log "$CHROOT"/pmos.log
+-mount --bind "$ZIP" "$CHROOT"/pmos.zip
++mount -o bind /tmp/postmarketos/pmos.log "$CHROOT"/pmos.log
++mount -o bind "$ZIP" "$CHROOT"/pmos.zip
+ 
+ fstab_recovery="recovery.fstab"
+ # TWRP can use twrp.fstab instead of recovery.fstab (device specific)
+@@ -43,7 +43,7 @@
+ # Mount necessary filesystems for the chroot
+ for mountpoint in "/dev" "/proc" "/sys"; do
+ 	mkdir -p "$CHROOT""$mountpoint"
+-	mount --bind "$mountpoint" "$CHROOT""$mountpoint"
++	mount -o bind "$mountpoint" "$CHROOT""$mountpoint"
+ done
+ 
+ # Copy Mediatek /emmc@partitionname symlinks to the chroot

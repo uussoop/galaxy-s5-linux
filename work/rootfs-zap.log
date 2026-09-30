@@ -1,0 +1,3 @@
+[07:41:36] Unregister qemu binfmt (arm)[0m
+[07:41:36] Remove /home/pmos/work/chroot_rootfs_samsung-k3gxx? (y/n) [n]: y[0m
+[07:41:36] Remove /home/pmos/work/chroot_native? (y/n) [n]: y[0m

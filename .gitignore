@@ -1,0 +1,80 @@
+# Large vendored and downloaded blobs.
+#
+# Everything here is reproducible or re-downloadable, and together it is ~3 GB,
+# which is not reasonable to track. Hashes for the artifacts that matter are
+# recorded in work/galaxy-s5/artifacts/SHA256SUMS.txt, and the build scripts
+# that produce them are tracked. See README.md, "Rebuilding".
+
+# Stock Samsung firmware, 2 GB
+work/galaxy-s5/stock-firmware/
+
+# Cross toolchains, 453 MB
+work/galaxy-s5/scratch-toolchain/
+
+# Vendored upstream trees (pmbootstrap, kernel headers), 112 MB
+work/galaxy-s5/src/
+
+# LVGL source, 477 MB extracted. Re-fetchable, and the tarball's sha512 is
+# pinned in lvterm/README.md to the one pmaports records for the commit buffybox
+# uses. Fetch it, then run lvterm/apply-lvgl-patches.py; the resulting change is
+# tracked as work/galaxy-s5/lvterm/lvgl-patches.diff, so what was altered is in
+# git even though the tree it applies to is not.
+work/galaxy-s5/scratch-lvgl/
+
+# Intermediate boot images. r26 is tracked explicitly below; the rest are
+# superseded and their hashes live in SHA256SUMS.txt.
+work/galaxy-s5/artifacts/*.img
+!work/galaxy-s5/artifacts/boot-k3gxx-r26.img
+
+# Large archives
+*.zip
+*.apk
+*.tar.gz
+*.tar.xz
+work/galaxy-s5/rootfs-final.tar.gz
+work/galaxy-s5/scratch-r11-initramfs.cpio.gz
+
+# Scratch images and stock dumps outside artifacts/. All are re-derivable and
+# their hashes are recorded. artifacts/boot-k3gxx-r26.img is kept deliberately:
+# it is the image currently on the phone.
+work/galaxy-s5/*.img
+work/galaxy-s5/*.apk
+work/review-install/*.img
+
+# Raw pulls and scratch images
+work/galaxy-s5/pulls/
+work/galaxy-s5/scratch-r11-initramfs/
+work/galaxy-s5/scratch-recovery-src/
+work/galaxy-s5/scratch-kernel/
+
+# Secrets and local credentials
+.env
+.env.*
+*.env
+work/galaxy-s5/ssh/*_ed25519
+work/galaxy-s5/ssh/s5_ed25519.retired
+work/galaxy-s5/ssh/known_hosts.old
+!work/galaxy-s5/ssh/*.pub
+
+# Telegram & Agent runtime artifacts
+*.session
+*.session-journal
+downloads/
+group_config.json
+*.log
+
+# Python, virtualenvs & caches
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.pytest_cache/
+
+# OS and shell noise
+.ash_history
+.DS_Store
+Thumbs.db
+*.swp
+*~

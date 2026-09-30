@@ -1,0 +1,232 @@
+#!/bin/sh
+# s5usbkeep - keep android_usb bound to acm so a USB serial console survives.
+#
+# r22 FALLBACK ONLY. In r22 the primary defence is that init_2nd.sh bind mounts
+# decoy files over android_usb's writable attributes before switch_root, so the
+# driver cannot be reconfigured and this script has nothing to do. It is still
+# installed as a second line of defence for the case where the binds silently
+# fail, and because its preflight and drift log would be the only record of
+# that. It has never been observed to run, on any boot.
+#
+# r21. Installed into the real system by the initramfs, one file plus one inittab
+# line, both removed by the command in remove_note below.
+#
+# The r20 boot installed this file and the inittab line and the keeper still
+# produced no log at all: not an empty file, the whole log directory was absent.
+# That rules out "the mount failed" as a sufficient explanation, because a failed
+# mount on a busy box is loud on a console nobody can read, and it leaves a
+# keeper that is still looping and still holding acm. The descriptor trace shows
+# acm was taken away and never came back, so the keeper was not running at all.
+#
+# Since the evidence cannot say which of the possible causes it was, this version
+# stops depending on any single one of them:
+#
+#   * every status line goes to three sinks, /dev/kmsg among them. The ring
+#     buffer is not cleared by a warm reboot, so a line written here is still
+#     there for dmesg in TWRP on the next boot. That is the one channel that
+#     cannot fail silently.
+#   * CACHE is mounted by trying three device paths and three mount points
+#     rather than one of each.
+#   * the log directory is created before anything else is attempted, and the
+#     outcome of every step is recorded even when the step failed.
+#   * the first thing written, before any sysfs is touched, is a preflight line
+#     saying which of /dev/kmsg, /proc/sys, /var/log and CACHE are usable.
+#
+# The re-assert sequence is copied verbatim from the initramfs code that is
+# already proven to work on this kernel: functions_store refuses to write while
+# the device is enabled, so the disable / functions / enable order is fixed.
+
+CACHE_LOGDIR=codex-s5-diagnostics/r26
+CACHE_DEVICES="/dev/mmcblk0p19 /dev/block/mmcblk0p19 /dev/mmcblk0p20"
+CACHE_MNTS="/mnt/s5usbkeep /mnt/s5keep /var/tmp/s5keep"
+CACHE_MNT=
+LOG=
+
+LOG_MAX=4194304
+EVERY=3
+PRE_LINES=30
+ANDROID_CLS=/sys/class/android_usb
+
+now() {
+	date '+%H:%M:%S'
+}
+
+full() {
+	date '+%Y-%m-%d %H:%M:%S'
+}
+
+# The three sinks. /dev/kmsg first because it is the only one that survives the
+# reboot into TWRP, and it is the one that r20 proved unreliable-by-absence.
+kmsg() {
+	printf '[s5keep] %s\n' "$*" > /dev/kmsg 2>/dev/null || true
+}
+
+# One line, everywhere. kmsg is best-effort per line; the file sinks are
+# best-effort per write and can never abort the loop.
+note() {
+	l="$(full) [s5keep] $*"
+	printf '%s\n' "$l" >> /var/log/s5usbkeep.log 2>/dev/null || true
+	[ -n "$LOG" ] && printf '%s\n' "$l" >> "$LOG" 2>/dev/null
+	kmsg "$*"
+	return 0
+}
+
+# Bulk evidence: file sinks only, because each kmsg write is a ring-buffer entry
+# and a burst would push out the very lines being collected.
+detail() {
+	l="$(full) [s5keep] $*"
+	printf '%s\n' "$l" >> /var/log/s5usbkeep.log 2>/dev/null || true
+	[ -n "$LOG" ] && printf '%s\n' "$l" >> "$LOG" 2>/dev/null
+	return 0
+}
+
+attr() {
+	cat "$1" 2>/dev/null || echo "?"
+}
+
+read_attr() {
+	cat "$1" 2>/dev/null | tr -d '\r\n'
+}
+
+# Try every device and every mount point, and record what was tried. Whatever
+# happens, the answer ends up in a readable place.
+setup_cache() {
+	[ -n "$CACHE_MNT" ] && return 0
+	local d m
+	for d in $CACHE_DEVICES; do
+		[ -b "$d" ] || continue
+		for m in $CACHE_MNTS; do
+			mkdir -p "$m" 2>/dev/null || continue
+			if mount -o rw "$d" "$m" 2>/dev/null; then
+				CACHE_MNT="$m"
+				break
+			fi
+		done
+		[ -n "$CACHE_MNT" ] && break
+	done
+	if [ -z "$CACHE_MNT" ]; then
+		detail "cache: FAILED to mount any of [$CACHE_DEVICES] at any of [$CACHE_MNTS]; block devices present: $(ls -1 /dev/mmcblk* /dev/block/mmcblk* 2>/dev/null | tr '\n' ' ')"
+		return 1
+	fi
+	detail "cache: mounted a device at $CACHE_MNT"
+	mkdir -p "$CACHE_MNT/$CACHE_LOGDIR" 2>/dev/null \
+		&& detail "cache: created $CACHE_MNT/$CACHE_LOGDIR" \
+		|| detail "cache: could not create $CACHE_MNT/$CACHE_LOGDIR"
+	LOG="$CACHE_MNT/$CACHE_LOGDIR/usbkeep.log"
+	[ -f "$LOG" ] || : > "$LOG" 2>/dev/null
+	if [ -f "$LOG" ]; then
+		sz=$(wc -c < "$LOG" 2>/dev/null)
+		case "$sz" in
+			'' | *[!0-9]*) sz=0 ;;
+		esac
+		if [ "$sz" -gt "$LOG_MAX" ]; then
+			detail "cache: log at $sz B, rotating"
+			mv -f "$LOG" "$LOG.1" 2>/dev/null || true
+			: > "$LOG" 2>/dev/null || true
+		fi
+	fi
+	return 0
+}
+
+# What is actually usable right here. Written before any sysfs is touched so that
+# a keeper which dies later still leaves a record of its own environment.
+preflight() {
+	note "keeper starting in the real system; pid $$; uid=$(id -u 2>/dev/null); argv0=$0"
+	note "preflight: kmsg=$( [ -w /dev/kmsg ] && echo rw || echo no ) sh=$(readlink -f /bin/sh 2>/dev/null || echo '?') proc=$( [ -d /proc/self ] && echo yes || echo no ) sys=$( [ -d /sys ] && echo yes || echo no ) varlog=$( [ -d /var/log ] && echo yes || echo no )"
+	note "preflight: block devices: $(ls -1 /dev/mmcblk* /dev/block/mmcblk* 2>/dev/null | tr '\n' ' ')"
+	setup_cache
+	note "preflight: cache_mount=$CACHE_MNT log=$LOG"
+	[ -f /etc/inittab ] && note "preflight: inittab s5usbkeep line: $(grep -n 's5usbkeep' /etc/inittab 2>/dev/null | tr '\n' ';')"
+	note "preflight: android_usb class: $(ls -1 "$ANDROID_CLS" 2>/dev/null | tr '\n' ' ')"
+	return 0
+}
+
+android_dir() {
+	local c
+	for c in "$ANDROID_CLS"/*; do
+		[ -e "$c/functions" ] && {
+			echo "$c"
+			return 0
+		}
+	done
+	return 1
+}
+
+save_pre_state() {
+	{
+		echo "----- ring buffer, last $PRE_LINES lines, at $(full) -----"
+		dmesg 2>/dev/null | tail -n "$PRE_LINES" \
+			|| echo "(dmesg produced nothing)"
+		echo "----- end ring buffer -----"
+	} >> "$LOG" 2>/dev/null
+	dmesg 2>/dev/null | tail -n "$PRE_LINES" | tr -d '\000' \
+		>> /var/log/s5usbkeep.log 2>/dev/null
+	return 0
+}
+
+# The proven order. Not interchangeable: functions_store returns -EBUSY while
+# the device is enabled.
+assert_acm() {
+	ad="$1"
+	note "assert: writing enable=0"
+	echo "0" > "$ad/enable" 2>/dev/null || note "assert: could not disable android_usb"
+	note "assert: writing functions=acm"
+	echo "acm" > "$ad/functions" 2>/dev/null \
+		|| note "assert: android_usb refused the acm function"
+	note "assert: writing enable=1"
+	echo "1" > "$ad/enable" 2>/dev/null || note "assert: could not re-enable android_usb"
+}
+
+preflight
+
+ad="$(android_dir)" || ad=""
+if [ -z "$ad" ]; then
+	note "start: no android_usb device under $ANDROID_CLS yet, will keep looking"
+else
+	note "start: android_usb at $ad functions=[$(read_attr "$ad/functions")] enable=[$(read_attr "$ad/enable")]"
+fi
+
+drifts=0
+held=0
+ticks=0
+
+while :; do
+	ticks=$((ticks + 1))
+	sleep "$EVERY"
+
+	[ -n "$LOG" ] || setup_cache
+
+	if [ -z "$ad" ] || [ ! -e "$ad/functions" ]; then
+		ad="$(android_dir)" || ad=""
+		if [ -n "$ad" ]; then
+			note "android_usb appeared at $ad"
+		else
+			[ $((ticks % 20)) -eq 0 ] && note "still no android_usb device (ticks=$ticks)"
+			continue
+		fi
+	fi
+
+	funcs="$(read_attr "$ad/functions")"
+	en="$(read_attr "$ad/enable")"
+
+	if [ "$funcs" != "acm" ] || [ "$en" != "1" ]; then
+		drifts=$((drifts + 1))
+		note "DRIFT $drifts: functions=[$funcs] enable=[$en] at $(full), re-asserting"
+		save_pre_state
+		assert_acm "$ad"
+		after="$(read_attr "$ad/functions")"
+		if [ "$after" = "acm" ] && [ "$(read_attr "$ad/enable")" = "1" ]; then
+			note "RE-ASSERTED: functions=[$after] enable=[$(read_attr "$ad/enable")]"
+		else
+			note "RE-ASSERT FAILED: functions=[$after] enable=[$(read_attr "$ad/enable")]"
+		fi
+		held=0
+	else
+		held=$((held + 1))
+		[ $((held % 20)) -eq 1 ] && \
+			note "holding: functions=[$funcs] enable=[$en] for $((held * EVERY))s, drifts=$drifts"
+	fi
+done
+
+# Never reached; busybox init respawns this. To stop it:
+remove_note=1

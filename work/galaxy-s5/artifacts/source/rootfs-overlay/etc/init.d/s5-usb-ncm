@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+
+description="Configure the Galaxy S5 USB NCM link"
+
+depend() {
+	need localmount
+	before unudhcpd.ncm0
+}
+
+start() {
+	local gadget=/sys/class/android_usb/android0
+	ebegin "Configuring USB NCM"
+	if [ ! -d "$gadget" ]; then
+		eend 1 "Android USB gadget sysfs is unavailable"
+		return 1
+	fi
+	if [ ! -e /sys/class/net/ncm0 ]; then
+		printf '0\n' > "$gadget/enable" || return 1
+		printf 'ncm\n' > "$gadget/functions" || return 1
+		printf '1\n' > "$gadget/enable" || return 1
+	fi
+	if [ ! -e /sys/class/net/ncm0 ]; then
+		eend 1 "ncm0 did not appear"
+		return 1
+	fi
+	ip addr replace 172.16.42.1/24 dev ncm0 &&
+		ip link set ncm0 up
+	eend $?
+}

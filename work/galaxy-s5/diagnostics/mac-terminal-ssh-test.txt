@@ -1,0 +1,8 @@
+Galaxy S5 SSH check: 2026-09-30 00:00:00 UTC
+target user@192.168.1.100  key work/galaxy-s5/ssh/s5_agent_ed25519
+--- attempt 1 of 3 ---
+3.10.9-LineageOS
+ 00:00:00 up 1 day,  2:50,  0 users,  load average: 1.38, 1.51, 1.51
+uid=10000(user) gid=10000(user) groups=10(wheel),18(audio),27(video),28(netdev),102(plugdev),10000(user)
+SUCCESS: Read-only SSH check completed.
+Result saved to work/galaxy-s5/diagnostics/mac-terminal-ssh-test.txt

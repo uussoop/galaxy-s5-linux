@@ -1,0 +1,200 @@
+#!/bin/sh
+# s5usbkeep - keep android_usb bound to acm so a USB serial console survives.
+#
+# Why this file exists, and why it runs here instead of in the initramfs.
+#
+# r19 tried to solve the same problem from the initramfs: fork a keeper before
+# switch_root, hand it over, and let it re-assert acm on android_usb after the
+# real system has finished booting. The r19 boot proved the keeper process did
+# survive switch_root, and that it was useless anyway. Its CACHE directory
+# carried a kernel.tmp with an mtime half an hour after handover, so the loop was
+# still running long after the real system came up, yet usb.log gained no lines
+# after the handover note and android_usb was never re-asserted. The old root's
+# mounts are torn down by busybox switch_root's umount2("/oldroot", MNT_DETACH):
+# the keeper keeps its own root and its own CACHE write path, but it loses the
+# parts of the old root it was using as a rendezvous. Its /run is gone, so the
+# handover flag it polls for never appears and it takes the pre-switch_root
+# branch forever. Its /dev is gone, so dmesg returns nothing. Running in the
+# real system removes all of that: nothing here can be detached, because there is
+# no switch_root left to perform it.
+#
+# The real system is a healthy postmarketOS install, and this script is installed
+# into it from the initramfs while /sysroot is still mounted read-write, one file
+# plus one inittab line. Both are removed by the single command printed in
+# remove_note below.
+#
+# The re-assert sequence is copied verbatim from the initramfs code that is
+# already proven to work on this kernel, because f_acm and android_usb are
+# fiddly: functions_store refuses to write while the device is enabled, so the
+# disable / functions / enable order is not interchangeable.
+#
+# It logs to CACHE (mmcblk0p19) rather than only to /var/log, because the real
+# root is encrypted and TWRP cannot read it, so /var/log is unreachable from the
+# one place we can inspect the phone after a reboot. CACHE is never mounted by
+# pmOS, so holding it mounted costs the running system nothing.
+
+CACHE_DEV=/dev/mmcblk0p19
+CACHE_MNT=/mnt/s5usbkeep
+LOGDIR="$CACHE_MNT/codex-s5-diagnostics/r20"
+LOG="$LOGDIR/usbkeep.log"
+
+# Log caps. The keeper runs for the life of the boot, so an uncapped log on a
+# 200 MB partition is a logger that eventually takes its own evidence down.
+LOG_MAX=4194304
+
+# Poll interval. The drift we are fighting happened once, early, so a slow poll
+# is plenty; fast polling cannot win a race against a driver anyway, it just
+# burns CPU on a phone.
+EVERY=3
+
+# How many ring-buffer lines to save immediately before each re-assert. This is
+# the whole point of the log: it says what the kernel was doing in the moment
+# before android_usb was taken away, which is what identifies the culprit.
+PRE_LINES=30
+
+ANDROID_CLS=/sys/class/android_usb
+
+now() {
+	date '+%Y-%m-%d %H:%M:%S'
+}
+
+# Read a sysfs attribute without letting a failure abort the loop.
+attr() {
+	cat "$1" 2>/dev/null || echo "?"
+}
+
+note() {
+	[ -n "$LOG" ] || return 0
+	# 2>/dev/null throughout: if CACHE fills or is read-only the keeper must
+	# keep doing its actual job, which is holding acm bound, rather than
+	# exiting because it could not write a log line.
+	printf '%s [s5keep] %s\n' "$(now)" "$*" >> "$LOG" 2>/dev/null || true
+	sync 2>/dev/null || true
+}
+
+# The CACHE log is the only record that survives a reboot into TWRP, so failing
+# to mount it has to be loud here, where a serial console can still show it.
+setup_cache() {
+	if grep -q " $CACHE_MNT " /proc/mounts 2>/dev/null; then
+		return 0
+	fi
+	mkdir -p "$CACHE_MNT" 2>/dev/null || return 1
+	if ! mount -o rw "$CACHE_DEV" "$CACHE_MNT" 2>/dev/null; then
+		echo "s5usbkeep: cannot mount $CACHE_DEV, logging to the console only"
+		return 1
+	fi
+	mkdir -p "$LOGDIR" 2>/dev/null
+	[ -f "$LOG" ] || : > "$LOG" 2>/dev/null
+	# Never let the log approach the size of the partition.
+	if [ -f "$LOG" ]; then
+		sz=$(wc -c < "$LOG" 2>/dev/null)
+		case "$sz" in
+			'' | *[!0-9]*) sz=0 ;;
+		esac
+		if [ "$sz" -gt "$LOG_MAX" ]; then
+			note "log reached $sz B; rotating to $LOG.1"
+			mv -f "$LOG" "$LOG.1" 2>/dev/null || true
+			: > "$LOG" 2>/dev/null || true
+		fi
+	fi
+	return 0
+}
+
+# The android_usb device directory. It is android0 on every boot so far, but
+# resolve it rather than hardcode, so a kernel that numbers it differently logs
+# the drift instead of silently doing nothing.
+android_dir() {
+	for d in "$ANDROID_CLS"/*; do
+		[ -e "$d/functions" ] && {
+			echo "$d"
+			return 0
+		}
+	done
+	return 1
+}
+
+# Copy the tail of the kernel ring buffer into the log, immediately before
+# re-asserting. Whatever rebind happens is either in here or it is not in here,
+# and those are the only two possibilities worth acting on.
+save_pre_state() {
+	echo "----- ring buffer, last $PRE_LINES lines, captured at $(now) -----" \
+		>> "$LOG" 2>/dev/null || return 0
+	dmesg 2>/dev/null | tail -n "$PRE_LINES" \
+		>> "$LOG" 2>/dev/null || true
+	echo "----- end ring buffer -----" >> "$LOG" 2>/dev/null || true
+}
+
+# The proven sequence, from the initramfs: disable so the current function is
+# released and the descriptor is replaced rather than added to, then set acm,
+# then enable.
+assert_acm() {
+	ad="$1"
+	echo "0" > "$ad/enable" 2>/dev/null || note "could not disable android_usb"
+	echo "acm" > "$ad/functions" 2>/dev/null \
+		|| note "android_usb refused the acm function"
+	echo "1" > "$ad/enable" 2>/dev/null || note "could not re-enable android_usb"
+}
+
+setup_cache || true
+
+note "keeper started in the real system; pid $$; holding android_usb on acm"
+ad="$(android_dir)" || ad=""
+if [ -z "$ad" ]; then
+	note "no android_usb device under $ANDROID_CLS yet, will keep looking"
+else
+	note "android_usb at $ad; functions=[$(attr "$ad/functions")] enable=[$(attr "$ad/enable")]"
+fi
+
+drifts=0
+held=0
+ticks=0
+
+while :; do
+	ticks=$((ticks + 1))
+	sleep "$EVERY"
+
+	# Cheap liveness signal: if CACHE went away underneath us, remount it once
+	# so a long boot does not silently stop recording.
+	[ -d "$LOGDIR" ] || setup_cache || true
+
+	if [ -z "$ad" ] || [ ! -e "$ad/functions" ]; then
+		ad="$(android_dir)" || ad=""
+		if [ -n "$ad" ]; then
+			note "android_usb appeared at $ad"
+		else
+			# Say so occasionally rather than every 3 seconds.
+			[ $((ticks % 20)) -eq 0 ] && note "still no android_usb device"
+			continue
+		fi
+	fi
+
+	funcs="$(attr "$ad/functions")"
+	en="$(attr "$ad/enable")"
+
+	if [ "$funcs" != "acm" ]; then
+		drifts=$((drifts + 1))
+		note "DRIFT $((drifts)): functions=[$funcs] enable=[$en], re-asserting acm"
+		save_pre_state
+		assert_acm "$ad"
+		after="$(attr "$ad/functions")"
+		if [ "$after" = "acm" ]; then
+			note "RE-ASSERTED: functions=[$after] enable=[$(attr "$ad/enable")]"
+		else
+			note "RE-ASSERT FAILED: functions=[$after]"
+		fi
+		held=0
+	else
+		held=$((held + 1))
+		# One line a minute is enough to prove it is holding, and small
+		# enough that the log stays readable.
+		[ $((held % 20)) -eq 1 ] && \
+			note "holding: functions=[$funcs] enable=[$en] for $((held * EVERY))s, drifts=$drifts"
+	fi
+done
+
+# Never reached: the loop only exits if the shell is killed, and busybox init
+# respawns this. Removing the install is the way to stop it:
+#
+#   sed -i '/s5usbkeep/d' /etc/inittab && rm -f /usr/sbin/s5usbkeep
+#
+remove_note=1

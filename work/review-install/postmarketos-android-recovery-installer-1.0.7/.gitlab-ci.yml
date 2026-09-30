@@ -1,0 +1,47 @@
+---
+
+# global settings
+image: alpine:latest
+stages:
+  - linter
+  - build
+
+.only-default: &only-default
+  only:
+    - master
+    - merge_requests
+    - tags
+
+mr-settings:
+  stage: linter
+  only:
+    - merge_requests
+  before_script:
+    - apk -q add python3
+  script:
+    - wget -q "https://gitlab.com/postmarketOS/ci-common/-/raw/master/check_mr_settings.py"
+    - python3 ./check_mr_settings.py
+
+clang-format-static:
+  stage: linter
+  <<: *only-default
+  before_script:
+    - apk -q add clang-extra-tools git
+  script:
+    - .ci/static_clang-format.sh
+
+shellcheck:
+  stage: linter
+  <<: *only-default
+  before_script:
+    - apk -q add shellcheck git
+  script:
+    - .ci/shellcheck.sh
+
+build:
+  stage: build
+  <<: *only-default
+  before_script:
+    - apk -q add alpine-sdk
+  script:
+    - gcc -static -o disable-warning disable-warning.c
